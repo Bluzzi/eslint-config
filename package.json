@@ -1,0 +1,13 @@
+{
+  "name": "@bluzzi/eslint-config",
+  "version": "0.5.0",
+  "author": "Bluzzi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bluzzi/ESLint-Config.git"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.31.0",
+    "eslint": "^8.27.0"
+  }
+}
