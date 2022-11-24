@@ -10,7 +10,7 @@ module.exports = {
 
     "semi": ["error", "always"],
 
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": ["error", "unix"],
     "semi-style": ["error", "last"],
     "brace-style": "error",
     "comma-style": ["error", "last"],
