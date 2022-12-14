@@ -39,7 +39,6 @@ module.exports = {
     "space-before-function-paren": ["error", "never"],
 
     "new-parens": "error",
-    "no-extra-parens": "error",
     "space-in-parens": ["error", "never"],
 
     "function-paren-newline": ["error", "consistent"],
