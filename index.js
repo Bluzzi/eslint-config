@@ -18,6 +18,8 @@ module.exports = {
     "operator-linebreak": ["error", "before"],
     "implicit-arrow-linebreak": ["error", "beside"],
 
+    "padded-blocks": ["error", { "classes": "always" }],
+
     "arrow-spacing": "error",
     "block-spacing": "error",
     "semi-spacing": "error",
