@@ -2,7 +2,7 @@ module.exports = {
   extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   parser: "@typescript-eslint/parser",
   plugins: ["@typescript-eslint/eslint-plugin"],
-  ignorePatterns: [".eslintrc.js"],
+  ignorePatterns: [".eslintrc.js", "dist", "build"],
   rules: {
     "indent": ["error", 2, { "SwitchCase": 1 }],
 
