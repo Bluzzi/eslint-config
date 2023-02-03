@@ -1,6 +1,6 @@
 {
   "name": "@bluzzi/eslint-config",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "author": "Bluzzi",
   "main": "index.js",
   "repository": {
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.43.0",
-    "@typescript-eslint/parser": "^5.43.0" 
+    "@typescript-eslint/parser": "^5.43.0",
+    "eslint-plugin-tailwindcss": "^3.8.3"
   }
 }
