@@ -65,6 +65,8 @@ module.exports = {
     
     "wrap-regex": "error",
 
-    "camelcase": "error"
+    "camelcase": "error",
+
+    "@typescript-eslint/explicit-function-return-type": "error"
   }
 }
