@@ -68,5 +68,14 @@ module.exports = {
     "camelcase": "error",
 
     "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
+
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { 
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
   }
 }
