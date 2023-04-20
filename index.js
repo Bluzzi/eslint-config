@@ -105,6 +105,8 @@ module.exports = {
       {
         "fixStyle": "separate-type-imports" 
       }
-    ]
+    ],
+
+    "@typescript-eslint/consistent-type-assertions": ["error", { "assertionStyle": "as" }]
   }
 }
