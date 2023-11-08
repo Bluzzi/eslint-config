@@ -5,8 +5,8 @@ An ESLint configuration that supports JS, TS and React and includes linting and 
 - Designed to work with TypeScript and JSX out-of-box
 - Sorted imports
 - Respects .gitignore by default
-- ESLint Flat config, compose easily!
-- Using ESLint Stylistic
+- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
+- Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - Style principle: Minimal for reading, stable for diff, consistent
 
 The code for this configuration is initially based on the work of [Antfu](https://github.com/antfu/eslint-config).
