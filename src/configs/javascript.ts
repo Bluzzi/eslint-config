@@ -2,8 +2,7 @@
 
 import globals from 'globals'
 import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from '#/utils/type'
-import { pluginAntfu, pluginUnusedImports } from '#/utils/plugin'
-import { GLOB_SRC, GLOB_SRC_EXT } from '#/utils/glob'
+import { pluginAntfu, pluginJs, pluginUnusedImports } from '#/utils/plugin'
 
 export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
   const {
@@ -27,7 +26,7 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
           ecmaFeatures: {
             jsx: true,
           },
-          ecmaVersion: 2022,
+          ecmaVersion: 2023,
           sourceType: 'module',
         },
         sourceType: 'module',
@@ -41,6 +40,8 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'unused-imports': pluginUnusedImports,
       },
       rules: {
+        ...pluginJs.configs.recommended.rules, // old config, need review
+
         'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
 
         'array-callback-return': 'error',
@@ -58,7 +59,6 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'no-class-assign': 'error',
         'no-compare-neg-zero': 'error',
         'no-cond-assign': ['error', 'always'],
-        'no-console': ['error', { allow: ['warn', 'error'] }],
         'no-const-assign': 'error',
         'no-control-regex': 'error',
         'no-debugger': 'error',
@@ -214,13 +214,6 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'yoda': ['error', 'never'],
 
         ...overrides,
-      },
-    },
-    {
-      files: [`scripts/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
-      name: 'bluzzi:scripts-overrides',
-      rules: {
-        'no-console': 'off',
       },
     },
   ]

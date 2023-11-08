@@ -1,119 +1,76 @@
 module.exports = {
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-  ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: true,
-  },
-  plugins: ['@typescript-eslint/eslint-plugin'],
-  ignorePatterns: ['.eslintrc.js', 'dist', 'build'],
   rules: {
-    'indent': ['error', 2, { SwitchCase: 1 }],
+    "rest-spread-spacing": ["error", "never"],
+    "template-curly-spacing": "error",
+    "template-tag-spacing": "error",
+    "keyword-spacing": ["error", { before: true, after: true }],
 
-    'quotes': ['error', 'double'],
+    "space-infix-ops": "error",
+    "space-unary-ops": "error",
 
-    'semi': ['error', 'always'],
+    "space-before-blocks": "error",
+    "space-before-function-paren": ["error", "never"],
 
-    'linebreak-style': 'off',
-    'semi-style': ['error', 'last'],
-    'brace-style': 'error',
-    'comma-style': ['error', 'last'],
+    "new-parens": "error",
+    "space-in-parens": ["error", "never"],
 
-    'operator-linebreak': ['error', 'before'],
-    'implicit-arrow-linebreak': ['error', 'beside'],
+    "function-paren-newline": ["error", "consistent"],
+    "function-call-argument-newline": ["error", "consistent"],
 
-    'padded-blocks': ['error', { classes: 'always' }],
+    "comma-dangle": ["error", "never"],
 
-    'arrow-spacing': 'error',
-    'block-spacing': 'error',
-    'semi-spacing': 'error',
-    'comma-spacing': ['error', { before: false, after: true }],
-    'computed-property-spacing': ['error', 'never'],
-    'array-bracket-spacing': ['error', 'never'],
-    'func-call-spacing': ['error', 'never'],
-    'key-spacing': ['error', { beforeColon: false, afterColon: true, mode: 'strict' }],
-    'object-curly-spacing': ['error', 'always'],
-    'rest-spread-spacing': ['error', 'never'],
-    'template-curly-spacing': 'error',
-    'template-tag-spacing': 'error',
-    'keyword-spacing': ['error', { before: true, after: true }],
+    "dot-location": ["error", "property"],
 
-    'space-infix-ops': 'error',
-    'space-unary-ops': 'error',
+    "eol-last": ["error", "never"],
 
-    'space-before-blocks': 'error',
-    'space-before-function-paren': ['error', 'never'],
+    "lines-between-class-members": ["error", "always"],
 
-    'new-parens': 'error',
-    'space-in-parens': ['error', 'never'],
+    "max-len": ["error", { code: 150 }],
 
-    'function-paren-newline': ['error', 'consistent'],
-    'function-call-argument-newline': ['error', 'consistent'],
+    "no-multiple-empty-lines": "error",
+    "no-tabs": "error",
+    "no-trailing-spaces": "error",
+    "no-whitespace-before-property": "error",
 
-    'comma-dangle': ['error', 'never'],
+    "nonblock-statement-body-position": ["error", "beside"],
 
-    'dot-location': ['error', 'property'],
+    "wrap-regex": "error",
 
-    'eol-last': ['error', 'never'],
+    "camelcase": "error",
 
-    'lines-between-class-members': ['error', 'always'],
+    "@typescript-eslint/explicit-function-return-type": ["error", { allowExpressions: true }],
 
-    'max-len': ['error', { code: 150 }],
-
-    'no-multiple-empty-lines': 'error',
-    'no-tabs': 'error',
-    'no-trailing-spaces': 'error',
-    'no-whitespace-before-property': 'error',
-
-    'nonblock-statement-body-position': ['error', 'beside'],
-
-    'wrap-regex': 'error',
-
-    'camelcase': 'error',
-
-    '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
-
-    '@typescript-eslint/no-unused-vars': [
-      'error',
+    "@typescript-eslint/no-unused-vars": [
+      "error",
       {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-        caughtErrorsIgnorePattern: '^_',
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        caughtErrorsIgnorePattern: "^_",
       },
     ],
 
-    '@typescript-eslint/member-delimiter-style': [
-      'error',
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
       {
         multiline: {
-          delimiter: 'semi',
+          delimiter: "semi",
           requireLast: true,
         },
         singleline: {
-          delimiter: 'semi',
+          delimiter: "semi",
           requireLast: false,
         },
       },
     ],
 
-    '@typescript-eslint/consistent-type-exports': 'error',
-    '@typescript-eslint/consistent-type-imports': [
-      'error',
+    "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
       {
-        fixStyle: 'separate-type-imports',
+        fixStyle: "separate-type-imports",
       },
     ],
 
-    '@typescript-eslint/consistent-type-assertions': ['error', { assertionStyle: 'as' }],
-
-    /**
-     * @see {@link https://typescript-eslint.io/rules/type-annotation-spacing/}
-     * @see {@link https://eslint.style/}
-     * @see {@link https://typescript-eslint.io/linting/troubleshooting/formatting/}
-     */
-    '@typescript-eslint/type-annotation-spacing': 'error',
+    "@typescript-eslint/consistent-type-assertions": ["error", { assertionStyle: "as" }],
   },
-}
+};

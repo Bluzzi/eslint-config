@@ -15,8 +15,6 @@ export function imports(options: OptionsStylistic = {}): ConfigItem[] {
         antfu: pluginAntfu,
         import: pluginImport,
       },
-      // eslint-disable-next-line ts/ban-ts-comment
-      // @ts-expect-error
       rules: {
         'antfu/import-dedupe': 'error',
         'antfu/no-import-node-modules-by-path': 'error',

@@ -1,4 +1,8 @@
 // @ts-check
 import { eslintConfig } from './dist/index.js'
 
-export default eslintConfig()
+export default eslintConfig({
+  typescript: {
+    // tsconfigPath: 'tsconfig.json',
+  },
+})

@@ -40,17 +40,17 @@ yarn add -D eslint @bluzzi/eslint-config
 With ESM [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package.json` (recommended):
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import { eslintConfig } from "@bluzzi/eslint-config";
 
-export default antfu()
+export default eslintConfig()
 ```
 
 With CJS:
 ```js
 // eslint.config.js
-const antfu = require("@antfu/eslint-config").default
+const { eslintConfig } = require("@bluzzi/eslint-config").default
 
-module.exports = antfu()
+module.exports = eslintConfig()
 ```
 
 ### Add scripts for `package.json`
