@@ -107,6 +107,13 @@ module.exports = {
       }
     ],
 
-    "@typescript-eslint/consistent-type-assertions": ["error", { "assertionStyle": "as" }]
+    "@typescript-eslint/consistent-type-assertions": ["error", { "assertionStyle": "as" }],
+
+    /**
+     * @see {@link https://typescript-eslint.io/rules/type-annotation-spacing/}
+     * @see {@link https://eslint.style/}
+     * @see {@link https://typescript-eslint.io/linting/troubleshooting/formatting/}
+     */
+    "@typescript-eslint/type-annotation-spacing": "error"
   }
 }
