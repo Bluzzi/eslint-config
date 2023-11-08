@@ -1,7 +1,8 @@
-import { env } from 'node:process'
 import { existsSync } from 'node:fs'
+import { env } from 'node:process'
 import { isPackageExists } from 'local-pkg'
 import gitignore from 'eslint-config-flat-gitignore'
+import { combine } from '#/utils/util'
 import type { ConfigItem, OptionsConfig } from '#/utils/type'
 import {
   ignores,
@@ -17,7 +18,6 @@ import {
   typescript,
   unicorn,
 } from '#/index'
-import { combine } from '#/utils/util'
 
 const flatConfigProps: (keyof ConfigItem)[] = [
   'files',

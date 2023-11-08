@@ -1,5 +1,6 @@
 import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
 import type { ParserOptions } from '@typescript-eslint/parser'
+import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
 import type {
   EslintCommentsRules,
   EslintRules,
@@ -16,10 +17,7 @@ import type {
   UnicornRules,
   Unprefix,
   VitestRules,
-  VueRules,
-  YmlRules,
 } from '@antfu/eslint-define-config'
-import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
 import type { UnprefixedRuleOptions } from '@stylistic/eslint-plugin'
 
 type StylisticMergedRules = MergeIntersection<
@@ -34,14 +32,12 @@ type StylisticRules = Pick<StylisticMergedRules, keyof UnprefixedRuleOptions>
 export type Rules = MergeIntersection<
   RenamePrefix<TypeScriptRules, '@typescript-eslint/', 'ts/'> &
   RenamePrefix<VitestRules, 'vitest/', 'test/'> &
-  RenamePrefix<YmlRules, 'yml/', 'yaml/'> &
   RenamePrefix<NRules, 'n/', 'node/'> &
   Prefix<StylisticRules, 'style/'> &
   Prefix<AntfuRules, 'antfu/'> &
   ImportRules &
   EslintRules &
   JsoncRules &
-  VueRules &
   UnicornRules &
   EslintCommentsRules &
   {
@@ -148,32 +144,11 @@ export interface OptionsConfig extends OptionsComponentExts {
   test?: boolean
 
   /**
-   * Enable Vue support.
-   *
-   * @default auto-detect based on the dependencies
-   */
-  vue?: boolean
-
-  /**
    * Enable JSONC support.
    *
    * @default true
    */
   jsonc?: boolean
-
-  /**
-   * Enable YAML support.
-   *
-   * @default true
-   */
-  yaml?: boolean
-
-  /**
-   * Enable Markdown support.
-   *
-   * @default true
-   */
-  markdown?: boolean
 
   /**
    * Enable stylistic rules.
@@ -195,9 +170,6 @@ export interface OptionsConfig extends OptionsComponentExts {
     javascript?: ConfigItem['rules']
     typescript?: ConfigItem['rules']
     test?: ConfigItem['rules']
-    vue?: ConfigItem['rules']
     jsonc?: ConfigItem['rules']
-    markdown?: ConfigItem['rules']
-    yaml?: ConfigItem['rules']
   }
 }
