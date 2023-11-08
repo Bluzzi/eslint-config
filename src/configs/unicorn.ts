@@ -1,7 +1,3 @@
-/**
- * @see {@link https://github.com/antfu/eslint-config/blob/main/src/configs/unicorn.ts}
- */
-
 import type { ConfigItem } from '#/utils/type'
 import { pluginUnicorn } from '#/utils/plugin'
 

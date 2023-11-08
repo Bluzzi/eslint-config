@@ -1,7 +1,3 @@
-/**
- * @see {@link https://github.com/antfu/eslint-config/blob/main/src/configs/test.ts}
- */
-
 import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from '#/utils/type'
 import { pluginNoOnlyTests, pluginVitest } from '#/utils/plugin'
 import { GLOB_TESTS } from '#/utils/glob'

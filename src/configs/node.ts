@@ -1,7 +1,3 @@
-/**
- * @see {@link https://github.com/antfu/eslint-config/blob/main/src/configs/node.ts}
- */
-
 import type { ConfigItem } from '#/utils/type'
 import { pluginNode } from '#/utils/plugin'
 

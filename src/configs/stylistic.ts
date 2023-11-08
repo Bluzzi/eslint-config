@@ -1,7 +1,3 @@
-/**
- * @see {@link https://github.com/antfu/eslint-config/blob/main/src/configs/stylistic.ts}
- */
-
 import type { ConfigItem, StylisticConfig } from '#/utils/type'
 import { pluginAntfu, pluginStylistic } from '#/utils/plugin'
 
