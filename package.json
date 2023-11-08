@@ -4,7 +4,9 @@
   "author": "Bluzzi",
   "type": "module",
   "scripts": {
-    "build": "tsup src/main.ts --minify --format cjs,esm --clean --dts"
+    "build": "tsup src/main.ts --minify --format cjs,esm --clean --dts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"    
   },
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
