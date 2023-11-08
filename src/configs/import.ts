@@ -1,6 +1,6 @@
 /**
  * @see {@link https://github.com/antfu/eslint-config/blob/main/src/configs/imports.ts}
-**/
+ */
 
 import type { ConfigItem, OptionsStylistic } from '#/utils/type'
 import { pluginAntfu, pluginImport } from '#/utils/plugin'
@@ -17,7 +17,8 @@ export function imports(options: OptionsStylistic = {}): ConfigItem[] {
         antfu: pluginAntfu,
         import: pluginImport,
       },
-      // @ts-ignore
+      // eslint-disable-next-line ts/ban-ts-comment
+      // @ts-expect-error
       rules: {
         'antfu/import-dedupe': 'error',
         'antfu/no-import-node-modules-by-path': 'error',

@@ -1,21 +1,21 @@
 {
   "name": "@bluzzi/eslint-config",
+  "type": "module",
   "version": "1.2.1",
   "author": "Bluzzi",
-  "type": "module",
-  "scripts": {
-    "build": "tsup src/index.ts --minify --format cjs,esm --clean --dts",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "ts:check": "tsc --noEmit"
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --minify --format cjs,esm --clean --dts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "ts:check": "tsc --noEmit"
   },
   "peerDependencies": {
     "eslint": ">=8.0.0"

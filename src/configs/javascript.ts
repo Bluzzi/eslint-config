@@ -1,6 +1,6 @@
 /**
  * @see {@link https://github.com/antfu/eslint-config/blob/main/src/configs/javascript.ts}
-**/
+ */
 
 import globals from 'globals'
 import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from '#/utils/type'

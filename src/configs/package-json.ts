@@ -1,6 +1,6 @@
 /**
  * @see {@link https://github.com/antfu/eslint-config/blob/main/src/configs/sort.ts}
-**/
+ */
 
 import type { ConfigItem } from '#/utils/type'
 

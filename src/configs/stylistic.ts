@@ -1,6 +1,6 @@
 /**
  * @see {@link https://github.com/antfu/eslint-config/blob/main/src/configs/stylistic.ts}
-**/
+ */
 
 import type { ConfigItem, StylisticConfig } from '#/utils/type'
 import { pluginAntfu, pluginStylistic } from '#/utils/plugin'
@@ -19,7 +19,8 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
         antfu: pluginAntfu,
         style: pluginStylistic,
       },
-      // @ts-ignore
+      // eslint-disable-next-line ts/ban-ts-comment
+      // @ts-expect-error
       rules: {
         'antfu/consistent-list-newline': 'error',
         'antfu/if-newline': 'error',

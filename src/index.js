@@ -1,119 +1,119 @@
 module.exports = {
   extends: [
-    "eslint:recommended", 
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: true
+    project: true,
   },
-  plugins: ["@typescript-eslint/eslint-plugin"],
-  ignorePatterns: [".eslintrc.js", "dist", "build"],
+  plugins: ['@typescript-eslint/eslint-plugin'],
+  ignorePatterns: ['.eslintrc.js', 'dist', 'build'],
   rules: {
-    "indent": ["error", 2, { "SwitchCase": 1 }],
+    'indent': ['error', 2, { SwitchCase: 1 }],
 
-    "quotes": ["error", "double"],
+    'quotes': ['error', 'double'],
 
-    "semi": ["error", "always"],
+    'semi': ['error', 'always'],
 
-    "linebreak-style": "off",
-    "semi-style": ["error", "last"],
-    "brace-style": "error",
-    "comma-style": ["error", "last"],
+    'linebreak-style': 'off',
+    'semi-style': ['error', 'last'],
+    'brace-style': 'error',
+    'comma-style': ['error', 'last'],
 
-    "operator-linebreak": ["error", "before"],
-    "implicit-arrow-linebreak": ["error", "beside"],
+    'operator-linebreak': ['error', 'before'],
+    'implicit-arrow-linebreak': ['error', 'beside'],
 
-    "padded-blocks": ["error", { "classes": "always" }],
+    'padded-blocks': ['error', { classes: 'always' }],
 
-    "arrow-spacing": "error",
-    "block-spacing": "error",
-    "semi-spacing": "error",
-    "comma-spacing": ["error", { "before": false, "after": true }],
-    "computed-property-spacing": ["error", "never"],
-    "array-bracket-spacing": ["error", "never"],
-    "func-call-spacing": ["error", "never"],
-    "key-spacing": ["error", { "beforeColon": false, "afterColon": true, "mode": "strict" }],
-    "object-curly-spacing": ["error", "always"],
-    "rest-spread-spacing": ["error", "never"],
-    "template-curly-spacing": "error",
-    "template-tag-spacing": "error",
-    "keyword-spacing": ["error", { "before": true, "after": true }],
+    'arrow-spacing': 'error',
+    'block-spacing': 'error',
+    'semi-spacing': 'error',
+    'comma-spacing': ['error', { before: false, after: true }],
+    'computed-property-spacing': ['error', 'never'],
+    'array-bracket-spacing': ['error', 'never'],
+    'func-call-spacing': ['error', 'never'],
+    'key-spacing': ['error', { beforeColon: false, afterColon: true, mode: 'strict' }],
+    'object-curly-spacing': ['error', 'always'],
+    'rest-spread-spacing': ['error', 'never'],
+    'template-curly-spacing': 'error',
+    'template-tag-spacing': 'error',
+    'keyword-spacing': ['error', { before: true, after: true }],
 
-    "space-infix-ops": "error",
-    "space-unary-ops": "error",
+    'space-infix-ops': 'error',
+    'space-unary-ops': 'error',
 
-    "space-before-blocks": "error",
-    "space-before-function-paren": ["error", "never"],
+    'space-before-blocks': 'error',
+    'space-before-function-paren': ['error', 'never'],
 
-    "new-parens": "error",
-    "space-in-parens": ["error", "never"],
+    'new-parens': 'error',
+    'space-in-parens': ['error', 'never'],
 
-    "function-paren-newline": ["error", "consistent"],
-    "function-call-argument-newline": ["error", "consistent"],
+    'function-paren-newline': ['error', 'consistent'],
+    'function-call-argument-newline': ['error', 'consistent'],
 
-    "comma-dangle": ["error", "never"],
+    'comma-dangle': ['error', 'never'],
 
-    "dot-location": ["error", "property"],
+    'dot-location': ['error', 'property'],
 
-    "eol-last": ["error", "never"],
+    'eol-last': ['error', 'never'],
 
-    "lines-between-class-members": ["error", "always"],
+    'lines-between-class-members': ['error', 'always'],
 
-    "max-len": ["error", { "code": 150 }],
+    'max-len': ['error', { code: 150 }],
 
-    "no-multiple-empty-lines": "error",
-    "no-tabs": "error",
-    "no-trailing-spaces": "error",
-    "no-whitespace-before-property": "error",
+    'no-multiple-empty-lines': 'error',
+    'no-tabs': 'error',
+    'no-trailing-spaces': 'error',
+    'no-whitespace-before-property': 'error',
 
-    "nonblock-statement-body-position": ["error", "beside"],
-    
-    "wrap-regex": "error",
+    'nonblock-statement-body-position': ['error', 'beside'],
 
-    "camelcase": "error",
+    'wrap-regex': 'error',
 
-    "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
+    'camelcase': 'error',
 
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      { 
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        "caughtErrorsIgnorePattern": "^_"
-      }
+    '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
+
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
     ],
 
-    "@typescript-eslint/member-delimiter-style": [
-      "error", 
+    '@typescript-eslint/member-delimiter-style': [
+      'error',
       {
-        "multiline": {
-          "delimiter": "semi",
-          "requireLast": true
+        multiline: {
+          delimiter: 'semi',
+          requireLast: true,
         },
-        "singleline": {
-          "delimiter": "semi",
-          "requireLast": false
-        }
-      }
+        singleline: {
+          delimiter: 'semi',
+          requireLast: false,
+        },
+      },
     ],
 
-    "@typescript-eslint/consistent-type-exports": "error",
-    "@typescript-eslint/consistent-type-imports": [
-      "error",
+    '@typescript-eslint/consistent-type-exports': 'error',
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
       {
-        "fixStyle": "separate-type-imports" 
-      }
+        fixStyle: 'separate-type-imports',
+      },
     ],
 
-    "@typescript-eslint/consistent-type-assertions": ["error", { "assertionStyle": "as" }],
+    '@typescript-eslint/consistent-type-assertions': ['error', { assertionStyle: 'as' }],
 
     /**
      * @see {@link https://typescript-eslint.io/rules/type-annotation-spacing/}
      * @see {@link https://eslint.style/}
      * @see {@link https://typescript-eslint.io/linting/troubleshooting/formatting/}
      */
-    "@typescript-eslint/type-annotation-spacing": "error"
-  }
+    '@typescript-eslint/type-annotation-spacing': 'error',
+  },
 }

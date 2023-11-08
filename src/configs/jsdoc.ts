@@ -1,6 +1,6 @@
 /**
  * @see {@link https://github.com/antfu/eslint-config/blob/main/src/configs/jsdoc.ts}
-**/
+ */
 
 import type { ConfigItem, OptionsStylistic } from '#/utils/type'
 import { pluginJsdoc } from '#/utils/plugin'
