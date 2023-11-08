@@ -17,6 +17,7 @@ export function imports(options: OptionsStylistic = {}): ConfigItem[] {
         antfu: pluginAntfu,
         import: pluginImport,
       },
+      // @ts-ignore
       rules: {
         'antfu/import-dedupe': 'error',
         'antfu/no-import-node-modules-by-path': 'error',

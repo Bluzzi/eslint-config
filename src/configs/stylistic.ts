@@ -19,6 +19,7 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
         antfu: pluginAntfu,
         style: pluginStylistic,
       },
+      // @ts-ignore
       rules: {
         'antfu/consistent-list-newline': 'error',
         'antfu/if-newline': 'error',

@@ -1,28 +1,23 @@
-import process from 'node:process'
-import fs from 'node:fs'
+import { env } from 'node:process'
+import { existsSync } from 'node:fs'
 import { isPackageExists } from 'local-pkg'
 import gitignore from 'eslint-config-flat-gitignore'
 import type { ConfigItem, OptionsConfig } from '#/utils/type'
 import {
-  comments,
   ignores,
   imports,
   javascript,
   jsdoc,
   jsonc,
-  markdown,
   node,
-  perfectionist,
   sortPackageJson,
   sortTsconfig,
   stylistic,
   test,
   typescript,
   unicorn,
-  vue,
-  yaml,
-} from './configs'
-import { combine } from './utils'
+} from '#/index'
+import { combine } from '#/utils/util'
 
 const flatConfigProps: (keyof ConfigItem)[] = [
   'files',
@@ -35,24 +30,16 @@ const flatConfigProps: (keyof ConfigItem)[] = [
   'settings',
 ]
 
-const VuePackages = [
-  'vue',
-  'nuxt',
-  'vitepress',
-  '@slidev/cli',
-]
-
 /**
  * Construct an array of ESLint flat config items.
  */
-export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: (ConfigItem | ConfigItem[])[]) {
+export function eslintConfig(options: OptionsConfig & ConfigItem = {}, ...userConfigs: (ConfigItem | ConfigItem[])[]) {
   const {
     componentExts = [],
     gitignore: enableGitignore = true,
-    isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
+    isInEditor = !!((env.VSCODE_PID || env.JETBRAINS_IDE) && !env.CI),
     overrides = {},
     typescript: enableTypeScript = isPackageExists('typescript'),
-    vue: enableVue = VuePackages.some(i => isPackageExists(i)),
   } = options
 
   const stylisticOptions = options.stylistic === false
@@ -70,7 +57,7 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
       configs.push([gitignore(enableGitignore)])
     }
     else {
-      if (fs.existsSync('.gitignore'))
+      if (existsSync('.gitignore'))
         configs.push([gitignore()])
     }
   }
@@ -82,7 +69,6 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
       isInEditor,
       overrides: overrides.javascript,
     }),
-    comments(),
     node(),
     jsdoc({
       stylistic: stylisticOptions,
@@ -91,13 +77,7 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
       stylistic: stylisticOptions,
     }),
     unicorn(),
-
-    // Optional plugins (installed but not enabled by default)
-    perfectionist(),
   )
-
-  if (enableVue)
-    componentExts.push('vue')
 
   if (enableTypeScript) {
     configs.push(typescript({
@@ -119,14 +99,6 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
     }))
   }
 
-  if (enableVue) {
-    configs.push(vue({
-      overrides: overrides.vue,
-      stylistic: stylisticOptions,
-      typescript: !!enableTypeScript,
-    }))
-  }
-
   if (options.jsonc ?? true) {
     configs.push(
       jsonc({
@@ -136,20 +108,6 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
       sortPackageJson(),
       sortTsconfig(),
     )
-  }
-
-  if (options.yaml ?? true) {
-    configs.push(yaml({
-      overrides: overrides.yaml,
-      stylistic: stylisticOptions,
-    }))
-  }
-
-  if (options.markdown ?? true) {
-    configs.push(markdown({
-      componentExts,
-      overrides: overrides.markdown,
-    }))
   }
 
   // User can optionally pass a flat config item to the first argument

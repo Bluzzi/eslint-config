@@ -21,8 +21,24 @@
     "eslint": ">=8.0.0"
   },
   "dependencies": {
+    "@antfu/eslint-define-config": "1.23.0-2",
+    "@stylistic/eslint-plugin": "^1.0.1",
+    "@stylistic/eslint-plugin-migrate": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
-    "@typescript-eslint/parser": "^6.10.0"
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint-config-flat-gitignore": "^0.1.1",
+    "eslint-plugin-antfu": "^1.0.2",
+    "eslint-plugin-i": "^2.29.0",
+    "eslint-plugin-jsdoc": "^46.8.2",
+    "eslint-plugin-jsonc": "^2.10.0",
+    "eslint-plugin-n": "^16.3.0",
+    "eslint-plugin-no-only-tests": "^3.1.0",
+    "eslint-plugin-unicorn": "^49.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "eslint-plugin-vitest": "^0.3.9",
+    "globals": "^13.23.0",
+    "jsonc-eslint-parser": "^2.4.0",
+    "local-pkg": "^0.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",
