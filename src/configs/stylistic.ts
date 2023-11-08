@@ -104,7 +104,7 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
         "style/padded-blocks": ["error", { blocks: "never", classes: "always", switches: "never" }], // ok
         "style/quote-props": ["error", "consistent-as-needed"],
         "style/quotes": ["error", quotes, { allowTemplateLiterals: true, avoidEscape: false }], // ok
-        "style/rest-spread-spacing": ["error", "never"],
+        "style/rest-spread-spacing": ["error", "never"], // ok
         "style/semi": ["error", "always"], // ok
         "style/semi-spacing": ["error", { after: true, before: false }], // ok
         "semi-style": ["error", "last"], // ok

@@ -1,6 +1,5 @@
 module.exports = {
   rules: {
-    "rest-spread-spacing": ["error", "never"],
     "template-curly-spacing": "error",
     "template-tag-spacing": "error",
     "keyword-spacing": ["error", { before: true, after: true }],

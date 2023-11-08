@@ -67,7 +67,7 @@ For example:
 ### Config VS Code auto fix
 Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and create `.vscode/settings.json`
 
-```json
+```jsonc
 {
   // Enable the ESlint flat config support:
   "eslint.experimental.useFlatConfig": true,
