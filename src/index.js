@@ -1,42 +1,6 @@
 module.exports = {
   rules: {
-    "template-curly-spacing": "error",
-    "template-tag-spacing": "error",
-    "keyword-spacing": ["error", { before: true, after: true }],
-
-    "space-infix-ops": "error",
-    "space-unary-ops": "error",
-
-    "space-before-blocks": "error",
-    "space-before-function-paren": ["error", "never"],
-
-    "new-parens": "error",
-    "space-in-parens": ["error", "never"],
-
-    "function-paren-newline": ["error", "consistent"],
-    "function-call-argument-newline": ["error", "consistent"],
-
-    "comma-dangle": ["error", "never"],
-
-    "dot-location": ["error", "property"],
-
-    "eol-last": ["error", "never"],
-
-    "lines-between-class-members": ["error", "always"],
-
-    "max-len": ["error", { code: 150 }],
-
-    "no-multiple-empty-lines": "error",
-    "no-tabs": "error",
-    "no-trailing-spaces": "error",
-    "no-whitespace-before-property": "error",
-
-    "nonblock-statement-body-position": ["error", "beside"],
-
-    "wrap-regex": "error",
-
-    "camelcase": "error",
-
+    // https://eslint.style/rules/js/wrap-regex
     "@typescript-eslint/explicit-function-return-type": ["error", { allowExpressions: true }],
 
     "@typescript-eslint/no-unused-vars": [
