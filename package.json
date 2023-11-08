@@ -2,20 +2,26 @@
   "name": "@bluzzi/eslint-config",
   "version": "1.2.1",
   "author": "Bluzzi",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Bluzzi/ESLint-Config.git"
+  "type": "module",
+  "scripts": {
+    "build": "tsup src/main.ts --minify --format cjs,esm --clean --dts"
   },
-  "publishConfig": {
-    "access": "public"
+  "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/main.js",
+      "require": "./dist/main.cjs"
+    }
   },
   "peerDependencies": {
-    "eslint": ">=8.0.0",
-    "typescript": ">=5.0.0"
+    "eslint": ">=8.0.0"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0"
+  },
+  "devDependencies": {
+    "tsup": "^7.2.0"
   }
 }
