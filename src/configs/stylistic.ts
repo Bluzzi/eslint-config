@@ -82,7 +82,6 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
         "style/keyword-spacing": ["error", { after: true, before: true }], // ok
         "style/lines-between-class-members": ["error", "always"], // ok
         "style/max-statements-per-line": ["error", { max: 1 }],
-        "style/member-delimiter-style": ["error", { multiline: { delimiter: "none" } }],
         "style/multiline-ternary": ["error", "always-multiline"],
         "style/new-parens": "error", // ok
         "style/no-extra-parens": ["error", "functions"],
@@ -132,9 +131,23 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
         "style/template-tag-spacing": ["error"], // ok
         "style/type-annotation-spacing": ["error"], // ok
         "style/wrap-iife": ["error", "any", { functionPrototypeMethods: true }],
+        "style/wrap-regex": "error", // ok
         "style/yield-star-spacing": ["error", "both"],
         "style/nonblock-statement-body-position": ["error", "beside"], // ok
-        "style/wrap-regex": "error", // ok
+
+        "style/member-delimiter-style": [ // ok
+          "error",
+          {
+            multiline: {
+              delimiter: "semi",
+              requireLast: true,
+            },
+            singleline: {
+              delimiter: "semi",
+              requireLast: false,
+            },
+          },
+        ],
 
         ...jsx
           ? {

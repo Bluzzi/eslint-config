@@ -35,6 +35,7 @@ export function typescript(
     "ts/restrict-plus-operands": "error",
     "ts/restrict-template-expressions": "error",
     "ts/unbound-method": "error",
+    "ts/consistent-type-exports": "error", // ok
   };
 
   const tsconfigPath = options?.tsconfigPath
@@ -93,10 +94,21 @@ export function typescript(
         "no-redeclare": "off",
         "no-use-before-define": "off",
         "no-useless-constructor": "off",
+
+        "ts/explicit-function-return-type": ["error", { allowExpressions: true }], // ok
+        "ts/no-unused-vars": [ // ok
+          "error",
+          {
+            argsIgnorePattern: "^_",
+            varsIgnorePattern: "^_",
+            caughtErrorsIgnorePattern: "^_",
+          },
+        ],
+
         "ts/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
         "ts/ban-types": ["error", { types: { Function: false } }],
         "ts/consistent-type-definitions": ["error", "interface"],
-        "ts/consistent-type-imports": ["error", { disallowTypeAnnotations: false, prefer: "type-imports" }],
+        "ts/consistent-type-imports": ["error", { disallowTypeAnnotations: false, prefer: "type-imports", fixStyle: "separate-type-imports" }], // ok
         "ts/no-dupe-class-members": "error",
         "ts/no-dynamic-delete": "off",
         "ts/no-explicit-any": "off",
@@ -108,12 +120,13 @@ export function typescript(
         "ts/no-non-null-assertion": "off",
         "ts/no-redeclare": "error",
         "ts/no-require-imports": "error",
-        "ts/no-unused-vars": "off",
         "ts/no-use-before-define": ["error", { classes: false, functions: false, variables: true }],
         "ts/no-useless-constructor": "off",
         "ts/prefer-ts-expect-error": "error",
         "ts/triple-slash-reference": "off",
         "ts/unified-signatures": "off",
+
+        "ts/consistent-type-assertions": ["error", { assertionStyle: "as" }], // ok
 
         ...tsconfigPath ? typeAwareRules : {},
         ...overrides,
