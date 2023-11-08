@@ -4,17 +4,17 @@
   "author": "Bluzzi",
   "type": "module",
   "scripts": {
-    "build": "tsup src/main.ts --minify --format cjs,esm --clean --dts",
+    "build": "tsup src/index.ts --minify --format cjs,esm --clean --dts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "ts:check": "tsc --noEmit"
   },
-  "main": "./dist/main.js",
-  "types": "./dist/main.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/main.js",
-      "require": "./dist/main.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "peerDependencies": {
@@ -25,6 +25,7 @@
     "@typescript-eslint/parser": "^6.10.0"
   },
   "devDependencies": {
+    "@types/node": "^20.9.0",
     "tsup": "^7.2.0"
   }
 }
