@@ -37,7 +37,7 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
       linterOptions: {
         reportUnusedDisableDirectives: true,
       },
-      name: 'antfu:javascript',
+      name: 'bluzzi:javascript',
       plugins: {
         'antfu': pluginAntfu,
         'unused-imports': pluginUnusedImports,
@@ -220,7 +220,7 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
     },
     {
       files: [`scripts/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
-      name: 'antfu:scripts-overrides',
+      name: 'bluzzi:scripts-overrides',
       rules: {
         'no-console': 'off',
       },

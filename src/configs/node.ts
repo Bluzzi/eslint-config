@@ -8,7 +8,7 @@ import { pluginNode } from '#/utils/plugin'
 export function node(): ConfigItem[] {
   return [
     {
-      name: 'antfu:node',
+      name: 'bluzzi:node',
       plugins: {
         node: pluginNode,
       },

@@ -12,7 +12,7 @@ export function imports(options: OptionsStylistic = {}): ConfigItem[] {
 
   return [
     {
-      name: 'antfu:imports',
+      name: 'bluzzi:imports',
       plugins: {
         antfu: pluginAntfu,
         import: pluginImport,

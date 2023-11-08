@@ -8,7 +8,7 @@ import { pluginUnicorn } from '#/utils/plugin'
 export function unicorn(): ConfigItem[] {
   return [
     {
-      name: 'antfu:unicorn',
+      name: 'bluzzi:unicorn',
       plugins: {
         unicorn: pluginUnicorn,
       },

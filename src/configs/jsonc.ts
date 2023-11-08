@@ -14,7 +14,7 @@ export function jsonc(options: OptionsStylistic & OptionsOverrides = {}): Config
 
   return [
     {
-      name: 'antfu:jsonc:setup',
+      name: 'bluzzi:jsonc:setup',
       plugins: {
         jsonc: pluginJsonc as any,
       },
@@ -24,7 +24,7 @@ export function jsonc(options: OptionsStylistic & OptionsOverrides = {}): Config
       languageOptions: {
         parser: parserJsonc,
       },
-      name: 'antfu:jsonc:rules',
+      name: 'bluzzi:jsonc:rules',
       rules: {
         'jsonc/no-bigint-literals': 'error',
         'jsonc/no-binary-expression': 'error',

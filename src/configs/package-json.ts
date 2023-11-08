@@ -13,7 +13,7 @@ export function sortPackageJson(): ConfigItem[] {
   return [
     {
       files: ['**/package.json'],
-      name: 'antfu:sort-package-json',
+      name: 'bluzzi:sort-package-json',
       rules: {
         'jsonc/sort-array-values': [
           'error',
@@ -108,7 +108,7 @@ export function sortTsconfig(): ConfigItem[] {
   return [
     {
       files: ['**/tsconfig.json', '**/tsconfig.*.json'],
-      name: 'antfu:sort-tsconfig',
+      name: 'bluzzi:sort-tsconfig',
       rules: {
         'jsonc/sort-keys': [
           'error',

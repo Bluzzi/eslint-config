@@ -14,7 +14,7 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
 
   return [
     {
-      name: 'antfu:stylistic',
+      name: 'bluzzi:stylistic',
       plugins: {
         antfu: pluginAntfu,
         style: pluginStylistic,
