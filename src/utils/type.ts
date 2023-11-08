@@ -1,6 +1,6 @@
-import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
-import type { ParserOptions } from '@typescript-eslint/parser'
-import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
+import type { FlatGitignoreOptions } from "eslint-config-flat-gitignore";
+import type { ParserOptions } from "@typescript-eslint/parser";
+import type { Rules as AntfuRules } from "eslint-plugin-antfu";
 import type {
   EslintCommentsRules,
   EslintRules,
@@ -17,35 +17,35 @@ import type {
   UnicornRules,
   Unprefix,
   VitestRules,
-} from '@antfu/eslint-define-config'
-import type { UnprefixedRuleOptions } from '@stylistic/eslint-plugin'
+} from "@antfu/eslint-define-config";
+import type { UnprefixedRuleOptions } from "@stylistic/eslint-plugin";
 
 type StylisticMergedRules = MergeIntersection<
   EslintRules &
-  Unprefix<ReactRules, 'react/'> &
-  Unprefix<TypeScriptRules, '@typescript-eslint/'>
-  & { 'jsx-self-closing-comp': ReactRules['react/self-closing-comp'] }
->
+  Unprefix<ReactRules, "react/"> &
+  Unprefix<TypeScriptRules, "@typescript-eslint/">
+  & { "jsx-self-closing-comp": ReactRules["react/self-closing-comp"] }
+>;
 
-type StylisticRules = Pick<StylisticMergedRules, keyof UnprefixedRuleOptions>
+type StylisticRules = Pick<StylisticMergedRules, keyof UnprefixedRuleOptions>;
 
 export type Rules = MergeIntersection<
-  RenamePrefix<TypeScriptRules, '@typescript-eslint/', 'ts/'> &
-  RenamePrefix<VitestRules, 'vitest/', 'test/'> &
-  RenamePrefix<NRules, 'n/', 'node/'> &
-  Prefix<StylisticRules, 'style/'> &
-  Prefix<AntfuRules, 'antfu/'> &
+  RenamePrefix<TypeScriptRules, "@typescript-eslint/", "ts/"> &
+  RenamePrefix<VitestRules, "vitest/", "test/"> &
+  RenamePrefix<NRules, "n/", "node/"> &
+  Prefix<StylisticRules, "style/"> &
+  Prefix<AntfuRules, "antfu/"> &
   ImportRules &
   EslintRules &
   JsoncRules &
   UnicornRules &
   EslintCommentsRules &
   {
-    'test/no-only-tests': RuleConfig<[]>
+    "test/no-only-tests": RuleConfig<[]>
   }
->
+>;
 
-export type ConfigItem = Omit<FlatESLintConfigItem<Rules, false>, 'plugins'> & {
+export type ConfigItem = Omit<FlatESLintConfigItem<Rules, false>, "plugins"> & {
   /**
    * Custom name of each config item
    */
@@ -58,7 +58,7 @@ export type ConfigItem = Omit<FlatESLintConfigItem<Rules, false>, 'plugins'> & {
    * @see [Using plugins in your configuration](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#using-plugins-in-your-configuration)
    */
   plugins?: Record<string, any>
-}
+};
 
 export interface OptionsComponentExts {
   /**
@@ -94,13 +94,13 @@ export interface OptionsStylistic {
 }
 
 export interface StylisticConfig {
-  indent?: number | 'tab'
-  quotes?: 'single' | 'double'
+  indent?: number | "tab"
+  quotes?: "single" | "double"
   jsx?: boolean
 }
 
 export interface OptionsOverrides {
-  overrides?: ConfigItem['rules']
+  overrides?: ConfigItem["rules"]
 }
 
 export interface OptionsIsInEditor {
@@ -167,9 +167,9 @@ export interface OptionsConfig extends OptionsComponentExts {
    * Provide overrides for rules for each integration.
    */
   overrides?: {
-    javascript?: ConfigItem['rules']
-    typescript?: ConfigItem['rules']
-    test?: ConfigItem['rules']
-    jsonc?: ConfigItem['rules']
+    javascript?: ConfigItem["rules"]
+    typescript?: ConfigItem["rules"]
+    test?: ConfigItem["rules"]
+    jsonc?: ConfigItem["rules"]
   }
 }
