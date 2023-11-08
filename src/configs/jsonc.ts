@@ -1,3 +1,5 @@
+// NEED REVIEW
+
 import type { ConfigItem, OptionsOverrides, OptionsStylistic } from '#/utils/type'
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '#/utils/glob'
 import { parserJsonc, pluginJsonc } from '#/utils/plugin'
