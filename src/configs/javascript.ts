@@ -7,7 +7,7 @@ import { pluginAntfu, pluginJs, pluginUnusedImports } from "#/utils/plugin";
 export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
   const {
     isInEditor = false,
-    overrides = {},
+    overrides = {}
   } = options;
 
   return [
@@ -20,24 +20,24 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
           ...globals.node,
           document: "readonly",
           navigator: "readonly",
-          window: "readonly",
+          window: "readonly"
         },
         parserOptions: {
           ecmaFeatures: {
-            jsx: true,
+            jsx: true
           },
           ecmaVersion: 2023,
-          sourceType: "module",
+          sourceType: "module"
         },
-        sourceType: "module",
+        sourceType: "module"
       },
       linterOptions: {
-        reportUnusedDisableDirectives: true,
+        reportUnusedDisableDirectives: true
       },
       name: "bluzzi:javascript",
       plugins: {
         "antfu": pluginAntfu,
-        "unused-imports": pluginUnusedImports,
+        "unused-imports": pluginUnusedImports
       },
       rules: {
         ...pluginJs.configs.recommended.rules, // old config, need review
@@ -104,7 +104,7 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         "no-restricted-globals": [
           "error",
           { message: "Use `globalThis` instead.", name: "global" },
-          { message: "Use `globalThis` instead.", name: "self" },
+          { message: "Use `globalThis` instead.", name: "self" }
         ],
         "no-restricted-properties": [
           "error",
@@ -112,7 +112,7 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
           { message: "Use `Object.defineProperty` instead.", property: "__defineGetter__" },
           { message: "Use `Object.defineProperty` instead.", property: "__defineSetter__" },
           { message: "Use `Object.getOwnPropertyDescriptor` instead.", property: "__lookupGetter__" },
-          { message: "Use `Object.getOwnPropertyDescriptor` instead.", property: "__lookupSetter__" },
+          { message: "Use `Object.getOwnPropertyDescriptor` instead.", property: "__lookupSetter__" }
         ],
         "no-restricted-syntax": [
           "error",
@@ -120,7 +120,7 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
           "LabeledStatement",
           "WithStatement",
           "TSEnumDeclaration[const=true]",
-          "TSExportAssignment",
+          "TSExportAssignment"
         ],
         "no-self-assign": ["error", { props: true }],
         "no-self-compare": "error",
@@ -142,13 +142,13 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         "no-unused-expressions": ["error", {
           allowShortCircuit: true,
           allowTaggedTemplates: true,
-          allowTernary: true,
+          allowTernary: true
         }],
         "no-unused-vars": ["error", {
           args: "none",
           caughtErrors: "none",
           ignoreRestSiblings: true,
-          vars: "all",
+          vars: "all"
         }],
         "no-use-before-define": ["error", { classes: false, functions: false, variables: true }],
         "no-useless-backreference": "error",
@@ -165,23 +165,23 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
           "always",
           {
             avoidQuotes: true,
-            ignoreConstructors: false,
-          },
+            ignoreConstructors: false
+          }
         ],
         "one-var": ["error", { initialized: "never" }],
         "prefer-arrow-callback": [
           "error",
           {
             allowNamedFunctions: false,
-            allowUnboundThis: true,
-          },
+            allowUnboundThis: true
+          }
         ],
         "prefer-const": [
           "error",
           {
             destructuring: "all",
-            ignoreReadBeforeAssign: true,
-          },
+            ignoreReadBeforeAssign: true
+          }
         ],
         "prefer-exponentiation-operator": "error",
         "prefer-promise-reject-errors": "error",
@@ -196,8 +196,8 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
             ignoreCase: false,
             ignoreDeclarationSort: true,
             ignoreMemberSort: false,
-            memberSyntaxSortOrder: ["none", "all", "multiple", "single"],
-          },
+            memberSyntaxSortOrder: ["none", "all", "multiple", "single"]
+          }
         ],
 
         "symbol-description": "error",
@@ -206,15 +206,15 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
 
         "unused-imports/no-unused-vars": [
           "error",
-          { args: "after-used", argsIgnorePattern: "^_", vars: "all", varsIgnorePattern: "^_" },
+          { args: "after-used", argsIgnorePattern: "^_", vars: "all", varsIgnorePattern: "^_" }
         ],
         "use-isnan": ["error", { enforceForIndexOf: true, enforceForSwitchCase: true }],
         "valid-typeof": ["error", { requireStringLiterals: true }],
         "vars-on-top": "error",
         "yoda": ["error", "never"],
 
-        ...overrides,
-      },
-    },
+        ...overrides
+      }
+    }
   ];
 }

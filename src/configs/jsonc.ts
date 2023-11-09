@@ -7,24 +7,24 @@ import { parserJsonc, pluginJsonc } from "#/utils/plugin";
 export function jsonc(options: OptionsStylistic & OptionsOverrides = {}): ConfigItem[] {
   const {
     overrides = {},
-    stylistic = true,
+    stylistic = true
   } = options;
 
   const {
-    indent = 2,
+    indent = 2
   } = typeof stylistic === "boolean" ? {} : stylistic;
 
   return [
     {
       name: "bluzzi:jsonc:setup",
       plugins: {
-        jsonc: pluginJsonc as any,
-      },
+        jsonc: pluginJsonc as any
+      }
     },
     {
       files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
       languageOptions: {
-        parser: parserJsonc,
+        parser: parserJsonc
       },
       name: "bluzzi:jsonc:rules",
       rules: {
@@ -66,12 +66,12 @@ export function jsonc(options: OptionsStylistic & OptionsOverrides = {}): Config
               "jsonc/object-curly-spacing": ["error", "always"],
               "jsonc/object-property-newline": ["error", { allowMultiplePropertiesPerLine: true }],
               "jsonc/quote-props": "error",
-              "jsonc/quotes": "error",
+              "jsonc/quotes": "error"
             }
           : {},
 
-        ...overrides,
-      },
-    },
+        ...overrides
+      }
+    }
   ];
 }

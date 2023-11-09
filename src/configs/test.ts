@@ -7,7 +7,7 @@ import { GLOB_TESTS } from "#/utils/glob";
 export function test(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
   const {
     isInEditor = false,
-    overrides = {},
+    overrides = {}
   } = options;
 
   return [
@@ -19,10 +19,10 @@ export function test(options: OptionsIsInEditor & OptionsOverrides = {}): Config
           rules: {
             ...pluginVitest.rules,
             // extend `test/no-only-tests` rule
-            ...pluginNoOnlyTests.rules,
-          },
-        },
-      },
+            ...pluginNoOnlyTests.rules
+          }
+        }
+      }
     },
     {
       files: GLOB_TESTS,
@@ -34,8 +34,8 @@ export function test(options: OptionsIsInEditor & OptionsOverrides = {}): Config
         "test/prefer-hooks-in-order": "error",
         "test/prefer-lowercase-title": "error",
 
-        ...overrides,
-      },
-    },
+        ...overrides
+      }
+    }
   ];
 }

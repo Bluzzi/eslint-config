@@ -8,7 +8,7 @@ export function unicorn(): ConfigItem[] {
     {
       name: "bluzzi:unicorn",
       plugins: {
-        unicorn: pluginUnicorn,
+        unicorn: pluginUnicorn
       },
       rules: {
         // Pass error message when throwing errors
@@ -36,8 +36,8 @@ export function unicorn(): ConfigItem[] {
         // Enforce throwing type error when throwing error while checking typeof
         "unicorn/prefer-type-error": "error",
         // Use new when throwing error
-        "unicorn/throw-new-error": "error",
-      },
-    },
+        "unicorn/throw-new-error": "error"
+      }
+    }
   ];
 }

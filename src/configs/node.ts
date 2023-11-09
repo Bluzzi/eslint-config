@@ -8,7 +8,7 @@ export function node(): ConfigItem[] {
     {
       name: "bluzzi:node",
       plugins: {
-        node: pluginNode,
+        node: pluginNode
       },
       rules: {
         "node/handle-callback-err": ["error", "^(err|error)$"],
@@ -18,8 +18,8 @@ export function node(): ConfigItem[] {
         "node/no-path-concat": "error",
         "node/prefer-global/buffer": ["error", "never"],
         "node/prefer-global/process": ["error", "never"],
-        "node/process-exit-as-throw": "error",
-      },
-    },
+        "node/process-exit-as-throw": "error"
+      }
+    }
   ];
 }

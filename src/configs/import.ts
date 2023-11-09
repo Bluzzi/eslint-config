@@ -5,7 +5,7 @@ import { pluginAntfu, pluginImport } from "#/utils/plugin";
 
 export function imports(options: OptionsStylistic = {}): ConfigItem[] {
   const {
-    stylistic = true,
+    stylistic = true
   } = options;
 
   return [
@@ -13,7 +13,7 @@ export function imports(options: OptionsStylistic = {}): ConfigItem[] {
       name: "bluzzi:imports",
       plugins: {
         antfu: pluginAntfu,
-        import: pluginImport,
+        import: pluginImport
       },
       rules: {
         "antfu/import-dedupe": "error",
@@ -29,10 +29,10 @@ export function imports(options: OptionsStylistic = {}): ConfigItem[] {
 
         ...stylistic
           ? {
-              "import/newline-after-import": ["error", { considerComments: true, count: 1 }],
+              "import/newline-after-import": ["error", { considerComments: true, count: 1 }]
             }
-          : {},
-      },
-    },
+          : {}
+      }
+    }
   ];
 }

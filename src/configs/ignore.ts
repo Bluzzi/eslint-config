@@ -6,7 +6,7 @@ import { GLOB_EXCLUDE } from "#/utils/glob";
 export function ignores(): ConfigItem[] {
   return [
     {
-      ignores: GLOB_EXCLUDE,
-    },
+      ignores: GLOB_EXCLUDE
+    }
   ];
 }

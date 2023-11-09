@@ -17,8 +17,8 @@ export function sortPackageJson(): ConfigItem[] {
           "error",
           {
             order: { type: "asc" },
-            pathPattern: "^files$",
-          },
+            pathPattern: "^files$"
+          }
         ],
         "jsonc/sort-keys": [
           "error",
@@ -66,34 +66,34 @@ export function sortPackageJson(): ConfigItem[] {
               "husky",
               "simple-git-hooks",
               "lint-staged",
-              "eslintConfig",
+              "eslintConfig"
             ],
-            pathPattern: "^$",
+            pathPattern: "^$"
           },
           {
             order: { type: "asc" },
-            pathPattern: "^(?:dev|peer|optional|bundled)?[Dd]ependencies$",
+            pathPattern: "^(?:dev|peer|optional|bundled)?[Dd]ependencies$"
           },
           {
             order: { type: "asc" },
-            pathPattern: "^resolutions$",
+            pathPattern: "^resolutions$"
           },
           {
             order: { type: "asc" },
-            pathPattern: "^pnpm.overrides$",
+            pathPattern: "^pnpm.overrides$"
           },
           {
             order: [
               "types",
               "import",
               "require",
-              "default",
+              "default"
             ],
-            pathPattern: "^exports.*$",
-          },
-        ],
-      },
-    },
+            pathPattern: "^exports.*$"
+          }
+        ]
+      }
+    }
   ];
 }
 /**
@@ -117,9 +117,9 @@ export function sortTsconfig(): ConfigItem[] {
               "references",
               "files",
               "include",
-              "exclude",
+              "exclude"
             ],
-            pathPattern: "^$",
+            pathPattern: "^$"
           },
           {
             order: [
@@ -218,12 +218,12 @@ export function sortTsconfig(): ConfigItem[] {
               "verbatimModuleSyntax",
               /* Completeness */
               "skipDefaultLibCheck",
-              "skipLibCheck",
+              "skipLibCheck"
             ],
-            pathPattern: "^compilerOptions$",
-          },
-        ],
-      },
-    },
+            pathPattern: "^compilerOptions$"
+          }
+        ]
+      }
+    }
   ];
 }

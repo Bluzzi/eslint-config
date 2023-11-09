@@ -28,7 +28,7 @@ export const GLOB_TESTS = [
   `**/*.spec.${GLOB_SRC_EXT}`,
   `**/*.test.${GLOB_SRC_EXT}`,
   `**/*.bench.${GLOB_SRC_EXT}`,
-  `**/*.benchmark.${GLOB_SRC_EXT}`,
+  `**/*.benchmark.${GLOB_SRC_EXT}`
 ];
 
 export const GLOB_ALL_SRC = [
@@ -39,7 +39,7 @@ export const GLOB_ALL_SRC = [
   GLOB_MARKDOWN,
   GLOB_VUE,
   GLOB_YAML,
-  GLOB_HTML,
+  GLOB_HTML
 ];
 
 export const GLOB_EXCLUDE = [
@@ -68,5 +68,5 @@ export const GLOB_EXCLUDE = [
   "**/LICENSE*",
   "**/__snapshots__",
   "**/auto-import?(s).d.ts",
-  "**/components.d.ts",
+  "**/components.d.ts"
 ];

@@ -5,14 +5,14 @@ import { pluginJsdoc } from "#/utils/plugin";
 
 export function jsdoc(options: OptionsStylistic = {}): ConfigItem[] {
   const {
-    stylistic = true,
+    stylistic = true
   } = options;
 
   return [
     {
       name: "bluzzi:jsdoc",
       plugins: {
-        jsdoc: pluginJsdoc,
+        jsdoc: pluginJsdoc
       },
       rules: {
         "jsdoc/check-access": "warn",
@@ -34,10 +34,10 @@ export function jsdoc(options: OptionsStylistic = {}): ConfigItem[] {
         ...stylistic
           ? {
               "jsdoc/check-alignment": "warn",
-              "jsdoc/multiline-blocks": "warn",
+              "jsdoc/multiline-blocks": "warn"
             }
-          : {},
-      },
-    },
+          : {}
+      }
+    }
   ];
 }

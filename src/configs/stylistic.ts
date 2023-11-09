@@ -7,7 +7,7 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
   const {
     indent = 2,
     jsx = true,
-    quotes = "double",
+    quotes = "double"
     // TODO: add semi option
   } = options;
 
@@ -16,7 +16,7 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
       name: "bluzzi:stylistic",
       plugins: {
         antfu: pluginAntfu,
-        style: pluginStylistic,
+        style: pluginStylistic
       },
       rules: {
         "antfu/consistent-list-newline": "error",
@@ -25,7 +25,6 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
 
         "curly": ["error", "multi-or-nest", "consistent"],
 
-        "style/camelcase": "error", // ok
         "style/max-len": ["error", { code: 150 }], // ok
         "style/implicit-arrow-linebreak": ["error", "beside"], // ok
         "style/array-bracket-spacing": ["error", "never"], // ok
@@ -68,7 +67,7 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
             "TSTypeParameterInstantiation",
             "FunctionExpression > .params[decorators.length > 0]",
             "FunctionExpression > .params > :matches(Decorator, :not(:first-child))",
-            "ClassBody.body > PropertyDefinition[decorators.length > 0] > .key",
+            "ClassBody.body > PropertyDefinition[decorators.length > 0] > .key"
           ],
           ImportDeclaration: 1,
           MemberExpression: 1,
@@ -76,7 +75,7 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
           offsetTernaryExpressions: true,
           outerIIFEBody: 1,
           SwitchCase: 1,
-          VariableDeclarator: 1,
+          VariableDeclarator: 1
         }],
         "style/key-spacing": ["error", { afterColon: true, beforeColon: false, mode: "strict" }],
         "style/keyword-spacing": ["error", { after: true, before: true }], // ok
@@ -91,8 +90,8 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
           groups: [
             ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
             ["&&", "||"],
-            ["in", "instanceof"],
-          ],
+            ["in", "instanceof"]
+          ]
         }],
         "style/no-mixed-spaces-and-tabs": "error",
         "style/no-multi-spaces": "error",
@@ -120,12 +119,12 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
           block: {
             balanced: true,
             exceptions: ["*"],
-            markers: ["!"],
+            markers: ["!"]
           },
           line: {
             exceptions: ["/", "#"],
-            markers: ["/"],
-          },
+            markers: ["/"]
+          }
         }],
         "style/template-curly-spacing": "error", // ok
         "style/template-tag-spacing": ["error"], // ok
@@ -140,13 +139,13 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
           {
             multiline: {
               delimiter: "semi",
-              requireLast: true,
+              requireLast: true
             },
             singleline: {
               delimiter: "semi",
-              requireLast: false,
-            },
-          },
+              requireLast: false
+            }
+          }
         ],
 
         ...jsx
@@ -169,8 +168,8 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
                   afterOpening: "never",
                   beforeClosing: "never",
                   beforeSelfClosing: "always",
-                  closingSlash: "never",
-                },
+                  closingSlash: "never"
+                }
               ],
               "style/jsx-wrap-multilines": [
                 "error",
@@ -181,12 +180,12 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
                   declaration: "parens-new-line",
                   logical: "parens-new-line",
                   prop: "parens-new-line",
-                  return: "parens-new-line",
-                },
-              ],
+                  return: "parens-new-line"
+                }
+              ]
             }
-          : {},
-      },
-    },
+          : {}
+      }
+    }
   ];
 }

@@ -16,7 +16,7 @@ import {
   stylistic,
   test,
   typescript,
-  unicorn,
+  unicorn
 } from "#/index";
 
 const flatConfigProps: (keyof ConfigItem)[] = [
@@ -27,7 +27,7 @@ const flatConfigProps: (keyof ConfigItem)[] = [
   "processor",
   "plugins",
   "rules",
-  "settings",
+  "settings"
 ];
 
 /**
@@ -39,7 +39,7 @@ export function eslintConfig(options: OptionsConfig & ConfigItem = {}, ...userCo
     gitignore: enableGitignore = true,
     isInEditor = !!((env.VSCODE_PID || env.JETBRAINS_IDE) && !env.CI),
     overrides = {},
-    typescript: enableTypeScript = isPackageExists("typescript"),
+    typescript: enableTypeScript = isPackageExists("typescript")
   } = options;
 
   const stylisticOptions = options.stylistic === false
@@ -47,18 +47,15 @@ export function eslintConfig(options: OptionsConfig & ConfigItem = {}, ...userCo
     : typeof options.stylistic === "object"
       ? options.stylistic
       : {};
-  if (stylisticOptions && !("jsx" in stylisticOptions))
-    stylisticOptions.jsx = options.jsx ?? true;
+  if (stylisticOptions && !("jsx" in stylisticOptions)) stylisticOptions.jsx = options.jsx ?? true;
 
   const configs: ConfigItem[][] = [];
 
   if (enableGitignore) {
-    if (typeof enableGitignore !== "boolean") {
-      configs.push([gitignore(enableGitignore)]);
-    } else {
+    if (typeof enableGitignore !== "boolean") configs.push([gitignore(enableGitignore)]);
+    else
       if (existsSync(".gitignore"))
         configs.push([gitignore()]);
-    }
   }
 
   // Base configs
@@ -66,16 +63,16 @@ export function eslintConfig(options: OptionsConfig & ConfigItem = {}, ...userCo
     ignores(),
     javascript({
       isInEditor,
-      overrides: overrides.javascript,
+      overrides: overrides.javascript
     }),
     node(),
     jsdoc({
-      stylistic: stylisticOptions,
+      stylistic: stylisticOptions
     }),
     imports({
-      stylistic: stylisticOptions,
+      stylistic: stylisticOptions
     }),
-    unicorn(),
+    unicorn()
   );
 
   if (enableTypeScript) {
@@ -84,17 +81,16 @@ export function eslintConfig(options: OptionsConfig & ConfigItem = {}, ...userCo
         ? enableTypeScript
         : {},
       componentExts,
-      overrides: overrides.typescript,
+      overrides: overrides.typescript
     }));
   }
 
-  if (stylisticOptions)
-    configs.push(stylistic(stylisticOptions));
+  if (stylisticOptions) configs.push(stylistic(stylisticOptions));
 
   if (options.test ?? true) {
     configs.push(test({
       isInEditor,
-      overrides: overrides.test,
+      overrides: overrides.test
     }));
   }
 
@@ -102,26 +98,24 @@ export function eslintConfig(options: OptionsConfig & ConfigItem = {}, ...userCo
     configs.push(
       jsonc({
         overrides: overrides.jsonc,
-        stylistic: stylisticOptions,
+        stylistic: stylisticOptions
       }),
       sortPackageJson(),
-      sortTsconfig(),
+      sortTsconfig()
     );
   }
 
   // User can optionally pass a flat config item to the first argument
   // We pick the known keys as ESLint would do schema validation
   const fusedConfig = flatConfigProps.reduce((acc, key) => {
-    if (key in options)
-      acc[key] = options[key] as any;
+    if (key in options) acc[key] = options[key] as any;
     return acc;
   }, {} as ConfigItem);
-  if (Object.keys(fusedConfig).length)
-    configs.push([fusedConfig]);
+  if (Object.keys(fusedConfig).length) configs.push([fusedConfig]);
 
   const merged = combine(
     ...configs,
-    ...userConfigs,
+    ...userConfigs
   );
 
   return merged;
