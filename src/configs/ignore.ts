@@ -1,5 +1,8 @@
 import type { ConfigItem } from "#/utils/type";
 
+/**
+ * List of files to be ignored for linting.
+ */
 export function ignore(): ConfigItem[] {
   return [{
     ignores: [
