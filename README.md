@@ -1,15 +1,8 @@
 # @bluzzi/eslint-config
 An ESLint configuration that supports JS, TS and React and includes linting and formatting.
 
-- Auto fix for formatting (aimed to be used standalone without Prettier)
-- Designed to work with TypeScript and JSX out-of-box
-- Sorted imports
-- Respects .gitignore by default
-- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
-- Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
-- Style principle: Minimal for reading, stable for diff, consistent
-
-The code for this configuration is initially based on the work of [Antfu](https://github.com/antfu/eslint-config).
+> [!NOTE]  
+> A new version is currently being developed to support ESLint's new flat config, dynamic adaptation to the project (JS, TS, React, etc) and many others things.
 
 ## Usage
 ### Install
