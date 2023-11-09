@@ -1,11 +1,11 @@
 // NEED REVIEW
 
-import process from "node:process";
 import type { ConfigItem, OptionsComponentExts, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from "#/utils/type";
-import { GLOB_SRC } from "#/utils/glob";
-import { pluginAntfu, pluginImport, pluginTS } from "#/extends/plugin";
-import { renameRules, toArray } from "#/utils/util";
+import process from "node:process";
 import { parserTS } from "#/extends/parser";
+import { pluginAntfu, pluginImport, pluginTS } from "#/extends/plugin";
+import { GLOB_SRC } from "#/utils/glob";
+import { renameRules, toArray } from "#/utils/util";
 
 export function typescript(
   options?: OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions
@@ -104,7 +104,7 @@ export function typescript(
 
         "ts/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
         "ts/ban-types": ["error", { types: { Function: false } }],
-        "ts/consistent-type-definitions": ["error", "interface"],
+        "ts/consistent-type-definitions": ["error", "type"],
         "ts/consistent-type-imports": ["error", { disallowTypeAnnotations: false, prefer: "type-imports", fixStyle: "separate-type-imports" }], // ok
         "ts/no-dupe-class-members": "error",
         "ts/no-dynamic-delete": "off",

@@ -1,6 +1,3 @@
-import type { FlatGitignoreOptions } from "eslint-config-flat-gitignore";
-import type { ParserOptions } from "@typescript-eslint/parser";
-import type { Rules as AntfuRules } from "eslint-plugin-antfu";
 import type {
   EslintCommentsRules,
   EslintRules,
@@ -19,6 +16,9 @@ import type {
   VitestRules
 } from "@antfu/eslint-define-config";
 import type { UnprefixedRuleOptions } from "@stylistic/eslint-plugin";
+import type { ParserOptions } from "@typescript-eslint/parser";
+import type { FlatGitignoreOptions } from "eslint-config-flat-gitignore";
+import type { Rules as AntfuRules } from "eslint-plugin-antfu";
 
 type StylisticMergedRules = MergeIntersection<
   EslintRules &
@@ -61,7 +61,7 @@ export type ConfigItem = Omit<FlatESLintConfigItem<Rules, false>, "plugins"> & {
   plugins?: Record<string, any>;
 };
 
-export interface OptionsComponentExts {
+export type OptionsComponentExts = {
   /**
    * Additional extensions for components.
    *
@@ -69,46 +69,46 @@ export interface OptionsComponentExts {
    * @default []
    */
   componentExts?: string[];
-}
+};
 
-export interface OptionsTypeScriptParserOptions {
+export type OptionsTypeScriptParserOptions = {
   /**
    * Additional parser options for TypeScript.
    */
   parserOptions?: Partial<ParserOptions>;
-}
+};
 
-export interface OptionsTypeScriptWithTypes {
+export type OptionsTypeScriptWithTypes = {
   /**
    * When this options is provided, type aware rules will be enabled.
    * @see https://typescript-eslint.io/linting/typed-linting/
    */
   tsconfigPath?: string | string[];
-}
+};
 
-export interface OptionsHasTypeScript {
+export type OptionsHasTypeScript = {
   typescript?: boolean;
-}
+};
 
-export interface OptionsStylistic {
+export type OptionsStylistic = {
   stylistic?: boolean | StylisticConfig;
-}
+};
 
-export interface StylisticConfig {
+export type StylisticConfig = {
   indent?: number | "tab";
   quotes?: "single" | "double";
   jsx?: boolean;
-}
+};
 
-export interface OptionsOverrides {
+export type OptionsOverrides = {
   overrides?: ConfigItem["rules"];
-}
+};
 
-export interface OptionsIsInEditor {
+export type OptionsIsInEditor = {
   isInEditor?: boolean;
-}
+};
 
-export interface OptionsConfig extends OptionsComponentExts {
+export type OptionsConfig = {
   /**
    * Enable gitignore support.
    *
@@ -173,4 +173,4 @@ export interface OptionsConfig extends OptionsComponentExts {
     test?: ConfigItem["rules"];
     jsonc?: ConfigItem["rules"];
   };
-}
+} & OptionsComponentExts;
