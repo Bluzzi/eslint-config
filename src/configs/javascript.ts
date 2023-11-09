@@ -1,7 +1,7 @@
 // NEED REVIEW
 
-import globals from "globals";
 import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from "#/utils/type";
+import globals from "globals";
 import { pluginAntfu, pluginJS, pluginUnusedImports } from "#/extends/plugin";
 
 export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
