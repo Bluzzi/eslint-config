@@ -1,7 +1,7 @@
 // NEED REVIEW
 
 import type { ConfigItem, StylisticConfig } from "#/utils/type";
-import { pluginAntfu, pluginStylistic } from "#/utils/plugin";
+import { pluginAntfu, pluginStylistic } from "#/extends/plugin";
 
 export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
   const {

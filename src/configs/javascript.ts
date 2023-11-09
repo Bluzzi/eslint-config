@@ -2,7 +2,7 @@
 
 import globals from "globals";
 import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from "#/utils/type";
-import { pluginAntfu, pluginJS, pluginUnusedImports } from "#/utils/plugin";
+import { pluginAntfu, pluginJS, pluginUnusedImports } from "#/extends/plugin";
 
 export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
   const {

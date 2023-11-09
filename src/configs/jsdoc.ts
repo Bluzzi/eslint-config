@@ -1,7 +1,7 @@
 // NEED REVIEW
 
 import type { ConfigItem, OptionsStylistic } from "#/utils/type";
-import { pluginJSDoc } from "#/utils/plugin";
+import { pluginJSDoc } from "#/extends/plugin";
 
 export function jsdoc(options: OptionsStylistic = {}): ConfigItem[] {
   const {

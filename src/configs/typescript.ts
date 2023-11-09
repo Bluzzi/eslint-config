@@ -3,9 +3,9 @@
 import process from "node:process";
 import type { ConfigItem, OptionsComponentExts, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from "#/utils/type";
 import { GLOB_SRC } from "#/utils/glob";
-import { pluginAntfu, pluginImport, pluginTS } from "#/utils/plugin";
+import { pluginAntfu, pluginImport, pluginTS } from "#/extends/plugin";
 import { renameRules, toArray } from "#/utils/util";
-import { parserTS } from "#/utils/parser";
+import { parserTS } from "#/extends/parser";
 
 export function typescript(
   options?: OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions

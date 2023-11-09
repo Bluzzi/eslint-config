@@ -14,6 +14,6 @@ export * from "#/configs/unicorn";
 // Utils:
 export * from "#/utils/eslint";
 export * from "#/utils/glob";
-export * from "#/utils/plugin";
+export * from "#/extends/plugin";
 export * from "#/utils/type";
 export * from "#/utils/util";

@@ -1,7 +1,7 @@
 // NEED REVIEW
 
 import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from "#/utils/type";
-import { pluginNoOnlyTests, pluginVitest } from "#/utils/plugin";
+import { pluginNoOnlyTests, pluginVitest } from "#/extends/plugin";
 import { GLOB_TESTS } from "#/utils/glob";
 
 export function test(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
