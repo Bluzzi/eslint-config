@@ -5,6 +5,7 @@ import type { ConfigItem } from "#/utils/type";
  */
 export function ignore(): ConfigItem[] {
   return [{
+    name: "bluzzi:ignore",
     ignores: [
       "**/node_modules",
       "**/dist",
