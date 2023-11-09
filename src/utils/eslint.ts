@@ -5,7 +5,7 @@ import gitignore from "eslint-config-flat-gitignore";
 import type { ConfigItem, OptionsConfig } from "#/utils/type";
 import { combine } from "#/utils/util";
 import {
-  ignores,
+  ignore,
   imports,
   javascript,
   jsdoc,
@@ -47,20 +47,21 @@ export function eslintConfig(options: OptionsConfig & ConfigItem = {}, ...userCo
     : typeof options.stylistic === "object"
       ? options.stylistic
       : {};
-  if (stylisticOptions && !("jsx" in stylisticOptions)) stylisticOptions.jsx = options.jsx ?? true;
+  if (stylisticOptions && !("jsx" in stylisticOptions)) 
+stylisticOptions.jsx = options.jsx ?? true;
 
   const configs: ConfigItem[][] = [];
 
   if (enableGitignore) {
-    if (typeof enableGitignore !== "boolean") configs.push([gitignore(enableGitignore)]);
+    if (typeof enableGitignore !== "boolean") 
+configs.push([gitignore(enableGitignore)]);
     else
-      if (existsSync(".gitignore"))
-        configs.push([gitignore()]);
+      if (existsSync(".gitignore")) configs.push([gitignore()]);
   }
 
   // Base configs
   configs.push(
-    ignores(),
+    ignore(),
     javascript({
       isInEditor,
       overrides: overrides.javascript
@@ -85,7 +86,8 @@ export function eslintConfig(options: OptionsConfig & ConfigItem = {}, ...userCo
     }));
   }
 
-  if (stylisticOptions) configs.push(stylistic(stylisticOptions));
+  if (stylisticOptions) 
+configs.push(stylistic(stylisticOptions));
 
   if (options.test ?? true) {
     configs.push(test({
@@ -108,10 +110,12 @@ export function eslintConfig(options: OptionsConfig & ConfigItem = {}, ...userCo
   // User can optionally pass a flat config item to the first argument
   // We pick the known keys as ESLint would do schema validation
   const fusedConfig = flatConfigProps.reduce((acc, key) => {
-    if (key in options) acc[key] = options[key] as any;
+    if (key in options) 
+acc[key] = options[key] as any;
     return acc;
   }, {} as ConfigItem);
-  if (Object.keys(fusedConfig).length) configs.push([fusedConfig]);
+  if (Object.keys(fusedConfig).length) 
+configs.push([fusedConfig]);
 
   const merged = combine(
     ...configs,

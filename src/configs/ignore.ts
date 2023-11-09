@@ -1,12 +1,34 @@
-// NEED REVIEW
-
 import type { ConfigItem } from "#/utils/type";
-import { GLOB_EXCLUDE } from "#/utils/glob";
 
-export function ignores(): ConfigItem[] {
-  return [
-    {
-      ignores: GLOB_EXCLUDE
-    }
-  ];
+export function ignore(): ConfigItem[] {
+  return [{
+    ignores: [
+      "**/node_modules",
+      "**/dist",
+      "**/package-lock.json",
+      "**/yarn.lock",
+      "**/pnpm-lock.yaml",
+      "**/bun.lockb",
+
+      "**/output",
+      "**/coverage",
+      "**/temp",
+      "**/.vitepress/cache",
+      "**/.nuxt",
+      "**/.next",
+      "**/.vercel",
+      "**/.changeset",
+      "**/.idea",
+      "**/.cache",
+      "**/.output",
+      "**/.vite-inspect",
+
+      "**/CHANGELOG*.md",
+      "**/*.min.*",
+      "**/LICENSE*",
+      "**/__snapshots__",
+      "**/auto-import?(s).d.ts",
+      "**/components.d.ts"
+    ]
+  }];
 }
