@@ -7,12 +7,12 @@ import { parserTs, pluginAntfu, pluginImport, pluginTs } from "#/utils/plugin";
 import { renameRules, toArray } from "#/utils/util";
 
 export function typescript(
-  options?: OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions,
+  options?: OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions
 ): ConfigItem[] {
   const {
     componentExts = [],
     overrides = {},
-    parserOptions = {},
+    parserOptions = {}
   } = options ?? {};
 
   const typeAwareRules: ConfigItem["rules"] = {
@@ -35,7 +35,7 @@ export function typescript(
     "ts/restrict-plus-operands": "error",
     "ts/restrict-template-expressions": "error",
     "ts/unbound-method": "error",
-    "ts/consistent-type-exports": "error", // ok
+    "ts/consistent-type-exports": "error" // ok
   };
 
   const tsconfigPath = options?.tsconfigPath
@@ -49,39 +49,35 @@ export function typescript(
       plugins: {
         antfu: pluginAntfu,
         import: pluginImport,
-        ts: pluginTs as any,
-      },
+        ts: pluginTs as any
+      }
     },
     {
       files: [
         GLOB_SRC,
-        ...componentExts.map(ext => `**/*.${ext}`),
+        ...componentExts.map(ext => `**/*.${ext}`)
       ],
       languageOptions: {
         parser: parserTs,
         parserOptions: {
           extraFileExtensions: componentExts.map(ext => `.${ext}`),
           sourceType: "module",
-          ...tsconfigPath
-            ? {
-                project: tsconfigPath,
-                tsconfigRootDir: process.cwd(),
-              }
-            : {},
-          ...parserOptions as any,
-        },
+          project: tsconfigPath ? ["tsconfig.json", ...tsconfigPath] : ["tsconfig.json"],
+          tsconfigRootDir: process.cwd(),
+          ...parserOptions as any
+        }
       },
       name: "bluzzi:typescript:rules",
       rules: {
         ...renameRules(
           pluginTs.configs["eslint-recommended"].overrides![0].rules!,
           "@typescript-eslint/",
-          "ts/",
+          "ts/"
         ),
         ...renameRules(
           pluginTs.configs.strict.rules!,
           "@typescript-eslint/",
-          "ts/",
+          "ts/"
         ),
 
         "antfu/generic-spacing": "error",
@@ -101,8 +97,8 @@ export function typescript(
           {
             argsIgnorePattern: "^_",
             varsIgnorePattern: "^_",
-            caughtErrorsIgnorePattern: "^_",
-          },
+            caughtErrorsIgnorePattern: "^_"
+          }
         ],
 
         "ts/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
@@ -128,9 +124,9 @@ export function typescript(
 
         "ts/consistent-type-assertions": ["error", { assertionStyle: "as" }], // ok
 
-        ...tsconfigPath ? typeAwareRules : {},
-        ...overrides,
-      },
+        ...typeAwareRules,
+        ...overrides
+      }
     },
     {
       files: ["**/*.d.ts"],
@@ -139,23 +135,23 @@ export function typescript(
         "eslint-comments/no-unlimited-disable": "off",
         "import/no-duplicates": "off",
         "no-restricted-syntax": "off",
-        "unused-imports/no-unused-vars": "off",
-      },
+        "unused-imports/no-unused-vars": "off"
+      }
     },
     {
       files: ["**/*.{test,spec}.ts?(x)"],
       name: "bluzzi:typescript:tests-overrides",
       rules: {
-        "no-unused-expressions": "off",
-      },
+        "no-unused-expressions": "off"
+      }
     },
     {
       files: ["**/*.js", "**/*.cjs"],
       name: "bluzzi:typescript:javascript-overrides",
       rules: {
         "ts/no-require-imports": "off",
-        "ts/no-var-requires": "off",
-      },
-    },
+        "ts/no-var-requires": "off"
+      }
+    }
   ];
 }

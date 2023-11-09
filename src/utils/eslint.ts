@@ -2,8 +2,8 @@ import { existsSync } from "node:fs";
 import { env } from "node:process";
 import { isPackageExists } from "local-pkg";
 import gitignore from "eslint-config-flat-gitignore";
-import { combine } from "#/utils/util";
 import type { ConfigItem, OptionsConfig } from "#/utils/type";
+import { combine } from "#/utils/util";
 import {
   ignores,
   imports,
@@ -33,7 +33,7 @@ const flatConfigProps: (keyof ConfigItem)[] = [
 /**
  * Construct an array of ESLint flat config items.
  */
-export function eslintConfig(options: OptionsConfig & ConfigItem = {}, ...userConfigs: (ConfigItem | ConfigItem[])[]) {
+export function eslintConfig(options: OptionsConfig & ConfigItem = {}, ...userConfigs: (ConfigItem | ConfigItem[])[]): ConfigItem[] {
   const {
     componentExts = [],
     gitignore: enableGitignore = true,
