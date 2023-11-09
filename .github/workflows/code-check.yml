@@ -18,6 +18,8 @@ jobs:
           version: latest
       - name: Install dependencies
         run: pnpm install
+      - name: Run TSup (build ESLint preset)
+        run: pnpm run build
       - name: Run ESLint
         run: pnpm run lint
   typecheck:
