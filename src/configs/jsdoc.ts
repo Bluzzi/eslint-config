@@ -1,7 +1,7 @@
 // NEED REVIEW
 
 import type { ConfigItem, OptionsStylistic } from "#/utils/type";
-import { pluginJsdoc } from "#/utils/plugin";
+import { pluginJSDoc } from "#/utils/plugin";
 
 export function jsdoc(options: OptionsStylistic = {}): ConfigItem[] {
   const {
@@ -12,7 +12,7 @@ export function jsdoc(options: OptionsStylistic = {}): ConfigItem[] {
     {
       name: "bluzzi:jsdoc",
       plugins: {
-        jsdoc: pluginJsdoc
+        jsdoc: pluginJSDoc
       },
       rules: {
         "jsdoc/check-access": "warn",

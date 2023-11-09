@@ -3,8 +3,9 @@
 import process from "node:process";
 import type { ConfigItem, OptionsComponentExts, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from "#/utils/type";
 import { GLOB_SRC } from "#/utils/glob";
-import { parserTs, pluginAntfu, pluginImport, pluginTs } from "#/utils/plugin";
+import { pluginAntfu, pluginImport, pluginTS } from "#/utils/plugin";
 import { renameRules, toArray } from "#/utils/util";
+import { parserTS } from "#/utils/parser";
 
 export function typescript(
   options?: OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions
@@ -49,7 +50,7 @@ export function typescript(
       plugins: {
         antfu: pluginAntfu,
         import: pluginImport,
-        ts: pluginTs as any
+        ts: pluginTS as any
       }
     },
     {
@@ -58,7 +59,7 @@ export function typescript(
         ...componentExts.map(ext => `**/*.${ext}`)
       ],
       languageOptions: {
-        parser: parserTs,
+        parser: parserTS,
         parserOptions: {
           extraFileExtensions: componentExts.map(ext => `.${ext}`),
           sourceType: "module",
@@ -70,12 +71,12 @@ export function typescript(
       name: "bluzzi:typescript:rules",
       rules: {
         ...renameRules(
-          pluginTs.configs["eslint-recommended"].overrides![0].rules!,
+          pluginTS.configs["eslint-recommended"].overrides![0].rules!,
           "@typescript-eslint/",
           "ts/"
         ),
         ...renameRules(
-          pluginTs.configs.strict.rules!,
+          pluginTS.configs.strict.rules!,
           "@typescript-eslint/",
           "ts/"
         ),

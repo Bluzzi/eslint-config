@@ -2,7 +2,7 @@
 
 import globals from "globals";
 import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from "#/utils/type";
-import { pluginAntfu, pluginJs, pluginUnusedImports } from "#/utils/plugin";
+import { pluginAntfu, pluginJS, pluginUnusedImports } from "#/utils/plugin";
 
 export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
   const {
@@ -40,7 +40,7 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         "unused-imports": pluginUnusedImports
       },
       rules: {
-        ...pluginJs.configs.recommended.rules, // old config, need review
+        ...pluginJS.configs.recommended.rules, // old config, need review
 
         "accessor-pairs": ["error", { enforceForClassMembers: true, setWithoutGet: true }],
 

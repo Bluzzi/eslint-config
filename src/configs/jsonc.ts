@@ -2,7 +2,8 @@
 
 import type { ConfigItem, OptionsOverrides, OptionsStylistic } from "#/utils/type";
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from "#/utils/glob";
-import { parserJsonc, pluginJsonc } from "#/utils/plugin";
+import { pluginJSONC } from "#/utils/plugin";
+import { parserJSONC } from "#/utils/parser";
 
 export function jsonc(options: OptionsStylistic & OptionsOverrides = {}): ConfigItem[] {
   const {
@@ -18,13 +19,13 @@ export function jsonc(options: OptionsStylistic & OptionsOverrides = {}): Config
     {
       name: "bluzzi:jsonc:setup",
       plugins: {
-        jsonc: pluginJsonc as any
+        jsonc: pluginJSONC as any
       }
     },
     {
       files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
       languageOptions: {
-        parser: parserJsonc
+        parser: parserJSONC
       },
       name: "bluzzi:jsonc:rules",
       rules: {
