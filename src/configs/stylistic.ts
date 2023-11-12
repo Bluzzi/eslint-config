@@ -25,6 +25,8 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
 
         "curly": ["error", "multi-or-nest", "consistent"],
 
+        "camelcase": ["error"],
+
         "style/max-len": ["error", { code: 150 }], // ok
         "style/implicit-arrow-linebreak": ["error", "beside"], // ok
         "style/array-bracket-spacing": ["error", "never"], // ok
