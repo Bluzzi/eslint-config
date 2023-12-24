@@ -71,7 +71,7 @@ configs.push([gitignore(enableGitignore)]);
       stylistic: stylisticOptions
     }),
     imports({
-      stylistic: stylisticOptions
+      // stylistic: stylisticOptions
     }),
     unicorn()
   );

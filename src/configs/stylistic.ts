@@ -3,6 +3,9 @@
 import { pluginAntfu, pluginStylistic } from "#/extends/plugin";
 import type { ConfigItem, StylisticConfig } from "#/utils/type";
 
+type Tgm<T> = T;
+type Foo = Tgm<{    members:  string }  >;
+
 export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
   const {
     indent = 2,
