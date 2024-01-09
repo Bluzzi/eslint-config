@@ -116,3 +116,8 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
   }
   ```
 </details>
+
+# I need to explore
+- https://github.com/dxhuii/eslint-config
+- https://github.com/nivalis-studio/eslint-config
+- https://github.com/antfu/eslint-config/tree/main
