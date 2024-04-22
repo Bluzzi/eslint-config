@@ -1,41 +1,59 @@
-// NEED REVIEW
+import { interopDefault } from '../utils'
+import type { OptionsFiles, OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '../types'
+import { GLOB_TESTS } from '../globs'
 
-import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from "#/utils/type";
-import { pluginNoOnlyTests, pluginVitest } from "#/extends/plugin";
-import { GLOB_TESTS } from "#/utils/glob";
+// Hold the reference so we don't redeclare the plugin on each call
+let _pluginTest: any
 
-export function test(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
+export async function test(
+  options: OptionsFiles & OptionsIsInEditor & OptionsOverrides = {},
+): Promise<TypedFlatConfigItem[]> {
   const {
+    files = GLOB_TESTS,
     isInEditor = false,
-    overrides = {}
-  } = options;
+    overrides = {},
+  } = options
+
+  const [
+    pluginVitest,
+    pluginNoOnlyTests,
+  ] = await Promise.all([
+    interopDefault(import('eslint-plugin-vitest')),
+    // @ts-expect-error missing types
+    interopDefault(import('eslint-plugin-no-only-tests')),
+  ] as const)
+
+  _pluginTest = _pluginTest || {
+    ...pluginVitest,
+    rules: {
+      ...pluginVitest.rules,
+      // extend `test/no-only-tests` rule
+      ...pluginNoOnlyTests.rules,
+    },
+  }
 
   return [
     {
-      name: "bluzzi:test:setup",
+      name: 'antfu/test/setup',
       plugins: {
-        test: {
-          ...pluginVitest,
-          rules: {
-            ...pluginVitest.rules,
-            // extend `test/no-only-tests` rule
-            ...pluginNoOnlyTests.rules
-          }
-        }
-      }
+        test: _pluginTest,
+      },
     },
     {
-      files: GLOB_TESTS,
-      name: "bluzzi:test:rules",
+      files,
+      name: 'antfu/test/rules',
       rules: {
-        "test/consistent-test-it": ["error", { fn: "it", withinDescribe: "it" }],
-        "test/no-identical-title": "error",
-        "test/no-only-tests": isInEditor ? "off" : "error",
-        "test/prefer-hooks-in-order": "error",
-        "test/prefer-lowercase-title": "error",
+        'node/prefer-global/process': 'off',
 
-        ...overrides
-      }
-    }
-  ];
+        'test/consistent-test-it': ['error', { fn: 'it', withinDescribe: 'it' }],
+        'test/no-identical-title': 'error',
+        'test/no-import-node-test': 'error',
+        'test/no-only-tests': isInEditor ? 'off' : 'error',
+        'test/prefer-hooks-in-order': 'error',
+        'test/prefer-lowercase-title': 'error',
+
+        ...overrides,
+      },
+    },
+  ]
 }
