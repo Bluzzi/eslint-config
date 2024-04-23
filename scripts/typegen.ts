@@ -1,9 +1,18 @@
+import type { Awaitable, TypedFlatConfigItem } from '#/types/type'
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
 import { builtinRules } from 'eslint/use-at-your-own-risk'
-import { combine, javascript, node, stylistic, typescript } from '../src'
+import { javascript, node, stylistic, typescript } from '../src'
 import { writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { cwd } from 'node:process'
+
+/**
+ * Combine array and non-array configs into a single array.
+ */
+export const combine = async(...configs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[]>[]): Promise<TypedFlatConfigItem[]> => {
+  const resolved = await Promise.all(configs)
+  return resolved.flat()
+}
 
 const configs = await combine(
   { plugins: { '': { rules: Object.fromEntries(builtinRules.entries()) } } },
