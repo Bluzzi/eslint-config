@@ -1,6 +1,5 @@
 import type { OptionsOverrides, TypedFlatConfigItem } from '#/types/type'
 import { pluginAntfu, pluginUnusedImports } from '#/utils/plugin'
-import { GLOB_SRC, GLOB_SRC_EXT } from '#/utils/glob'
 import globals from 'globals'
 
 export async function javascript(
@@ -57,7 +56,6 @@ export async function javascript(
         'no-class-assign': 'error',
         'no-compare-neg-zero': 'error',
         'no-cond-assign': ['error', 'always'],
-        'no-console': ['error', { allow: ['warn', 'error'] }],
         'no-const-assign': 'error',
         'no-control-regex': 'error',
         'no-debugger': 'error',
@@ -217,13 +215,6 @@ export async function javascript(
 
         ...overrides,
       },
-    },
-    {
-      files: [`scripts/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
-      name: 'antfu/javascript/disables/cli',
-      rules: {
-        'no-console': 'off',
-      },
-    },
+    }
   ]
 }
