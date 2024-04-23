@@ -2,7 +2,7 @@ import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
 import type { ParserOptions } from '@typescript-eslint/parser'
 import type { Linter } from 'eslint'
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
-import type { ConfigNames, RuleOptions } from './typegen'
+import type { ConfigNames, RuleOptions } from './gen'
 
 export type Awaitable<T> = T | Promise<T>
 
@@ -198,14 +198,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default true
    */
   test?: boolean | OptionsOverrides
-
-  /**
-   * Enable Vue support.
-   *
-   * @default auto-detect based on the dependencies
-   */
-  vue?: boolean | OptionsVue
-
+  
   /**
    * Enable JSONC support.
    *
@@ -296,18 +289,6 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default false
    */
   unocss?: boolean | OptionsUnoCSS
-
-  /**
-   * Use external formatters to format files.
-   *
-   * Requires installing:
-   * - `eslint-plugin-format`
-   *
-   * When set to `true`, it will enable all formatters.
-   *
-   * @default false
-   */
-  formatters?: boolean | OptionsFormatters
 
   /**
    * Control to disable some rules in editors.

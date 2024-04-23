@@ -3,34 +3,12 @@ import fs from 'node:fs'
 import { isPackageExists } from 'local-pkg'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import type { Linter } from 'eslint'
-import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types'
-import {
-  astro,
-  comments,
-  ignores,
-  imports,
-  javascript,
-  jsdoc,
-  jsonc,
-  markdown,
-  node,
-  perfectionist,
-  react,
-  solid,
-  sortPackageJson,
-  sortTsconfig,
-  stylistic,
-  svelte,
-  test,
-  toml,
-  typescript,
-  unicorn,
-  unocss,
-  vue,
-  yaml,
-} from './configs'
-import { interopDefault } from './utils'
-import { formatters } from './configs/formatters'
+import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from '../types/type'
+import { javascript } from '#/configs/javascript'
+import { typescript } from '#/configs/typescript'
+import { node } from '#/configs/node'
+import { stylistic } from '#/configs/stylistic'
+import { interopDefault } from './util'
 
 const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
   'name',
@@ -241,13 +219,6 @@ export function antfu(
         },
       ),
     )
-  }
-
-  if (options.formatters) {
-    configs.push(formatters(
-      options.formatters,
-      typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
-    ))
   }
 
   // User can optionally pass a flat config item to the first argument

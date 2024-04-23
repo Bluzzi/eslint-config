@@ -2,21 +2,13 @@ import { existsSync } from "node:fs";
 import { env } from "node:process";
 import { isPackageExists } from "local-pkg";
 import gitignore from "eslint-config-flat-gitignore";
-import type { ConfigItem, OptionsConfig } from "#/utils/type";
+import type { ConfigItem, OptionsConfig } from "#/types/type";
 import { combine } from "#/utils/util";
 import {
-  ignore,
-  imports,
   javascript,
-  jsdoc,
-  jsonc,
   node,
-  sortPackageJson,
-  sortTsconfig,
   stylistic,
-  test,
   typescript,
-  unicorn
 } from "#/index";
 
 const flatConfigProps: (keyof ConfigItem)[] = [

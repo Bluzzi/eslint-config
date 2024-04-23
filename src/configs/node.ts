@@ -1,4 +1,4 @@
-import type { TypedFlatConfigItem } from '#/utils/type'
+import type { TypedFlatConfigItem } from '#/types/type'
 import { pluginNode } from '#/utils/plugin'
 
 export async function node(): Promise<TypedFlatConfigItem[]> {

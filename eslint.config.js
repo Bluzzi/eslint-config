@@ -10,5 +10,11 @@ export default eslintConfig(
     astro: true,
     typescript: true,
     formatters: true,
+  },
+  {
+    name: "tgm",
+    rules: [
+      
+    ]
   }
 );

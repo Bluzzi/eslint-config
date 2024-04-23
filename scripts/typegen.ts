@@ -1,49 +1,25 @@
-import fs from 'node:fs/promises'
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
 import { builtinRules } from 'eslint/use-at-your-own-risk'
-import { astro, combine, comments, formatters, imports, javascript, jsdoc, jsonc, markdown, node, perfectionist, react, solid, sortPackageJson, stylistic, svelte, test, toml, typescript, unicorn, unocss, vue, yaml } from '../src'
+import { typescript, javascript, node, stylistic, combine } from '../src'
+import { writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import { cwd } from 'node:process'
 
 const configs = await combine(
-  {
-    plugins: {
-      '': {
-        rules: Object.fromEntries(builtinRules.entries()),
-      },
-    },
-  },
-  astro(),
-  comments(),
-  formatters(),
-  imports(),
+  { plugins: { '': { rules: Object.fromEntries(builtinRules.entries()) } }},
   javascript(),
-  jsdoc(),
-  jsonc(),
-  markdown(),
   node(),
-  perfectionist(),
-  react(),
-  solid(),
-  sortPackageJson(),
   stylistic(),
-  svelte(),
-  test(),
-  toml(),
-  typescript(),
-  unicorn(),
-  unocss(),
-  vue(),
-  yaml(),
+  typescript()
 )
 
 const configNames = configs.map(i => i.name).filter(Boolean) as string[]
 
-let dts = await flatConfigsToRulesDTS(configs, {
-  includeAugmentation: false,
-})
+let dts = await flatConfigsToRulesDTS(configs, { includeAugmentation: false })
 
 dts += `
 // Names of all the configs
 export type ConfigNames = ${configNames.map(i => `'${i}'`).join(' | ')}
 `
 
-await fs.writeFile('src/typegen.d.ts', dts)
+await writeFile(join(cwd(), "src/types/gen.d.ts"), dts)
