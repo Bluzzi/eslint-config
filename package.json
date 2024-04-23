@@ -11,13 +11,14 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --minify --format cjs,esm --clean --dts",
-    "build:inspector": "pnpm build && pnpx @eslint/config-inspector build",
-    "dev": "pnpx @eslint/config-inspector --config eslint.config.js",
+    "build:config": "tsup src/index.ts --minify --format cjs,esm --clean --dts",
+    "build:type": "tsx ./scripts/typegen.ts",
+    "inspector:dev": "pnpx @eslint/config-inspector --config eslint.config.js",
+    "inspector:build": "pnpm build && pnpx @eslint/config-inspector build",
+    "inspector:start": "serve .eslint-config-inspector",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "ts:check": "tsc --noEmit",
-    "gen:type": "tsx ./scripts/typegen.ts"
+    "ts:check": "tsc --noEmit"
   },
   "dependencies": {
     "@stylistic/eslint-plugin": "^1.7.2",
@@ -35,6 +36,7 @@
     "@types/node": "^20.12.7",
     "eslint": "^9.0.0",
     "eslint-typegen": "^0.2.4",
+    "serve": "^14.2.2",
     "tsup": "^8.0.2",
     "tsx": "^4.7.2",
     "typescript": "^5.4.5"

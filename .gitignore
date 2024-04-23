@@ -8,3 +8,6 @@ dist
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# Config inspector:
+.eslint-config-inspector
