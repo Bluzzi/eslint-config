@@ -22,5 +22,8 @@ COPY --from=builder /app/.eslint-config-inspector ./
 # Install a static site runner:
 RUN npm install -g serve
 
+# Expose the provided port:
+EXPOSE $PORT
+
 # Run the server:
 CMD serve . --listen tcp://0.0.0.0:$PORT
