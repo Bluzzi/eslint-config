@@ -1,5 +1,3 @@
-
-
 /**
  * Rename plugin prefixes in a rule object.
  * Accepts a map of prefixes to rename.
@@ -29,8 +27,4 @@ export function renameRules(rules: Record<string, any>, map: Record<string, stri
         return [key, value]
       }),
   )
-}
-
-export function toArray<T>(value: T | T[]): T[] {
-  return Array.isArray(value) ? value : [value]
 }

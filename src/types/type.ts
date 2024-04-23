@@ -1,8 +1,7 @@
 import type { Linter } from 'eslint'
 import type { ConfigNames, RuleOptions } from './gen'
-import type { OptionsTypeScript } from '#/configs/typescript'
-import type { StylisticConfig } from '#/configs/stylistic'
-import type { ParamsJS } from '#/configs/javascript'
+import type { ParamsTS } from '#/configs/typescript'
+import type { ParamsStylistic } from '#/configs/stylistic'
 
 export type Awaitable<T> = T | Promise<T>
 
@@ -22,29 +21,14 @@ export type TypedFlatConfigItem = Omit<Linter.FlatConfig<Linter.RulesRecord & Ru
   plugins?: Record<string, any>
 }
 
-export interface OptionsOverrides {
-  overrides?: TypedFlatConfigItem['rules']
-}
-
 export interface OptionsConfig {
   /**
-   * Core rules. Can't be disabled.
+   * Enable TypeScript Language Server support.
    */
-  javascript?: ParamsJS
+  typescript?: ParamsTS
 
   /**
-   * Enable TypeScript support.
-   *
-   * Passing an object to enable TypeScript Language Server support.
-   *
-   * @default auto-detect based on the dependencies
+   * Definitions of basic formatting rules.
    */
-  typescript?: boolean | OptionsTypeScript
-
-  /**
-   * Enable stylistic rules.
-   *
-   * @default true
-   */
-  stylistic?: boolean | (StylisticConfig & OptionsOverrides)
+  stylistic?: ParamsStylistic
 }
