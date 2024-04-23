@@ -13,12 +13,13 @@
   "scripts": {
     "build:config": "tsup src/index.ts --minify --format cjs,esm --clean --dts",
     "build:type": "tsx ./scripts/typegen.ts",
-    "inspector:dev": "pnpx @eslint/config-inspector --config eslint.config.js",
-    "inspector:build": "pnpm run build:config && pnpx @eslint/config-inspector build",
+    "inspector:dev": "npx @eslint/config-inspector --config eslint.config.js",
+    "inspector:build": "npm run build:config && npx @eslint/config-inspector build",
     "inspector:start": "serve .eslint-config-inspector",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "ts:check": "tsc --noEmit"
+    "ts:check": "tsc --noEmit",
+    "postinstall": "npm run build:config"
   },
   "dependencies": {
     "@stylistic/eslint-plugin": "^1.7.2",
