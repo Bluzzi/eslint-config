@@ -78,17 +78,6 @@ export interface OptionsOverrides {
 
 export interface OptionsConfig extends OptionsComponentExts {
   /**
-   * Disable some opinionated rules to Anthony's preference.
-   *
-   * Including:
-   * - `antfu/top-level-function`
-   * - `antfu/if-newline`
-   *
-   * @default false
-   */
-  lessOpinionated?: boolean
-
-  /**
    * Core rules. Can't be disabled.
    */
   javascript?: OptionsOverrides
@@ -112,47 +101,6 @@ export interface OptionsConfig extends OptionsComponentExts {
   jsx?: boolean
 
   /**
-   * Enable test support.
-   *
-   * @default true
-   */
-  test?: boolean | OptionsOverrides
-
-  /**
-   * Enable JSONC support.
-   *
-   * @default true
-   */
-  jsonc?: boolean | OptionsOverrides
-
-  /**
-   * Enable YAML support.
-   *
-   * @default true
-   */
-  yaml?: boolean | OptionsOverrides
-
-  /**
-   * Enable TOML support.
-   *
-   * @default true
-   */
-  toml?: boolean | OptionsOverrides
-
-  /**
-   * Enable ASTRO support.
-   *
-   * Requires installing:
-   * - `eslint-plugin-astro`
-   *
-   * Requires installing for formatting .astro:
-   * - `prettier-plugin-astro`
-   *
-   * @default false
-   */
-  astro?: boolean | OptionsOverrides
-
-  /**
    * Enable stylistic rules.
    *
    * @default true
@@ -170,11 +118,4 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default false
    */
   react?: boolean | OptionsOverrides
-
-  /**
-   * Automatically rename plugins in the config.
-   *
-   * @default true
-   */
-  autoRenamePlugins?: boolean
 }

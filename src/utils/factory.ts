@@ -49,8 +49,7 @@ export function eslintConfig(
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
     autoRenamePlugins = true,
-    componentExts = [],
-    gitignore: enableGitignore = true,
+    componentExts = [],\
     react: enableReact = false,
     typescript: enableTypeScript = isPackageExists('typescript'),
   } = options
@@ -85,7 +84,6 @@ export function eslintConfig(
   if (stylisticOptions) {
     configs.push(stylistic({
       ...stylisticOptions,
-      lessOpinionated: options.lessOpinionated,
       overrides: getOverrides(options, 'stylistic'),
     }))
   }
