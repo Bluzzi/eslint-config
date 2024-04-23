@@ -8,5 +8,7 @@ export * from '#/configs/stylistic'
 export * from '#/utils/factory'
 export * from '#/utils/glob'
 export * from '#/utils/extension'
-export * from '#/types/type'
 export * from '#/utils/util'
+
+// Types:
+export * from '#/types/type'

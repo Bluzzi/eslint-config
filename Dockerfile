@@ -19,9 +19,5 @@ WORKDIR /app
 # Copy only necessary files from the build stage:
 COPY --from=builder /app/.eslint-config-inspector ./
 
-# Enable PNPM and install a static site runner:
-RUN corepack enable
-RUN pnpm install -g serve
-
 # Run the server:
-CMD serve .
+CMD npx serve .
