@@ -1,5 +1,5 @@
-import type { TypedFlatConfigItem } from '../types'
-import { pluginNode } from '../plugins'
+import type { TypedFlatConfigItem } from '#/utils/type'
+import { pluginNode } from '#/utils/plugin'
 
 export async function node(): Promise<TypedFlatConfigItem[]> {
   return [

@@ -1,6 +1,6 @@
-import { interopDefault } from '../utils'
-import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '../types'
-import { pluginAntfu } from '../plugins'
+import { interopDefault } from '#/utils/util'
+import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '#/utils/type'
+import { pluginAntfu } from '#/utils/plugin'
 
 export const StylisticConfigDefaults: StylisticConfig = {
   indent: 2,

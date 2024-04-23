@@ -1,8 +1,8 @@
 import process from 'node:process'
-import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs'
-import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
-import { pluginAntfu } from '../plugins'
-import { interopDefault, renameRules, toArray } from '../utils'
+import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '#/utils/globs'
+import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '#/utils/type'
+import { pluginAntfu } from '#/utils/plugin'
+import { interopDefault, renameRules, toArray } from '#/utils/util'
 
 export async function typescript(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
@@ -97,11 +97,11 @@ export async function typescript(
       name: 'antfu/typescript/rules',
       rules: {
         ...renameRules(
-          pluginTs.configs['eslint-recommended'].overrides![0].rules!,
+          pluginTs.configs['eslint-recommended']!.overrides![0]!.rules!,
           { '@typescript-eslint': 'ts' },
         ),
         ...renameRules(
-          pluginTs.configs.strict.rules!,
+          pluginTs.configs.strict!.rules!,
           { '@typescript-eslint': 'ts' },
         ),
         'no-dupe-class-members': 'off',
