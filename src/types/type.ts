@@ -31,59 +31,6 @@ export type OptionsTypescript =
   (OptionsTypeScriptWithTypes & OptionsOverrides)
   | (OptionsTypeScriptParserOptions & OptionsOverrides)
 
-export interface OptionsFormatters {
-  /**
-   * Enable formatting support for CSS, Less, Sass, and SCSS.
-   *
-   * Currently only support Prettier.
-   */
-  css?: 'prettier' | boolean
-
-  /**
-   * Enable formatting support for HTML.
-   *
-   * Currently only support Prettier.
-   */
-  html?: 'prettier' | boolean
-
-  /**
-   * Enable formatting support for Markdown.
-   *
-   * Support both Prettier and dprint.
-   *
-   * When set to `true`, it will use Prettier.
-   */
-  markdown?: 'prettier' | 'dprint' | boolean
-
-  /**
-   * Enable formatting support for GraphQL.
-   */
-  graphql?: 'prettier' | boolean
-
-  /**
-   * Custom options for dprint.
-   *
-   * By default it's controlled by our own config.
-   */
-  dprintOptions?: boolean
-
-  /**
-   * Install the prettier plugin for handle Slidev markdown
-   *
-   * Only works when `markdown` is enabled with `prettier`.
-   */
-  slidev?: boolean | {
-    files?: string[]
-  }
-
-  /**
-   * Enable formatting support for Astro.
-   *
-   * Currently only support Prettier.
-   */
-  astro?: 'prettier' | boolean
-}
-
 export interface OptionsComponentExts {
   /**
    * Additional extensions for components.
@@ -128,23 +75,6 @@ export interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent
 
 export interface OptionsOverrides {
   overrides?: TypedFlatConfigItem['rules']
-}
-
-export interface OptionsIsInEditor {
-  isInEditor?: boolean
-}
-
-export interface OptionsUnoCSS extends OptionsOverrides {
-  /**
-   * Enable attributify support.
-   * @default true
-   */
-  attributify?: boolean
-  /**
-   * Enable strict mode by throwing errors about blocklisted classes.
-   * @default false
-   */
-  strict?: boolean
 }
 
 export interface OptionsConfig extends OptionsComponentExts {
@@ -198,7 +128,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default true
    */
   test?: boolean | OptionsOverrides
-  
+
   /**
    * Enable JSONC support.
    *
@@ -234,15 +164,6 @@ export interface OptionsConfig extends OptionsComponentExts {
   astro?: boolean | OptionsOverrides
 
   /**
-   * Enable linting for **code snippets** in Markdown.
-   *
-   * For formatting Markdown content, enable also `formatters.markdown`.
-   *
-   * @default true
-   */
-  markdown?: boolean | OptionsOverrides
-
-  /**
    * Enable stylistic rules.
    *
    * @default true
@@ -260,41 +181,6 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default false
    */
   react?: boolean | OptionsOverrides
-  /**
-   * Enable solid rules.
-   *
-   * Requires installing:
-   * - `eslint-plugin-solid`
-   *
-   * @default false
-   */
-  solid?: boolean | OptionsOverrides
-
-  /**
-   * Enable svelte rules.
-   *
-   * Requires installing:
-   * - `eslint-plugin-svelte`
-   *
-   * @default false
-   */
-  svelte?: boolean
-
-  /**
-   * Enable unocss rules.
-   *
-   * Requires installing:
-   * - `@unocss/eslint-plugin`
-   *
-   * @default false
-   */
-  unocss?: boolean | OptionsUnoCSS
-
-  /**
-   * Control to disable some rules in editors.
-   * @default auto-detect based on the process.env
-   */
-  isInEditor?: boolean
 
   /**
    * Automatically rename plugins in the config.
@@ -302,23 +188,4 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default true
    */
   autoRenamePlugins?: boolean
-
-  /**
-   * Provide overrides for rules for each integration.
-   *
-   * @deprecated use `overrides` option in each integration key instead
-   */
-  overrides?: {
-    stylistic?: TypedFlatConfigItem['rules']
-    javascript?: TypedFlatConfigItem['rules']
-    typescript?: TypedFlatConfigItem['rules']
-    test?: TypedFlatConfigItem['rules']
-    vue?: TypedFlatConfigItem['rules']
-    jsonc?: TypedFlatConfigItem['rules']
-    markdown?: TypedFlatConfigItem['rules']
-    yaml?: TypedFlatConfigItem['rules']
-    toml?: TypedFlatConfigItem['rules']
-    react?: TypedFlatConfigItem['rules']
-    svelte?: TypedFlatConfigItem['rules']
-  }
 }

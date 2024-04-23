@@ -1,13 +1,12 @@
-import type { OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '#/types/type'
+import type { OptionsOverrides, TypedFlatConfigItem } from '#/types/type'
 import { pluginAntfu, pluginUnusedImports } from '#/utils/plugin'
 import { GLOB_SRC, GLOB_SRC_EXT } from '#/utils/glob'
 import globals from 'globals'
 
 export async function javascript(
-  options: OptionsIsInEditor & OptionsOverrides = {},
+  options: OptionsOverrides = {},
 ): Promise<TypedFlatConfigItem[]> {
   const {
-    isInEditor = false,
     overrides = {},
   } = options
 
@@ -200,7 +199,7 @@ export async function javascript(
 
         'symbol-description': 'error',
         'unicode-bom': ['error', 'never'],
-        'unused-imports/no-unused-imports': isInEditor ? 'off' : 'error',
+        'unused-imports/no-unused-imports': "error",
         'unused-imports/no-unused-vars': [
           'error',
           {
