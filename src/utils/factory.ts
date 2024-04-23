@@ -1,114 +1,50 @@
-import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from '../types/type'
-import type { Linter } from 'eslint'
-import { isPackageExists } from 'local-pkg'
-import { FlatConfigComposer } from 'eslint-flat-config-utils'
-import { javascript } from '#/configs/javascript/config'
-import { typescript } from '#/configs/typescript/config'
-import { node } from '#/configs/node'
-import { stylistic } from '#/configs/stylistic/config'
+import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from "#/types/type";
+import type { Linter } from "eslint";
+import { isPackageExists } from "local-pkg";
+import { FlatConfigComposer } from "eslint-flat-config-utils";
+import { javascript } from "#/configs/javascript/config";
+import { typescript } from "#/configs/typescript/config";
+import { stylistic } from "#/configs/stylistic/config";
+import { node } from "#/configs/node";
+import { logger } from "#/utils/logger";
 
-const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
-  'name',
-  'files',
-  'ignores',
-  'languageOptions',
-  'linterOptions',
-  'processor',
-  'plugins',
-  'rules',
-  'settings',
-]
-
-export const defaultPluginRenaming = {
-  '@eslint-react': 'react',
-  '@eslint-react/dom': 'react-dom',
-  '@eslint-react/hooks-extra': 'react-hooks-extra',
-  '@eslint-react/naming-convention': 'react-naming-convention',
-
-  '@stylistic': 'style',
-  '@typescript-eslint': 'ts',
-  'import-x': 'import',
-  'n': 'node',
-  'vitest': 'test',
-  'yml': 'yaml',
-}
-
-/**
- * Construct an array of ESLint flat config items.
- *
- * @param {OptionsConfig & TypedFlatConfigItem} options
- *  The options for generating the ESLint configurations.
- * @param {Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[]>[]} userConfigs
- *  The user configurations to be merged with the generated configurations.
- * @returns {Promise<TypedFlatConfigItem[]>}
- *  The merged ESLint configurations.
- */
 export function eslintConfig(
   options: OptionsConfig = {},
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.FlatConfig[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
-  const {
-    typescript: enableTypeScript = isPackageExists('typescript'),
-  } = options
+  const configs: Awaitable<TypedFlatConfigItem[]>[] = [];
 
-  const stylisticOptions = options.stylistic === false
-    ? false
-    : typeof options.stylistic === 'object'
-      ? options.stylistic
-      : {}
+  const enabled = {
+    typescript: isPackageExists("typescript"),
+  };
 
-  const configs: Awaitable<TypedFlatConfigItem[]>[] = []
+  // JS:
+  logger.info("javascript - config enabled");
+  configs.push(javascript());
 
-  // Base configs
-  configs.push(
-    javascript({
-      overrides: getOverrides(options, 'javascript'),
-    }),
-    node(),
-  )
-
-  if (enableTypeScript) {
-    configs.push(typescript({
-      ...resolveSubOptions(options, 'typescript'),
-      overrides: getOverrides(options, 'typescript'),
-    }))
+  // TS:
+  if (enabled.typescript) {
+    logger.info("typescript - config enabled (typescript package found)");
+    configs.push(typescript(options.typescript));
   }
 
-  if (stylisticOptions) {
-    configs.push(stylistic({
-      ...stylisticOptions,
-      overrides: getOverrides(options, 'stylistic'),
-    }))
-  }
+  // Node:
+  logger.info("node - config enabled");
+  configs.push(node());
 
-  const composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>()
-    .append(...configs, ...userConfigs as any)
-    .renamePlugins(defaultPluginRenaming)
+  // Stylistic:
+  logger.info("stylistic - config enabled");
+  configs.push(stylistic(options.stylistic));
 
-  return composer
-}
+  // Compose:
+  const composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>();
 
-export type ResolvedOptions<T> = T extends boolean
-  ? never
-  : NonNullable<T>
+  composer.append(...configs, ...userConfigs as any);
+  composer.renamePlugins({
+    "@stylistic": "style",
+    "@typescript-eslint": "ts",
+    "n": "node",
+  });
 
-export function resolveSubOptions<K extends keyof OptionsConfig>(
-  options: OptionsConfig,
-  key: K,
-): ResolvedOptions<OptionsConfig[K]> {
-  return typeof options[key] === 'boolean'
-    ? {} as any
-    : options[key] || {}
-}
-
-export function getOverrides<K extends keyof OptionsConfig>(
-  options: OptionsConfig,
-  key: K,
-) {
-  const sub = resolveSubOptions(options, key)
-  return {
-    ...'overrides' in sub
-      ? sub.overrides
-      : {},
-  }
+  return composer;
 }

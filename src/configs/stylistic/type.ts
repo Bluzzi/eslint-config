@@ -5,7 +5,7 @@ export interface ParamsStylistic {
    *
    * @default 2
    */
-  indent?: number | 'tab'
+  indent?: number | "tab";
 
   /**
    * Quote style
@@ -13,7 +13,7 @@ export interface ParamsStylistic {
    *
    * @default 'double'
    */
-  quotes?: 'single' | 'double'
+  quotes?: "single" | "double";
 
   /**
    * Whether to enable semicolons
@@ -21,5 +21,5 @@ export interface ParamsStylistic {
    *
    * @default true
    */
-  semi?: boolean
+  semi?: boolean;
 }
