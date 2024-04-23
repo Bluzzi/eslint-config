@@ -26,15 +26,10 @@
     "@stylistic/eslint-plugin": "^1.7.2",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
-    "eslint-config-flat-gitignore": "^0.1.5",
     "eslint-flat-config-utils": "^0.2.3",
-    "eslint-merge-processors": "^0.1.0",
     "eslint-plugin-antfu": "^2.1.2",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-import-x": "^0.5.0",
     "eslint-plugin-n": "^17.2.1",
     "globals": "^15.0.0",
-    "jsonc-eslint-parser": "^2.4.0",
     "local-pkg": "^0.5.0"
   },
   "devDependencies": {

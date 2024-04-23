@@ -1,6 +1,5 @@
-import { interopDefault } from '#/utils/util'
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '#/types/type'
-import { pluginAntfu } from '#/utils/plugin'
+import { plugins } from '#/utils/extension'
 
 export const StylisticConfigDefaults: StylisticConfig = {
   indent: 2,
@@ -28,9 +27,8 @@ export async function stylistic(
     ...options,
   }
 
-  const pluginStylistic = await interopDefault(import('@stylistic/eslint-plugin'))
 
-  const config = pluginStylistic.configs.customize({
+  const config = plugins.stylistic.configs.customize({
     flat: true,
     indent,
     jsx,
@@ -43,8 +41,8 @@ export async function stylistic(
     {
       name: 'antfu/stylistic/rules',
       plugins: {
-        antfu: pluginAntfu,
-        style: pluginStylistic,
+        antfu: plugins.antfu,
+        style: plugins.stylistic,
       },
       rules: {
         ...config.rules,

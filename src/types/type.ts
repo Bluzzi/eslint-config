@@ -1,4 +1,3 @@
-import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
 import type { ParserOptions } from '@typescript-eslint/parser'
 import type { Linter } from 'eslint'
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
@@ -78,16 +77,6 @@ export interface OptionsOverrides {
 }
 
 export interface OptionsConfig extends OptionsComponentExts {
-  /**
-   * Enable gitignore support.
-   *
-   * Passing an object to configure the options.
-   *
-   * @see https://github.com/antfu/eslint-config-flat-gitignore
-   * @default true
-   */
-  gitignore?: boolean | FlatGitignoreOptions
-
   /**
    * Disable some opinionated rules to Anthony's preference.
    *

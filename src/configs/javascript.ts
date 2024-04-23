@@ -1,6 +1,6 @@
 import type { OptionsOverrides, TypedFlatConfigItem } from '#/types/type'
-import { pluginAntfu, pluginUnusedImports } from '#/utils/plugin'
 import globals from 'globals'
+import { plugins } from '..'
 
 export async function javascript(
   options: OptionsOverrides = {},
@@ -35,8 +35,7 @@ export async function javascript(
       },
       name: 'antfu/javascript/rules',
       plugins: {
-        'antfu': pluginAntfu,
-        'unused-imports': pluginUnusedImports,
+        'antfu': plugins.antfu,
       },
       rules: {
         'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],

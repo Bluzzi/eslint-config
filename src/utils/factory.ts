@@ -6,8 +6,6 @@ import { javascript } from '#/configs/javascript'
 import { typescript } from '#/configs/typescript'
 import { node } from '#/configs/node'
 import { stylistic } from '#/configs/stylistic'
-import { interopDefault } from './util'
-import { existsSync } from 'node:fs'
 
 const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
   'name',
@@ -67,16 +65,6 @@ export function eslintConfig(
     stylisticOptions.jsx = options.jsx ?? true
 
   const configs: Awaitable<TypedFlatConfigItem[]>[] = []
-
-  if (enableGitignore) {
-    if (typeof enableGitignore !== 'boolean') {
-      configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r(enableGitignore)]))
-    }
-    else {
-      if (existsSync('.gitignore'))
-        configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r()]))
-    }
-  }
 
   // Base configs
   configs.push(

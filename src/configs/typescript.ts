@@ -1,8 +1,8 @@
 import process from 'node:process'
 import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '#/utils/glob'
 import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '#/types/type'
-import { pluginAntfu } from '#/utils/plugin'
-import { interopDefault, renameRules, toArray } from '#/utils/util'
+import { renameRules, toArray } from '#/utils/util'
+import { parsers, plugins } from '..'
 
 export async function typescript(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
@@ -46,20 +46,12 @@ export async function typescript(
     'ts/unbound-method': 'error',
   }
 
-  const [
-    pluginTs,
-    parserTs,
-  ] = await Promise.all([
-    interopDefault(import('@typescript-eslint/eslint-plugin')),
-    interopDefault(import('@typescript-eslint/parser')),
-  ] as const)
-
   function makeParser(typeAware: boolean, files: string[], ignores?: string[]): TypedFlatConfigItem {
     return {
       files,
       ...ignores ? { ignores } : {},
       languageOptions: {
-        parser: parserTs,
+        parser: parsers.typescript,
         parserOptions: {
           extraFileExtensions: componentExts.map(ext => `.${ext}`),
           sourceType: 'module',
@@ -81,8 +73,8 @@ export async function typescript(
       // Install the plugins without globs, so they can be configured separately.
       name: 'antfu/typescript/setup',
       plugins: {
-        antfu: pluginAntfu,
-        ts: pluginTs as any,
+        antfu: plugins.antfu,
+        ts: plugins.typescript,
       },
     },
     // assign type-aware parser for type-aware files and type-unaware parser for the rest
@@ -97,11 +89,11 @@ export async function typescript(
       name: 'antfu/typescript/rules',
       rules: {
         ...renameRules(
-          pluginTs.configs['eslint-recommended']!.overrides![0]!.rules!,
+          plugins.typescript.configs['eslint-recommended']!.overrides![0]!.rules!,
           { '@typescript-eslint': 'ts' },
         ),
         ...renameRules(
-          pluginTs.configs.strict!.rules!,
+          plugins.typescript.configs.strict!.rules!,
           { '@typescript-eslint': 'ts' },
         ),
         'no-dupe-class-members': 'off',

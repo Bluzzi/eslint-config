@@ -1,12 +1,12 @@
 import type { TypedFlatConfigItem } from '#/types/type'
-import { pluginNode } from '#/utils/plugin'
+import { plugins } from '..'
 
 export async function node(): Promise<TypedFlatConfigItem[]> {
   return [
     {
       name: 'antfu/node/rules',
       plugins: {
-        node: pluginNode,
+        node: plugins.node,
       },
       rules: {
         'node/handle-callback-err': ['error', '^(err|error)$'],
