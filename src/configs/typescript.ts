@@ -1,5 +1,5 @@
 import process from 'node:process'
-import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '#/utils/globs'
+import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '#/utils/glob'
 import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '#/utils/type'
 import { pluginAntfu } from '#/utils/plugin'
 import { interopDefault, renameRules, toArray } from '#/utils/util'

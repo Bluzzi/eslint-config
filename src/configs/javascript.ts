@@ -1,6 +1,6 @@
 import type { OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '#/utils/type'
 import { pluginAntfu, pluginUnusedImports } from '#/utils/plugin'
-import { GLOB_SRC, GLOB_SRC_EXT } from '#/utils/globs'
+import { GLOB_SRC, GLOB_SRC_EXT } from '#/utils/glob'
 import globals from 'globals'
 
 export async function javascript(
