@@ -23,4 +23,4 @@ COPY --from=builder /app/.eslint-config-inspector ./
 RUN npm install -g serve
 
 # Run the server:
-CMD serve . --listen tcp://0.0.0.0:$RAILWAY_TCP_PROXY_PORT
+CMD serve . --listen tcp://0.0.0.0
