@@ -2,6 +2,7 @@ import type { Linter } from 'eslint'
 import type { ConfigNames, RuleOptions } from './gen'
 import type { OptionsTypeScript } from '#/configs/typescript'
 import type { StylisticConfig } from '#/configs/stylistic'
+import type { ParamsJS } from '#/configs/javascript'
 
 export type Awaitable<T> = T | Promise<T>
 
@@ -29,7 +30,7 @@ export interface OptionsConfig {
   /**
    * Core rules. Can't be disabled.
    */
-  javascript?: OptionsOverrides
+  javascript?: ParamsJS
 
   /**
    * Enable TypeScript support.

@@ -1,8 +1,25 @@
-import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
+export interface ParamsStylistic {
+  /**
+   * Indentation level
+   * Similar to the `tabWidth` and `useTabs` options in Prettier
+   *
+   * @default 2
+   */
+  indent?: number | 'tab'
 
-export interface OptionsStylistic {
-  stylistic?: boolean | StylisticConfig
-}
+  /**
+   * Quote style
+   * Similar to `singleQuote` option in Prettier
+   *
+   * @default 'double'
+   */
+  quotes?: 'single' | 'double'
 
-export interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'jsx' | 'semi'> {
+  /**
+   * Whether to enable semicolons
+   * Similar to `semi` option in Prettier
+   *
+   * @default true
+   */
+  semi?: boolean
 }

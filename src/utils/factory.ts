@@ -57,9 +57,6 @@ export function eslintConfig(
       ? options.stylistic
       : {}
 
-  if (stylisticOptions && !('jsx' in stylisticOptions))
-    stylisticOptions.jsx = options.jsx ?? true
-
   const configs: Awaitable<TypedFlatConfigItem[]>[] = []
 
   // Base configs
