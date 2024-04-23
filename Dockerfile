@@ -19,5 +19,8 @@ WORKDIR /app
 # Copy only necessary files from the build stage:
 COPY --from=builder /app/.eslint-config-inspector ./
 
+# Install a static site runner:
+RUN npm install -g serve
+
 # Run the server:
-CMD npx serve .
+CMD serve . --listen tcp://0.0.0.0:$RAILWAY_TCP_PROXY_PORT
