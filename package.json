@@ -13,8 +13,8 @@
   "scripts": {
     "build:config": "tsup src/index.ts --minify --format cjs,esm --clean --dts",
     "build:type": "tsx ./scripts/typegen.ts",
-    "inspector:dev": "pnpx @eslint/config-inspector --config eslint.config.js",
-    "inspector:build": "pnpm build && pnpx @eslint/config-inspector build",
+    "inspector:dev": "npx @eslint/config-inspector --config eslint.config.js",
+    "inspector:build": "npm run build:config && npx @eslint/config-inspector build",
     "inspector:start": "serve .eslint-config-inspector",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
