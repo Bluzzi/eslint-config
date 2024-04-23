@@ -1,14 +1,9 @@
-import type { OptionsOverrides, TypedFlatConfigItem } from '#/types/type'
+import type { TypedFlatConfigItem } from '#/types/type'
+import { antfuPlugin } from '../..'
+import type { OptionsJavaScript } from './type'
 import globals from 'globals'
-import { antfuPlugin } from '..'
 
-export async function javascript(
-  options: OptionsOverrides = {},
-): Promise<TypedFlatConfigItem[]> {
-  const {
-    overrides = {},
-  } = options
-
+export async function javascript({ overrides = undefined }: OptionsJavaScript): Promise<TypedFlatConfigItem[]> {
   return [
     {
       languageOptions: {

@@ -2,10 +2,10 @@ import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from 
 import type { Linter } from 'eslint'
 import { isPackageExists } from 'local-pkg'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
-import { javascript } from '#/configs/javascript'
-import { typescript } from '#/configs/typescript'
+import { javascript } from '#/configs/javascript/config'
+import { typescript } from '#/configs/typescript/config'
 import { node } from '#/configs/node'
-import { stylistic } from '#/configs/stylistic'
+import { stylistic } from '#/configs/stylistic/config'
 
 const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
   'name',
@@ -44,11 +44,10 @@ export const defaultPluginRenaming = {
  *  The merged ESLint configurations.
  */
 export function eslintConfig(
-  options: OptionsConfig & TypedFlatConfigItem = {},
+  options: OptionsConfig = {},
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.FlatConfig[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
-    componentExts = [],
     typescript: enableTypeScript = isPackageExists('typescript'),
   } = options
 
@@ -74,7 +73,6 @@ export function eslintConfig(
   if (enableTypeScript) {
     configs.push(typescript({
       ...resolveSubOptions(options, 'typescript'),
-      componentExts,
       overrides: getOverrides(options, 'typescript'),
     }))
   }
@@ -85,16 +83,6 @@ export function eslintConfig(
       overrides: getOverrides(options, 'stylistic'),
     }))
   }
-
-  // User can optionally pass a flat config item to the first argument
-  // We pick the known keys as ESLint would do schema validation
-  const fusedConfig = flatConfigProps.reduce((acc, key) => {
-    if (key in options)
-      acc[key] = options[key] as any
-    return acc
-  }, {} as TypedFlatConfigItem)
-  if (Object.keys(fusedConfig).length)
-    configs.push([fusedConfig])
 
   const composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>()
     .append(...configs, ...userConfigs as any)

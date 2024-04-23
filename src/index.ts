@@ -1,8 +1,8 @@
 // Configs:
-export * from '#/configs/typescript'
-export * from '#/configs/javascript'
+export * from '#/configs/typescript/config'
+export * from '#/configs/javascript/config'
 export * from '#/configs/node'
-export * from '#/configs/stylistic'
+export * from '#/configs/stylistic/config'
 
 // Utils:
 export * from '#/utils/factory'

@@ -1,22 +1,19 @@
+import type { OptionsOverrides, TypedFlatConfigItem } from '#/types/type'
 import process from 'node:process'
 import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '#/utils/glob'
-import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '#/types/type'
 import { renameRules, toArray } from '#/utils/util'
-import { antfuPlugin, typescriptParser, typescriptPlugin } from '..'
+import { antfuPlugin, typescriptParser, typescriptPlugin } from '../..'
+import type { OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from './type'
 
 export async function typescript(
-  options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
+  options: OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
 ): Promise<TypedFlatConfigItem[]> {
   const {
-    componentExts = [],
     overrides = {},
     parserOptions = {},
   } = options
 
-  const files = options.files ?? [
-    GLOB_SRC,
-    ...componentExts.map(ext => `**/*.${ext}`),
-  ]
+  const files = [GLOB_SRC]
 
   const filesTypeAware = options.filesTypeAware ?? [GLOB_TS, GLOB_TSX]
   const tsconfigPath = options?.tsconfigPath
@@ -53,7 +50,6 @@ export async function typescript(
       languageOptions: {
         parser: typescriptParser,
         parserOptions: {
-          extraFileExtensions: componentExts.map(ext => `.${ext}`),
           sourceType: 'module',
           ...typeAware
             ? {
