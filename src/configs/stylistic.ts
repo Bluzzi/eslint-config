@@ -1,5 +1,5 @@
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '#/types/type'
-import { plugins } from '#/utils/extension'
+import { antfuPlugin, stylisticPlugin } from '#/utils/extension'
 
 export const StylisticConfigDefaults: StylisticConfig = {
   indent: 2,
@@ -22,8 +22,7 @@ export async function stylistic(
     ...options,
   }
 
-
-  const config = plugins.stylistic.configs.customize({
+  const config = stylisticPlugin.configs.customize({
     flat: true,
     indent,
     jsx,
@@ -36,8 +35,8 @@ export async function stylistic(
     {
       name: 'antfu/stylistic/rules',
       plugins: {
-        antfu: plugins.antfu,
-        style: plugins.stylistic,
+        antfu: antfuPlugin,
+        style: stylisticPlugin,
       },
       rules: {
         ...config.rules,

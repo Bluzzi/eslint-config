@@ -2,7 +2,7 @@ import process from 'node:process'
 import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '#/utils/glob'
 import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '#/types/type'
 import { renameRules, toArray } from '#/utils/util'
-import { parsers, plugins } from '..'
+import { antfuPlugin, typescriptParser, typescriptPlugin } from '..'
 
 export async function typescript(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
@@ -51,7 +51,7 @@ export async function typescript(
       files,
       ...ignores ? { ignores } : {},
       languageOptions: {
-        parser: parsers.typescript,
+        parser: typescriptParser,
         parserOptions: {
           extraFileExtensions: componentExts.map(ext => `.${ext}`),
           sourceType: 'module',
@@ -73,8 +73,8 @@ export async function typescript(
       // Install the plugins without globs, so they can be configured separately.
       name: 'antfu/typescript/setup',
       plugins: {
-        antfu: plugins.antfu,
-        ts: plugins.typescript,
+        antfu: antfuPlugin,
+        ts: typescriptPlugin,
       },
     },
     // assign type-aware parser for type-aware files and type-unaware parser for the rest
@@ -89,11 +89,11 @@ export async function typescript(
       name: 'antfu/typescript/rules',
       rules: {
         ...renameRules(
-          plugins.typescript.configs['eslint-recommended']!.overrides![0]!.rules!,
+          typescriptPlugin.configs['eslint-recommended']!.overrides![0]!.rules!,
           { '@typescript-eslint': 'ts' },
         ),
         ...renameRules(
-          plugins.typescript.configs.strict!.rules!,
+          typescriptPlugin.configs.strict!.rules!,
           { '@typescript-eslint': 'ts' },
         ),
         'no-dupe-class-members': 'off',

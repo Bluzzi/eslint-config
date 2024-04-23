@@ -48,9 +48,7 @@ export function eslintConfig(
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.FlatConfig[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
-    autoRenamePlugins = true,
-    componentExts = [],\
-    react: enableReact = false,
+    componentExts = [],
     typescript: enableTypeScript = isPackageExists('typescript'),
   } = options
 
@@ -88,13 +86,6 @@ export function eslintConfig(
     }))
   }
 
-  if (enableReact) {
-    configs.push(react({
-      overrides: getOverrides(options, 'react'),
-      tsconfigPath: getOverrides(options, 'typescript').tsconfigPath,
-    }))
-  }
-
   // User can optionally pass a flat config item to the first argument
   // We pick the known keys as ESLint would do schema validation
   const fusedConfig = flatConfigProps.reduce((acc, key) => {
@@ -105,18 +96,9 @@ export function eslintConfig(
   if (Object.keys(fusedConfig).length)
     configs.push([fusedConfig])
 
-  let composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>()
-
-  composer = composer
-    .append(
-      ...configs,
-      ...userConfigs as any,
-    )
-
-  if (autoRenamePlugins) {
-    composer = composer
-      .renamePlugins(defaultPluginRenaming)
-  }
+  const composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>()
+    .append(...configs, ...userConfigs as any)
+    .renamePlugins(defaultPluginRenaming)
 
   return composer
 }
@@ -140,7 +122,6 @@ export function getOverrides<K extends keyof OptionsConfig>(
 ) {
   const sub = resolveSubOptions(options, key)
   return {
-    ...(options.overrides as any)?.[key],
     ...'overrides' in sub
       ? sub.overrides
       : {},

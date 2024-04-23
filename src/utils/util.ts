@@ -45,8 +45,6 @@ export function toArray<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value]
 }
 
-
-
 export async function ensurePackages(packages: (string | undefined)[]) {
   if (process.env.CI || process.stdout.isTTY === false)
     return
