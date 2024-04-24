@@ -5,7 +5,7 @@ import { configName } from "#/utils/naming";
 
 export function javascript(): TypedFlatConfigItem[] {
   return [{
-    name: configName("javascript"),
+    name: configName("javascript", "rules"),
     plugins: {
       antfu: antfuPlugin,
     },

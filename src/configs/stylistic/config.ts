@@ -7,7 +7,7 @@ export function stylistic({ indent = 2, quotes = "double", semi = true }: Params
   const config = stylisticPlugin.configs.customize({ pluginName: "style", indent, quotes, semi });
 
   return [{
-    name: configName("stylistic"),
+    name: configName("stylistic", "rules"),
     plugins: {
       antfu: antfuPlugin,
       style: stylisticPlugin,

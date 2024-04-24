@@ -4,7 +4,7 @@ import { configName } from "#/utils/naming";
 
 export function node(): TypedFlatConfigItem[] {
   return [{
-    name: configName("node"),
+    name: configName("node", "rules"),
     plugins: {
       node: nodePlugin,
     },
