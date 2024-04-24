@@ -15,11 +15,16 @@ export function stylistic({ indent = 2, quotes = "double", semi = true }: Params
     rules: {
       ...config.rules,
 
-      "antfu/consistent-list-newline": "error",
+      "style/semi-style": "error",
+      "style/no-extra-semi": "error",
+      "style/function-call-spacing": "error",
+      "style/generator-star-spacing": ["error", { before: false, after: true }],
+      "style/implicit-arrow-linebreak": ["error", "beside"],
 
-      "curly": ["error", "multi-or-nest", "consistent"],
-      "antfu/if-newline": "error",
-      "antfu/top-level-function": "error",
+      "style/jsx-props-no-multi-spaces": ["error"],
+      "style/jsx/jsx-self-closing-comp": ["error", { component: true, html: true }],
+
+      "antfu/consistent-list-newline": "error",
     },
   }];
 }
