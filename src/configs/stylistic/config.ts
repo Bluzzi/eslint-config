@@ -22,7 +22,7 @@ export function stylistic({ indent = 2, quotes = "double", semi = true }: Params
       "style/implicit-arrow-linebreak": ["error", "beside"],
 
       "style/jsx-props-no-multi-spaces": ["error"],
-      "style/jsx/jsx-self-closing-comp": ["error", { component: true, html: true }],
+      "style/jsx-self-closing-comp": ["error", { component: true, html: true }],
 
       "antfu/consistent-list-newline": "error",
     },

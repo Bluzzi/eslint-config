@@ -7,8 +7,8 @@ import { cwd } from "node:process";
 export function typescript({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem[] {
   const isTypeChecked = Boolean(tsconfigPath);
 
-  const recommendedRules = renameRules(typescriptPlugin.configs.strict!.rules!, { "@typescript-eslint": "ts" });
-  const recommendedTypeCheckedRules = renameRules(typescriptPlugin.configs["strict-type-checked"]!.rules!, { "@typescript-eslint": "ts" });
+  const recommendedRules = renameRules(typescriptPlugin.configs.strict?.rules ?? [], { "@typescript-eslint": "ts" });
+  const recommendedTypeCheckedRules = renameRules(typescriptPlugin.configs["strict-type-checked"]?.rules ?? [], { "@typescript-eslint": "ts" });
 
   return [
     {
@@ -45,7 +45,7 @@ export function typescript({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem
       },
     },
     {
-      name: configName("typescript-cjs", "rules"),
+      name: configName("typescript", "rules", "CJS"),
       files: ["**/*.js", "**/*.cjs"],
       rules: {
         "ts/no-require-imports": "off",
