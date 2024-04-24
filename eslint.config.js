@@ -1,12 +1,9 @@
-import { eslintConfig } from './dist/index.js'
+import { eslintConfig } from "./dist/index.js";
 
 export default eslintConfig(
   {
     typescript: {
-
-    },
-    stylistic: {
-
+      tsconfigPath: `./tsconfig.json`,
     },
   },
-)
+);

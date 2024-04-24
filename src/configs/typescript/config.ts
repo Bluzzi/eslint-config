@@ -1,17 +1,11 @@
 import type { ParamsTS } from "./type";
 import type { TypedFlatConfigItem } from "#/types/type";
-import { renameRules } from "#/utils/util";
-import { antfuPlugin, typescriptParser, typescriptPlugin } from "../..";
-import { configName } from "#/utils/naming";
+import { antfuPlugin, typescriptParser, typescriptPlugin } from "#/utils/extension";
+import { configName, renameRules } from "#/utils/naming";
 import { cwd } from "node:process";
 
-export function typescript({ parserOptions, tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem[] {
+export function typescript({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem[] {
   const isTypeChecked = Boolean(tsconfigPath);
-
-  const parserOptionsObject = {
-    ...isTypeChecked ? { project: tsconfigPath, tsconfigRootDir: cwd() } : {},
-    ...parserOptions as any,
-  };
 
   const recommendedRules = renameRules(typescriptPlugin.configs.strict!.rules!, { "@typescript-eslint": "ts" });
   const recommendedTypeCheckedRules = renameRules(typescriptPlugin.configs["strict-type-checked"]!.rules!, { "@typescript-eslint": "ts" });
@@ -28,7 +22,7 @@ export function typescript({ parserOptions, tsconfigPath }: ParamsTS = {}): Type
       name: configName("typescript", "parsers"),
       languageOptions: {
         parser: typescriptParser,
-        parserOptions: parserOptionsObject,
+        parserOptions: isTypeChecked ? { project: tsconfigPath, tsconfigRootDir: cwd() } : {},
       },
     },
     {

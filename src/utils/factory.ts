@@ -39,8 +39,9 @@ export function eslintConfig(
   // Compose:
   const composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>();
 
-  composer.append(...configs, ...userConfigs as any);
-  composer.renamePlugins({
+  // eslint-disable-next-line ts/no-unsafe-argument
+  void composer.append(...configs, ...userConfigs as any);
+  void composer.renamePlugins({
     "@stylistic": "style",
     "@typescript-eslint": "ts",
     "n": "node",

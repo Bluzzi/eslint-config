@@ -6,7 +6,6 @@ export * from "#/configs/stylistic/config";
 
 // Utils:
 export * from "#/utils/factory";
-export * from "#/utils/glob";
 export * from "#/utils/extension";
 export * from "#/utils/util";
 
