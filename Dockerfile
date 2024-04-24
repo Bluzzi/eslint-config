@@ -6,7 +6,7 @@ WORKDIR /app
 # Enable PNPM:
 RUN corepack enable
 
-# Install dependencies and build NextJS:
+# Install dependencies and build:
 COPY package.json ./
 RUN pnpm install
 COPY . .

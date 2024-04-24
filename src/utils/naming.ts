@@ -1,1 +1,1 @@
-export const ruleName = (name: string) => `we-use/${name}/rules`;
+export const configName = (name: string) => `we-use/${name}/rules`;

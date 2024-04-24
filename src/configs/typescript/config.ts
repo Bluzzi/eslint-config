@@ -1,9 +1,10 @@
 import type { ParamsTS } from "./type";
 import type { TypedFlatConfigItem } from "#/types/type";
-import process from "node:process";
 import { GLOB_SRC, GLOB_TS, GLOB_TSX } from "#/utils/glob";
 import { renameRules } from "#/utils/util";
 import { antfuPlugin, typescriptParser, typescriptPlugin } from "../..";
+import { configName } from "#/utils/naming";
+import process from "node:process";
 
 export async function typescript({ parserOptions, tsconfigPath }: ParamsTS = {}): Promise<TypedFlatConfigItem[]> {
   const files = [GLOB_SRC];
@@ -56,8 +57,7 @@ export async function typescript({ parserOptions, tsconfigPath }: ParamsTS = {})
 
   return [
     {
-      // Install the plugins without globs, so they can be configured separately.
-      name: "antfu/typescript/setup",
+      name: configName("typescript-setup"),
       plugins: {
         antfu: antfuPlugin,
         ts: typescriptPlugin,

@@ -1,11 +1,11 @@
 import type { TypedFlatConfigItem } from "#/types/type";
 import { antfuPlugin } from "#/utils/extension";
 import globals from "globals";
-import { ruleName } from "#/utils/naming";
+import { configName } from "#/utils/naming";
 
 export function javascript(): TypedFlatConfigItem[] {
   return [{
-    name: ruleName("javascript"),
+    name: configName("javascript"),
     plugins: {
       antfu: antfuPlugin,
     },

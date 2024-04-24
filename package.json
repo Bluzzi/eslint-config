@@ -18,8 +18,7 @@
     "inspector:start": "serve .eslint-config-inspector",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "ts:check": "tsc --noEmit",
-    "postinstall": "npm run build:config"
+    "ts:check": "tsc --noEmit"
   },
   "dependencies": {
     "@stylistic/eslint-plugin": "^1.7.2",

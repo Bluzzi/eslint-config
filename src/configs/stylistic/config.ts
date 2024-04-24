@@ -1,13 +1,13 @@
 import type { ParamsStylistic } from "./type";
 import type { TypedFlatConfigItem } from "#/types/type";
 import { antfuPlugin, stylisticPlugin } from "#/utils/extension";
-import { ruleName } from "#/utils/naming";
+import { configName } from "#/utils/naming";
 
 export function stylistic({ indent = 2, quotes = "double", semi = true }: ParamsStylistic = {}): TypedFlatConfigItem[] {
   const config = stylisticPlugin.configs.customize({ pluginName: "style", indent, quotes, semi });
 
   return [{
-    name: ruleName("stylistic"),
+    name: configName("stylistic"),
     plugins: {
       antfu: antfuPlugin,
       style: stylisticPlugin,

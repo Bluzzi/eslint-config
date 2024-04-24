@@ -1,10 +1,10 @@
 import type { TypedFlatConfigItem } from "#/types/type";
 import { nodePlugin } from "#/utils/extension";
-import { ruleName } from "#/utils/naming";
+import { configName } from "#/utils/naming";
 
 export function node(): TypedFlatConfigItem[] {
   return [{
-    name: ruleName("node"),
+    name: configName("node"),
     plugins: {
       node: nodePlugin,
     },
