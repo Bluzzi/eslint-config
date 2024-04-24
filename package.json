@@ -26,7 +26,7 @@
     "@typescript-eslint/parser": "^7.7.1",
     "eslint-flat-config-utils": "^0.2.3",
     "eslint-plugin-antfu": "^2.1.2",
-    "eslint-plugin-n": "^17.2.1",
+    "eslint-plugin-n": "^17.3.0",
     "globals": "^15.0.0",
     "local-pkg": "^0.5.0"
   },
