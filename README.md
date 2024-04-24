@@ -43,7 +43,7 @@ In your package.json file, you can optionally add the following scripts to easil
 Installation and configuration of the VS Code plugin to take advantage of an automatic correction when saving a file, as well as a display of problems.
 
 Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and add the following settings to your `.vscode/settings.json`:
-```json
+```jsonc
 {
   // Enable the ESlint flat config support:
   "eslint.experimental.useFlatConfig": true,
