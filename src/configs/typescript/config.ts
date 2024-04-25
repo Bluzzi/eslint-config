@@ -48,7 +48,7 @@ export function typescript({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem
         "ts/explicit-function-return-type": ["error", { allowExpressions: true }],
         "ts/explicit-member-accessibility": "error",
         "ts/explicit-module-boundary-types": "error",
-        "ts/no-invalid-void-type": "off", // for undefined generics types (temporary?)
+        "ts/no-invalid-void-type": "off", // TODO: for undefined generics types (temporary?)
         "no-magic-numbers": "off",
         "ts/no-magic-numbers": "error",
         "ts/prefer-enum-initializers": "error",

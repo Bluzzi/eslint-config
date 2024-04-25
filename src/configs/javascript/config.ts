@@ -29,7 +29,7 @@ export function javascript(): TypedFlatConfigItem[] {
       "array-callback-return": "error",
       "no-await-in-loop": "error",
       "no-constructor-return": "error",
-      "no-duplicate-imports": "error", // conflict with type imports?
+      "no-duplicate-imports": "error", // TODO: conflict with type imports?
       "no-inner-declarations": "error",
       "no-promise-executor-return": "error",
       "no-self-compare": "error",
@@ -80,7 +80,7 @@ export function javascript(): TypedFlatConfigItem[] {
       "no-useless-constructor": "error",
       "no-useless-return": "error",
       "no-var": "error",
-      "no-void": "error",
+      "no-void": "error", // TODO: not sure about it (conflict with TS rules?)
       "prefer-arrow-callback": "error",
       "prefer-const": "error",
       "prefer-object-has-own": "error",
