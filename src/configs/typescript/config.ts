@@ -1,6 +1,6 @@
 import type { ParamsTS } from "./type";
 import type { TypedFlatConfigItem } from "#/types/type";
-import { antfuPlugin, typescriptParser, typescriptPlugin } from "#/utils/extension";
+import { typescriptParser, typescriptPlugin } from "#/utils/extension";
 import { configName, renameRules } from "#/utils/naming";
 import { cwd } from "node:process";
 
@@ -17,7 +17,6 @@ export function typescript({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem
     {
       name: configName("typescript", "plugins"),
       plugins: {
-        antfu: antfuPlugin,
         ts: typescriptPlugin,
       },
     },

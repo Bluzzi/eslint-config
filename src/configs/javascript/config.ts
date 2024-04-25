@@ -1,5 +1,4 @@
 import type { TypedFlatConfigItem } from "#/types/type";
-import { antfuPlugin } from "#/utils/extension";
 import { configName } from "#/utils/naming";
 import globals from "globals";
 import js from "@eslint/js";
@@ -9,11 +8,7 @@ export function javascript(): TypedFlatConfigItem[] {
 
   return [{
     name: configName("javascript", "rules"),
-    plugins: {
-      antfu: antfuPlugin,
-    },
     languageOptions: {
-      ecmaVersion: 2022,
       globals: {
         ...globals.browser,
         ...globals.es2021,
@@ -24,10 +19,7 @@ export function javascript(): TypedFlatConfigItem[] {
       },
       parserOptions: {
         ecmaFeatures: { jsx: true },
-        ecmaVersion: 2022,
-        sourceType: "module",
       },
-      sourceType: "module",
     },
     linterOptions: {
       reportUnusedDisableDirectives: true,
