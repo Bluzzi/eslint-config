@@ -62,13 +62,5 @@ export function typescript({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem
         "ts/strict-boolean-expressions": "error",
       },
     },
-    {
-      name: configName("typescript", "rules", "CJS"),
-      files: ["**/*.js", "**/*.cjs"],
-      rules: {
-        "ts/no-require-imports": "off",
-        "ts/no-var-requires": "off",
-      },
-    },
   ];
 }

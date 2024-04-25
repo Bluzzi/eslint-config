@@ -1,6 +1,4 @@
-export const configName = (name: string, category: "rules" | "parsers" | "plugins", type?: "CJS" | "ESM") => {
-  return `we-use/${name}${type ? `-${type}` : ""}/${category}`;
-}
+export const configName = (name: string, category: "rules" | "parsers" | "plugins") => `we-use/${name}/${category}`;
 
 /**
  * Rename plugin prefixes in a rule object.
