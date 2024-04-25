@@ -20,6 +20,8 @@ export function stylistic({ indent = 2, quotes = "double", semi = true }: Params
       "style/function-call-spacing": "error",
       "style/generator-star-spacing": ["error", { before: false, after: true }],
       "style/implicit-arrow-linebreak": ["error", "beside"],
+      "style/wrap-regex": "error",
+      "style/nonblock-statement-body-position": "error",
 
       "style/jsx-props-no-multi-spaces": ["error"],
       "style/jsx-self-closing-comp": ["error", { component: true, html: true }],

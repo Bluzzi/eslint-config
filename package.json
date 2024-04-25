@@ -21,6 +21,7 @@
     "ts:check": "tsc --noEmit"
   },
   "dependencies": {
+    "@eslint/js": "^9.1.1",
     "@stylistic/eslint-plugin": "^1.7.2",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@eslint/config-inspector": "^0.4.6",
     "@types/eslint": "^8.56.9",
+    "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.12.7",
     "eslint": "^9.0.0",
     "eslint-typegen": "^0.2.4",
