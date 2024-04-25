@@ -5,6 +5,7 @@ A ready-to-use ESLint config preset that's highly opinionated and strict on best
 - ⚒️ very strict rules for JS and TS, which encourages best practices
 - 🌏 designed to work with TS, JSX, React, JSON, YAML, TOML, GraphQL, CSS, HTML and Markdown
 - ✅ automatically enables specific rules based on your dependencies
+- 🧲 uses the recommended shared configs (ESLint, TSLint, Stylistic...)
 
 If you're looking for a less opinionated configuration with more customization possibilities, we recommend the [Antfu preset](https://github.com/antfu/eslint-config).
 
