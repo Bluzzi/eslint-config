@@ -3,6 +3,20 @@ name: CI
 on: push
 
 jobs:
+  build:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - uses: pnpm/action-setup@v3
+        with:
+          version: latest
+      - run: pnpm install
+      - run: pnpm run build:config
   lint:
     name: ESLint
     runs-on: ubuntu-latest
@@ -17,6 +31,8 @@ jobs:
           version: latest
       - name: Install dependencies
         run: pnpm install
+      - name: Run Build
+        run: pnpm run build:config
       - name: Run ESLint
         run: pnpm run lint
   typecheck:
@@ -32,5 +48,5 @@ jobs:
           version: latest
       - name: Install dependencies
         run: pnpm install
-      - name: Run typecheck
+      - name: Run Type Check
         run: pnpm run ts:check
