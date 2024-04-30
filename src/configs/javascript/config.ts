@@ -3,7 +3,7 @@ import { configName } from "#/utils/naming";
 import globals from "globals";
 import js from "@eslint/js";
 
-export function javascript(): TypedFlatConfigItem[] {
+export const javascript = (): TypedFlatConfigItem[] => {
   const recommendedRules = js.configs.recommended.rules;
 
   return [{
@@ -80,7 +80,6 @@ export function javascript(): TypedFlatConfigItem[] {
       "no-useless-constructor": "error",
       "no-useless-return": "error",
       "no-var": "error",
-      "no-void": "error", // TODO: not sure about it (conflict with TS rules?)
       "prefer-arrow-callback": "error",
       "prefer-const": "error",
       "prefer-object-has-own": "error",
@@ -93,4 +92,4 @@ export function javascript(): TypedFlatConfigItem[] {
       "yoda": "error",
     },
   }];
-}
+};

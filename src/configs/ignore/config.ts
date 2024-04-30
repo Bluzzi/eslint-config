@@ -1,7 +1,7 @@
 import type { TypedFlatConfigItem } from "#/types/type";
 import { configName } from "#/utils/naming";
 
-export function ignore(): TypedFlatConfigItem[] {
+export const ignore = (): TypedFlatConfigItem[] => {
   return [
     {
       name: configName("ignore", "rules"),
@@ -41,4 +41,4 @@ export function ignore(): TypedFlatConfigItem[] {
       ],
     },
   ];
-}
+};

@@ -1,4 +1,4 @@
-import type { ConfigNames, OptionsConfig, TypedFlatConfigItem } from "#/types/type";
+import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from "#/types/type";
 import type { Linter } from "eslint";
 import { isPackageExists } from "local-pkg";
 import { FlatConfigComposer } from "eslint-flat-config-utils";
@@ -9,10 +9,10 @@ import { node } from "#/configs/node";
 import { logger } from "#/utils/logger";
 import { ignore } from "#/configs/ignore";
 
-export async function eslintConfig(
+export const eslintConfig = async (
   options: OptionsConfig = {},
-  ...userConfigs: (TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.FlatConfig[])[]
-): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
+  ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.FlatConfig[]>[]
+): Promise<FlatConfigComposer<TypedFlatConfigItem, ConfigNames>> => {
   const configs: (TypedFlatConfigItem[])[] = [];
 
   const enabled = {
@@ -53,4 +53,4 @@ export async function eslintConfig(
   });
 
   return composer;
-}
+};

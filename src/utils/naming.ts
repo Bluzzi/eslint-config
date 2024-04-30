@@ -1,4 +1,4 @@
-export const configName = (name: string, category: "rules" | "parsers" | "plugins") => `we-use/${name}/${category}`;
+export const configName = (name: string, category: "rules" | "parsers" | "plugins"): string => `we-use/${name}/${category}`;
 
 /**
  * Rename plugin prefixes in a rule object.
@@ -18,14 +18,15 @@ export const configName = (name: string, category: "rules" | "parsers" | "plugin
  * }]
  * ```
  */
-export function renameRules(rules: Record<string, any>, map: Record<string, string>) {
+export const renameRules = (rules: Record<string, any>, map: Record<string, string>): Record<string, string> => {
   return Object.fromEntries(
     Object.entries(rules)
       .map(([key, value]) => {
         for (const [from, to] of Object.entries(map)) {
           if (key.startsWith(`${from}/`)) return [to + key.slice(from.length), value];
         }
+
         return [key, value];
       }),
   );
-}
+};

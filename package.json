@@ -15,6 +15,9 @@
     "lint:fix": "eslint . --fix",
     "ts:check": "tsc --noEmit"
   },
+  "peerDependencies": {
+    "eslint": ">=9.0.0"
+  },
   "dependencies": {
     "@eslint/js": "^9.1.1",
     "@stylistic/eslint-plugin": "^1.7.2",

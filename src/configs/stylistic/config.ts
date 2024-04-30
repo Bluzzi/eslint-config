@@ -3,7 +3,7 @@ import type { TypedFlatConfigItem } from "#/types/type";
 import { antfuPlugin, stylisticPlugin } from "#/utils/extension";
 import { configName } from "#/utils/naming";
 
-export function stylistic({ indent = 2, quotes = "double", semi = true }: ParamsStylistic = {}): TypedFlatConfigItem[] {
+export const stylistic = ({ indent = 2, quotes = "double", semi = true }: ParamsStylistic = {}): TypedFlatConfigItem[] => {
   const config = stylisticPlugin.configs.customize({ pluginName: "style", indent, quotes, semi });
 
   return [{
@@ -29,4 +29,4 @@ export function stylistic({ indent = 2, quotes = "double", semi = true }: Params
       "antfu/consistent-list-newline": "error",
     },
   }];
-}
+};

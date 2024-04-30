@@ -4,7 +4,7 @@ import { typescriptParser, typescriptPlugin } from "#/utils/extension";
 import { configName, renameRules } from "#/utils/naming";
 import { cwd } from "node:process";
 
-export function typescript({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem[] {
+export const typescript = ({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem[] => {
   const isTypeChecked = Boolean(tsconfigPath);
 
   const recommendedRules = isTypeChecked
@@ -49,8 +49,6 @@ export function typescript({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem
         "ts/explicit-member-accessibility": "error",
         "ts/explicit-module-boundary-types": "error",
         "ts/no-invalid-void-type": "off", // TODO: for undefined generics types (temporary?)
-        "no-magic-numbers": "off",
-        "ts/no-magic-numbers": "error",
         "ts/prefer-enum-initializers": "error",
         "ts/prefer-find": "error",
         "ts/prefer-readonly": "error",
@@ -63,4 +61,4 @@ export function typescript({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem
       },
     },
   ];
-}
+};
