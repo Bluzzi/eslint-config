@@ -1,4 +1,4 @@
-export interface ParamsStylistic {
+export type ParamsStylistic = {
   /**
    * Indentation level
    * Similar to the `tabWidth` and `useTabs` options in Prettier
@@ -22,4 +22,4 @@ export interface ParamsStylistic {
    * @default true
    */
   semi?: boolean;
-}
+};

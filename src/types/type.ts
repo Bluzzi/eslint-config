@@ -21,7 +21,7 @@ export type TypedFlatConfigItem = Omit<Linter.FlatConfig<Linter.RulesRecord & Ru
   plugins?: Record<string, any>;
 };
 
-export interface OptionsConfig {
+export type OptionsConfig = {
   /**
    * Enable TypeScript Language Server support.
    */
@@ -31,4 +31,4 @@ export interface OptionsConfig {
    * Definitions of basic formatting rules.
    */
   stylistic?: ParamsStylistic;
-}
+};

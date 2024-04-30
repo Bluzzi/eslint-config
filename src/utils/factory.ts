@@ -1,4 +1,4 @@
-import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from "#/types/type";
+import type { ConfigNames, OptionsConfig, TypedFlatConfigItem } from "#/types/type";
 import type { Linter } from "eslint";
 import { isPackageExists } from "local-pkg";
 import { FlatConfigComposer } from "eslint-flat-config-utils";
@@ -7,16 +7,21 @@ import { typescript } from "#/configs/typescript/config";
 import { stylistic } from "#/configs/stylistic/config";
 import { node } from "#/configs/node";
 import { logger } from "#/utils/logger";
+import { ignore } from "#/configs/ignore";
 
-export function eslintConfig(
+export async function eslintConfig(
   options: OptionsConfig = {},
-  ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.FlatConfig[]>[]
+  ...userConfigs: (TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.FlatConfig[])[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
-  const configs: Awaitable<TypedFlatConfigItem[]>[] = [];
+  const configs: (TypedFlatConfigItem[])[] = [];
 
   const enabled = {
     typescript: isPackageExists("typescript"),
   };
+
+  // Ignore:
+  logger.info("ignore - config enabled");
+  configs.push(ignore());
 
   // JS:
   logger.info("javascript - config enabled");
