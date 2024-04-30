@@ -2,14 +2,9 @@
   "name": "@we-use/eslint-config",
   "type": "module",
   "version": "1.2.1",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
   "scripts": {
     "build:config": "tsup src/index.ts --minify --format cjs,esm --clean --dts",
     "build:type": "tsx ./scripts/typegen.ts",
