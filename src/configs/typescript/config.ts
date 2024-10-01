@@ -58,6 +58,7 @@ export const typescript = ({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem
         "no-return-await": "off",
         "ts/return-await": "error",
         "ts/strict-boolean-expressions": "error",
+        "ts/no-misused-promises": ["error", { checksVoidReturn: { attributes: false } }], // https://github.com/orgs/react-hook-form/discussions/8622
       },
     },
   ];

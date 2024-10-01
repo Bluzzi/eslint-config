@@ -8,6 +8,8 @@ import { javascript } from "#/configs/javascript";
 import { typescript } from "#/configs/typescript";
 import { stylistic } from "#/configs/stylistic";
 import { node } from "#/configs/node";
+import { react } from "#/configs/react";
+import { nextjs } from "#/configs/nextjs";
 
 /**
  * Combine array and non-array configs into a single array.
@@ -23,6 +25,8 @@ const configs = await combine(
   node(),
   stylistic(),
   typescript(),
+  react(),
+  nextjs(),
 );
 
 const configNames = configs.map(i => i.name).filter(Boolean) as string[];

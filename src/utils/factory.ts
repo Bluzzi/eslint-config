@@ -8,6 +8,8 @@ import { stylistic } from "#/configs/stylistic/config";
 import { node } from "#/configs/node";
 import { logger } from "#/utils/logger";
 import { ignore } from "#/configs/ignore";
+import { nextjs } from "#/configs/nextjs";
+import { react } from "#/configs/react";
 
 export const eslintConfig = async (
   options: OptionsConfig = {},
@@ -17,6 +19,8 @@ export const eslintConfig = async (
 
   const enabled = {
     typescript: isPackageExists("typescript"),
+    react: isPackageExists("react"),
+    nextjs: isPackageExists("next"),
   };
 
   // Ignore:
@@ -40,6 +44,18 @@ export const eslintConfig = async (
   // Stylistic:
   logger.info("stylistic - config enabled");
   configs.push(stylistic(options.stylistic));
+
+  // React:
+  if (enabled.react) {
+    logger.info("react - config enabled");
+    configs.push(react());
+  }
+
+  // NextJS:
+  if (enabled.nextjs) {
+    logger.info("nextjs - config enabled");
+    configs.push(nextjs());
+  }
 
   // Compose:
   const composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>();
