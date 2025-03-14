@@ -24,7 +24,6 @@ export const javascript = (): TypedFlatConfigItem => {
     rules: {
       ...js.configs.recommended.rules,
       "array-callback-return": "error",
-      "no-await-in-loop": "error",
       "no-constructor-return": "error",
       "no-inner-declarations": "error",
       "no-promise-executor-return": "error",

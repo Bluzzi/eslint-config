@@ -1,7 +1,7 @@
 {
   "name": "@bluzzi/eslint-config",
   "description": "ESLint configuration preset for linting and formatting all your files",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "license": "MIT",
   "author": "Bluzzi",
   "type": "module",
