@@ -27,6 +27,8 @@ export const stylistic = ({ indent = 2, quotes = "double", semi = true, jsx = fa
       "@stylistic/jsx-curly-brace-presence": ["error", { props: "never", children: "never" }],
 
       "antfu/consistent-list-newline": "error",
+
+      "@stylistic/multiline-ternary": "off", // TODO: try the "never" option?
     },
   };
 };
