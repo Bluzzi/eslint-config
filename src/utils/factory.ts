@@ -3,16 +3,17 @@
 
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from "#/types/type";
 import type { Linter } from "eslint";
-import { isPackageExists } from "local-pkg";
-import { FlatConfigComposer } from "eslint-flat-config-utils";
-import { javascript } from "#/configs/javascript/config";
-import { typescript } from "#/configs/typescript/config";
-import { stylistic } from "#/configs/stylistic/config";
-import { node } from "#/configs/node";
-import { logger } from "#/utils/logger";
 import { ignore } from "#/configs/ignore";
+import { javascript } from "#/configs/javascript/config";
 import { nextjs } from "#/configs/nextjs";
+import { node } from "#/configs/node";
+import { perfectionist } from "#/configs/perfectionist";
 import { react } from "#/configs/react";
+import { stylistic } from "#/configs/stylistic/config";
+import { typescript } from "#/configs/typescript/config";
+import { logger } from "#/utils/logger";
+import { FlatConfigComposer } from "eslint-flat-config-utils";
+import { isPackageExists } from "local-pkg";
 
 export const eslintConfig = async (
   options: OptionsConfig = {},
@@ -59,6 +60,10 @@ export const eslintConfig = async (
     logger.info("nextjs - config enabled");
     configs.push(nextjs());
   }
+
+  // Stylistic:
+  logger.info("perfectionist - config enabled");
+  configs.push(perfectionist({ tsconfigPath: options.typescript?.tsconfigPath }));
 
   // Compose:
   const composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>();

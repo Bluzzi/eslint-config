@@ -8,5 +8,6 @@ export { default as typescriptPlugin } from "@typescript-eslint/eslint-plugin";
 export { default as nextjsPlugin } from "@next/eslint-plugin-next";
 export { default as reactPlugin } from "@eslint-react/eslint-plugin";
 export { default as reactHooksPlugin } from "eslint-plugin-react-hooks";
+export { default as perfectionistPlugin } from "eslint-plugin-perfectionist";
 
 export { default as typescriptParser } from "@typescript-eslint/parser";

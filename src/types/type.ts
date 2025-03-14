@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { Linter } from "eslint";
 import type { ConfigNames, RuleOptions } from "./gen";
-import type { ParamsTS } from "#/configs/typescript";
 import type { ParamsStylistic } from "#/configs/stylistic";
+import type { ParamsTS } from "#/configs/typescript";
+import type { Linter } from "eslint";
 
 export type Awaitable<T> = T | Promise<T>;
 

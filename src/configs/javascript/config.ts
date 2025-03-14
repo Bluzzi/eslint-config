@@ -1,6 +1,6 @@
 import type { TypedFlatConfigItem } from "#/types/type";
-import globals from "globals";
 import js from "@eslint/js";
+import globals from "globals";
 
 export const javascript = (): TypedFlatConfigItem => {
   return {
@@ -40,7 +40,7 @@ export const javascript = (): TypedFlatConfigItem => {
       "grouped-accessor-pairs": "error",
       "max-classes-per-file": "error",
       "max-depth": "error",
-      "max-nested-callbacks": ["error", { max: 3 }],
+      "max-nested-callbacks": ["error", { max: 5 }],
       "new-cap": "off", // TODO: Check if this rule is relevant (this can be anoying with React)
       "no-array-constructor": "error",
       "no-caller": "error",
@@ -87,6 +87,11 @@ export const javascript = (): TypedFlatConfigItem => {
       "yoda": "error",
       "no-duplicate-imports": "off", // TODO: Check if this rule is relevant
       "no-redeclare": "off", // Not relevant, since TypeScript already takes care of checking for this kind of error
+      "no-restricted-syntax": ["error", {
+        selector: "CallExpression[callee.property.name='forEach']",
+        message: "`forEach` is more limited than a for loop as it doesn't support `break` for early exits or return values for chaining operations.",
+      }],
+      // TODO: add "no-restricted-syntax" for `.then()` and `.catch()` ?
     },
   };
 };

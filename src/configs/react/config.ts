@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import type { TypedFlatConfigItem } from "#/types/type";
-import { reactPlugin } from "#/utils/extension";
+import { reactHooksPlugin, reactPlugin } from "#/utils/extension";
 
 export const react = (): TypedFlatConfigItem => {
   return {
@@ -7,6 +9,7 @@ export const react = (): TypedFlatConfigItem => {
     files: ["**/*.ts", "**/*.tsx"],
     plugins: {
       ...reactPlugin.configs.recommended.plugins,
+      "react-hooks": reactHooksPlugin,
     },
     languageOptions: {
       parserOptions: {
@@ -18,6 +21,8 @@ export const react = (): TypedFlatConfigItem => {
     },
     rules: {
       ...reactPlugin.configs.recommended.rules,
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "error",
     },
   };
 };
