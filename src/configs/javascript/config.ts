@@ -87,6 +87,7 @@ export const javascript = (): TypedFlatConfigItem => {
       "require-unicode-regexp": "error",
       "yoda": "error",
       "no-duplicate-imports": "off", // TODO: Check if this rule is relevant
+      "no-redeclare": "off", // Not relevant, since TypeScript already takes care of checking for this kind of error
     },
   };
 };
