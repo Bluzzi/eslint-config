@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import type { TypedFlatConfigItem } from "#/types/type";
 import { reactHooksPlugin, reactPlugin } from "#/utils/extension";
 

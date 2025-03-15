@@ -59,6 +59,11 @@ export interface RuleOptions {
    */
   '@eslint-react/dom/no-find-dom-node'?: Linter.RuleEntry<[]>
   /**
+   * warns against using `flushSync`
+   * @see https://eslint-react.xyz/docs/rules/dom-no-flush-sync
+   */
+  '@eslint-react/dom/no-flush-sync'?: Linter.RuleEntry<[]>
+  /**
    * enforce that button component have an explicit 'type' attribute
    * @see https://eslint-react.xyz/docs/rules/dom-no-missing-button-type
    */
@@ -105,7 +110,7 @@ export interface RuleOptions {
   '@eslint-react/dom/no-void-elements-with-children'?: Linter.RuleEntry<[]>
   /**
    * require a 'ref' parameter to be set when using 'forwardRef'
-   * @see https://eslint-react.xyz/docs/rules/ensure-forward-ref-using-ref
+   * @see https://eslint-react.xyz/docs/rules/no-useless-forward-ref
    */
   '@eslint-react/ensure-forward-ref-using-ref'?: Linter.RuleEntry<[]>
   /**
@@ -164,15 +169,20 @@ export interface RuleOptions {
    */
   '@eslint-react/jsx-no-duplicate-props'?: Linter.RuleEntry<[]>
   /**
-   * helpes `eslint/no-unused-vars` to correctly mark JSX variables as used.
+   * marks variables used in JSX as used
    * @see https://eslint-react.xyz/docs/rules/use-jsx-vars
    */
   '@eslint-react/jsx-uses-vars'?: Linter.RuleEntry<[]>
   /**
-   * enforce component naming convention to 'PascalCase' or 'CONSTANT_CASE'
+   * enforce naming convention for components
    * @see https://eslint-react.xyz/docs/rules/naming-convention-component-name
    */
   '@eslint-react/naming-convention/component-name'?: Linter.RuleEntry<EslintReactNamingConventionComponentName>
+  /**
+   * enforce context name to be a valid component name with the suffix 'Context'
+   * @see https://eslint-react.xyz/docs/rules/naming-convention-context-name
+   */
+  '@eslint-react/naming-convention/context-name'?: Linter.RuleEntry<[]>
   /**
    * enforce naming convention for JSX filenames
    * @see https://eslint-react.xyz/docs/rules/naming-convention-filename
@@ -184,7 +194,7 @@ export interface RuleOptions {
    */
   '@eslint-react/naming-convention/filename-extension'?: Linter.RuleEntry<EslintReactNamingConventionFilenameExtension>
   /**
-   * enforce destructuring and symmetric naming of 'useState' hook value and setter variables
+   * enforce destructuring and symmetric naming of 'useState' hook value and setter
    * @see https://eslint-react.xyz/docs/rules/naming-convention-use-state
    */
   '@eslint-react/naming-convention/use-state'?: Linter.RuleEntry<[]>
@@ -194,7 +204,7 @@ export interface RuleOptions {
    */
   '@eslint-react/no-access-state-in-setstate'?: Linter.RuleEntry<[]>
   /**
-   * disallow using Array index as 'key'
+   * disallow using an item's index in the array as its key
    * @see https://eslint-react.xyz/docs/rules/no-array-index-key
    */
   '@eslint-react/no-array-index-key'?: Linter.RuleEntry<[]>
@@ -254,22 +264,22 @@ export interface RuleOptions {
    */
   '@eslint-react/no-complicated-conditional-rendering'?: Linter.RuleEntry<[]>
   /**
-   * disallow using 'componentWillMount'
+   * replace usages of 'componentWillMount' with 'UNSAFE_componentWillMount'
    * @see https://eslint-react.xyz/docs/rules/no-component-will-mount
    */
   '@eslint-react/no-component-will-mount'?: Linter.RuleEntry<[]>
   /**
-   * disallow using 'componentWillReceiveProps'
+   * replace usages of 'componentWillReceiveProps' with 'UNSAFE_componentWillReceiveProps'
    * @see https://eslint-react.xyz/docs/rules/no-component-will-receive-props
    */
   '@eslint-react/no-component-will-receive-props'?: Linter.RuleEntry<[]>
   /**
-   * disallow using 'componentWillReceiveProps'
+   * replace usages of 'componentWillUpdate' with 'UNSAFE_componentWillUpdate'
    * @see https://eslint-react.xyz/docs/rules/no-component-will-update
    */
   '@eslint-react/no-component-will-update'?: Linter.RuleEntry<[]>
   /**
-   * disallow the use of '<Context.Provider>'
+   * replace usages of '<Context.Provider>' with '<Context>'
    * @see https://eslint-react.xyz/docs/rules/no-context-provider
    */
   '@eslint-react/no-context-provider'?: Linter.RuleEntry<[]>
@@ -299,7 +309,7 @@ export interface RuleOptions {
    */
   '@eslint-react/no-duplicate-key'?: Linter.RuleEntry<[]>
   /**
-   * disallow the use of 'forwardRef'
+   * replace usages of 'forwardRef' with passing 'ref' as a prop
    * @see https://eslint-react.xyz/docs/rules/no-forward-ref
    */
   '@eslint-react/no-forward-ref'?: Linter.RuleEntry<[]>
@@ -319,13 +329,23 @@ export interface RuleOptions {
    */
   '@eslint-react/no-missing-component-display-name'?: Linter.RuleEntry<[]>
   /**
+   * require 'displayName' for contexts.
+   * @see https://eslint-react.xyz/docs/rules/no-missing-context-display-name
+   */
+  '@eslint-react/no-missing-context-display-name'?: Linter.RuleEntry<[]>
+  /**
    * require 'key' when rendering list
    * @see https://eslint-react.xyz/docs/rules/no-missing-key
    */
   '@eslint-react/no-missing-key'?: Linter.RuleEntry<[]>
   /**
-   * disallow using unstable nested components
-   * @see https://eslint-react.xyz/docs/rules/no-nested-components
+   * prevents nesting component definitions inside other components
+   * @see https://eslint-react.xyz/docs/rules/no-nested-component-definitions
+   */
+  '@eslint-react/no-nested-component-definitions'?: Linter.RuleEntry<[]>
+  /**
+   * prevents nesting component definitions inside other components
+   * @see https://eslint-react.xyz/docs/rules/no-nested-component-definitions
    */
   '@eslint-react/no-nested-components'?: Linter.RuleEntry<[]>
   /**
@@ -394,12 +414,17 @@ export interface RuleOptions {
    */
   '@eslint-react/no-unused-state'?: Linter.RuleEntry<[]>
   /**
-   * disallow the use of 'useContext'
+   * replace usages of 'useContext' with 'use'
    * @see https://eslint-react.xyz/docs/rules/no-use-context
    */
   '@eslint-react/no-use-context'?: Linter.RuleEntry<[]>
   /**
-   * disallow unnecessary fragments
+   * require a 'ref' parameter to be set when using 'forwardRef'
+   * @see https://eslint-react.xyz/docs/rules/no-useless-forward-ref
+   */
+  '@eslint-react/no-useless-forward-ref'?: Linter.RuleEntry<[]>
+  /**
+   * disallow useless fragments
    * @see https://eslint-react.xyz/docs/rules/no-useless-fragment
    */
   '@eslint-react/no-useless-fragment'?: Linter.RuleEntry<EslintReactNoUselessFragment>
@@ -419,17 +444,17 @@ export interface RuleOptions {
    */
   '@eslint-react/prefer-read-only-props'?: Linter.RuleEntry<[]>
   /**
-   * enforce using shorthand boolean attributes
+   * enforce the use of shorthand syntax for boolean attributes
    * @see https://eslint-react.xyz/docs/rules/prefer-shorthand-boolean
    */
   '@eslint-react/prefer-shorthand-boolean'?: Linter.RuleEntry<[]>
   /**
-   * enforce using fragment syntax instead of 'Fragment' component
+   * enforce the use of shorthand syntax for fragments
    * @see https://eslint-react.xyz/docs/rules/prefer-shorthand-fragment
    */
   '@eslint-react/prefer-shorthand-fragment'?: Linter.RuleEntry<[]>
   /**
-   * helpes `eslint/no-unused-vars` to correctly mark JSX variables as used.
+   * marks variables used in JSX as used
    * @see https://eslint-react.xyz/docs/rules/use-jsx-vars
    */
   '@eslint-react/use-jsx-vars'?: Linter.RuleEntry<[]>
@@ -955,7 +980,7 @@ export interface RuleOptions {
   '@stylistic/semi'?: Linter.RuleEntry<StylisticSemi>
   /**
    * Enforce consistent spacing before and after semicolons
-   * @see https://eslint.style/rules/js/semi-spacing
+   * @see https://eslint.style/rules/ts/semi-spacing
    */
   '@stylistic/semi-spacing'?: Linter.RuleEntry<StylisticSemiSpacing>
   /**
@@ -1250,7 +1275,7 @@ export interface RuleOptions {
    */
   '@typescript-eslint/no-for-in-array'?: Linter.RuleEntry<[]>
   /**
-   * Disallow the use of `eval()`-like methods
+   * Disallow the use of `eval()`-like functions
    * @see https://typescript-eslint.io/rules/no-implied-eval
    */
   '@typescript-eslint/no-implied-eval'?: Linter.RuleEntry<[]>
@@ -4686,7 +4711,7 @@ type StylisticQuoteProps = ([]|[("always" | "as-needed" | "consistent" | "consis
 // ----- @stylistic/quotes -----
 type StylisticQuotes = []|[("single" | "double" | "backtick")]|[("single" | "double" | "backtick"), ("avoid-escape" | {
   avoidEscape?: boolean
-  allowTemplateLiterals?: boolean
+  allowTemplateLiterals?: (boolean | ("never" | "avoidEscape" | "always"))
   ignoreStringLiterals?: boolean
 })]
 // ----- @stylistic/rest-spread-spacing -----
@@ -4724,6 +4749,7 @@ type StylisticSpaceInParens = []|[("always" | "never")]|[("always" | "never"), {
 // ----- @stylistic/space-infix-ops -----
 type StylisticSpaceInfixOps = []|[{
   int32Hint?: boolean
+  ignoreTypes?: boolean
 }]
 // ----- @stylistic/space-unary-ops -----
 type StylisticSpaceUnaryOps = []|[{
@@ -4912,6 +4938,8 @@ type TypescriptEslintExplicitModuleBoundaryTypes = []|[{
   allowedNames?: string[]
   
   allowHigherOrderFunctions?: boolean
+  
+  allowOverloadFunctions?: boolean
   
   allowTypedFunctionExpressions?: boolean
 }]
@@ -5944,6 +5972,8 @@ type TypescriptEslintUnboundMethod = []|[{
 type TypescriptEslintUnifiedSignatures = []|[{
   
   ignoreDifferentlyNamedParameters?: boolean
+  
+  ignoreOverloadsWithDifferentJSDoc?: boolean
 }]
 // ----- accessor-pairs -----
 type AccessorPairs = []|[{
