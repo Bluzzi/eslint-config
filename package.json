@@ -1,15 +1,17 @@
 {
   "name": "@bluzzi/eslint-config",
   "description": "ESLint configuration preset for linting and formatting all your files",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "license": "MIT",
   "author": "Bluzzi",
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "scripts": {
-    "build:config": "tsup src/index.ts --minify --format cjs,esm --clean --dts",
+    "build:config": "tsup src/index.ts --minify --format esm --clean --dts",
     "build:type": "tsx ./scripts/typegen.ts",
     "inspector:dev": "npx @eslint/config-inspector --config eslint.config.js",
     "inspector:build": "npm run build:config && npx @eslint/config-inspector build",
