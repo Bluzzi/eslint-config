@@ -18,7 +18,7 @@ export const perfectionist = ({ tsconfigPath }: ParamsPerfectionist = {}): Typed
         locales: "en-US",
         internalPattern: ["^~/.*", "^#/.*"],
         sortSideEffects: false,
-        partitionByComment: false,
+        partitionByComment: true,
         partitionByNewLine: false,
         newlinesBetween: "never",
         tsconfigRootDir: tsconfigPath,
