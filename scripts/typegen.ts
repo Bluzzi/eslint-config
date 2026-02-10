@@ -16,7 +16,7 @@ import { cwd } from "node:process";
  * Combine array and non-array configs into a single array.
  */
 export const combine = async (...configs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[]>[]): Promise<TypedFlatConfigItem[]> => {
-  const resolved = await Promise.all(configs);
+  const resolved = await Promise.all(configs.map(async (config) => Promise.resolve(config)));
   return resolved.flat();
 };
 
