@@ -32,17 +32,17 @@
     "eslint": ">=9.0.0"
   },
   "dependencies": {
-    "@eslint-react/eslint-plugin": "^1.37.0",
+    "@eslint-react/eslint-plugin": "^2.12.2",
     "@eslint/js": "^10.0.1",
-    "@next/eslint-plugin-next": "^15.2.3",
-    "@stylistic/eslint-plugin": "^4.2.0",
+    "@next/eslint-plugin-next": "^16.1.6",
+    "@stylistic/eslint-plugin": "^5.8.0",
     "@typescript-eslint/eslint-plugin": "^8.55.0",
     "@typescript-eslint/parser": "^8.55.0",
-    "eslint-flat-config-utils": "^2.0.1",
+    "eslint-flat-config-utils": "^3.0.1",
     "eslint-plugin-antfu": "^3.2.0",
     "eslint-plugin-n": "^17.23.2",
-    "eslint-plugin-perfectionist": "^4.10.1",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-perfectionist": "^5.5.0",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "globals": "^16.0.0",
     "local-pkg": "^1.1.2"
   },

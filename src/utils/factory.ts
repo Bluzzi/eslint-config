@@ -35,11 +35,11 @@ export const eslintConfig = async (
   logger.info("javascript - config enabled");
   configs.push(javascript());
 
-  // TS:
-  if (enabled.typescript) {
-    logger.info("typescript - config enabled (typescript package found)");
-    configs.push(typescript(options.typescript));
-  }
+  // TS: // TODO: v10
+  // if (enabled.typescript) {
+  //   logger.info("typescript - config enabled (typescript package found)");
+  //   configs.push(typescript(options.typescript));
+  // }
 
   // Node:
   logger.info("node - config enabled");
@@ -61,9 +61,9 @@ export const eslintConfig = async (
     configs.push(nextjs());
   }
 
-  // Stylistic:
-  logger.info("perfectionist - config enabled");
-  configs.push(perfectionist({ tsconfigPath: options.typescript?.tsconfigPath }));
+  // Perfectionist: // TODO: v10
+  // logger.info("perfectionist - config enabled");
+  // configs.push(perfectionist({ tsconfigPath: options.typescript?.tsconfigPath }));
 
   // Compose:
   const composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>();
