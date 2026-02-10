@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@eslint-react/eslint-plugin": "^1.37.0",
-    "@eslint/js": "^9.22.0",
+    "@eslint/js": "^10.0.1",
     "@next/eslint-plugin-next": "^15.2.3",
     "@stylistic/eslint-plugin": "^4.2.0",
     "@typescript-eslint/eslint-plugin": "^8.55.0",
@@ -49,8 +49,8 @@
   "devDependencies": {
     "@eslint/config-inspector": "^1.4.2",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.13.10",
-    "eslint": "^9.22.0",
+    "@types/node": "^25.2.2",
+    "eslint": "^10.0.0",
     "eslint-typegen": "^2.3.0",
     "serve": "^14.2.5",
     "tsup": "^8.5.1",
