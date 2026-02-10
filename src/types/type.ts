@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import type { ConfigNames, RuleOptions } from "./gen";
 import type { ParamsStylistic } from "#/configs/stylistic";
-import type { ParamsTS } from "#/configs/typescript";
 import type { Linter } from "eslint";
 
 export type Awaitable<T> = T | Promise<T>;
@@ -26,11 +23,6 @@ export type TypedFlatConfigItem = Omit<Linter.Config<Linter.RulesRecord & Rules>
 };
 
 export type OptionsConfig = {
-  /**
-   * Enable TypeScript Language Server support.
-   */
-  typescript?: ParamsTS;
-
   /**
    * Definitions of basic formatting rules.
    */

@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import type { TypedFlatConfigItem } from "#/types/type";
 import { nextjsPlugin } from "#/utils/extension";
 

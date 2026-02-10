@@ -21,7 +21,6 @@ export const combine = async (...configs: Awaitable<TypedFlatConfigItem | TypedF
 };
 
 const configs = await combine(
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   { name: "bluzzi/eslint", plugins: { "": { rules: Object.fromEntries(builtinRules.entries()) } } },
   javascript(),
   node(),

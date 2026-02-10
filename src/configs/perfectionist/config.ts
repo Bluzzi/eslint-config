@@ -1,8 +1,7 @@
-import type { ParamsPerfectionist } from "./type";
 import type { TypedFlatConfigItem } from "#/types/type";
 import { perfectionistPlugin } from "#/utils/extension";
 
-export const perfectionist = ({ tsconfigPath }: ParamsPerfectionist = {}): TypedFlatConfigItem => {
+export const perfectionist = (): TypedFlatConfigItem => {
   return {
     name: "bluzzi/perfectionist",
     plugins: {
@@ -20,11 +19,10 @@ export const perfectionist = ({ tsconfigPath }: ParamsPerfectionist = {}): Typed
         sortSideEffects: false,
         partitionByComment: true,
         partitionByNewLine: false,
-        newlinesBetween: "never",
-        tsconfigRootDir: tsconfigPath,
+        newlinesBetween: "ignore",
         groups: [
-          ["external-type", "builtin-type", "internal-type", "parent-type", "sibling-type", "index-type"],
-          ["object", "index", "sibling", "parent", "internal", "external", "builtin", "unknown"],
+          ["type-external", "type-builtin", "type-internal", "type-parent", "type-sibling", "type-index"],
+          ["index", "sibling", "parent", "internal", "external", "builtin", "unknown"],
           ["style"],
           ["side-effect-style"],
           ["side-effect"],

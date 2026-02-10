@@ -1,15 +1,8 @@
-import type { ParamsTS } from "./type";
 import type { TypedFlatConfigItem } from "#/types/type";
 import { typescriptParser, typescriptPlugin } from "#/utils/extension";
-import { cwd } from "node:process";
 
-export const typescript = ({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem => {
-  const isTypeChecked = typeof tsconfigPath !== "undefined";
-
-  const recommendedRules = isTypeChecked
-    ? typescriptPlugin.configs["strict-type-checked"]?.rules ?? []
-    : typescriptPlugin.configs.strict?.rules ?? [];
-
+export const typescript = (): TypedFlatConfigItem => {
+  const recommendedRules = typescriptPlugin.configs["strict-type-checked"]?.rules ?? [];
   const stylisticRules = typescriptPlugin.configs["stylistic-type-checked"]?.rules;
 
   return {
@@ -19,17 +12,16 @@ export const typescript = ({ tsconfigPath }: ParamsTS = {}): TypedFlatConfigItem
     },
     languageOptions: {
       parser: typescriptParser,
-      parserOptions: isTypeChecked
-        ? {
-            projectService: { defaultProject: tsconfigPath },
-            tsconfigRootDir: cwd(),
-          }
-        : {},
+      parserOptions: { projectService: true },
     },
     files: ["**/*.?([cm])[jt]s?(x)"],
     rules: {
       ...recommendedRules as Record<string, string>,
+      "@typescript-eslint/no-deprecated": "off", // TODO: enable it (from `recommandedRules`), currently not working (`jsDocParsingMode` issue with `projectService`)
+
       ...stylisticRules,
+      "@typescript-eslint/consistent-generic-constructors": "off", // TODO: enable it, currently it throw "TypeError: Cannot read properties of undefined (reading 'isolatedDeclarations')"
+
       "@typescript-eslint/ban-ts-comment": ["error", { "ts-expect-error": "allow-with-description" }],
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
       "@typescript-eslint/consistent-type-imports": ["error", { disallowTypeAnnotations: false, prefer: "type-imports", fixStyle: "separate-type-imports" }],

@@ -6,7 +6,7 @@ export const react = (): TypedFlatConfigItem => {
     name: "bluzzi/react",
     files: ["**/*.ts", "**/*.tsx"],
     plugins: {
-      ...reactPlugin.configs.recommended.plugins,
+      ...(reactPlugin.configs.recommended as { plugins: object }).plugins, // TODO: improve it
       "react-hooks": reactHooksPlugin,
     },
     languageOptions: {

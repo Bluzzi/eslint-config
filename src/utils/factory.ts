@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from "#/types/type";
 import type { Linter } from "eslint";
 import { ignore } from "#/configs/ignore";
@@ -35,11 +32,11 @@ export const eslintConfig = async (
   logger.info("javascript - config enabled");
   configs.push(javascript());
 
-  // TS: // TODO: v10
-  // if (enabled.typescript) {
-  //   logger.info("typescript - config enabled (typescript package found)");
-  //   configs.push(typescript(options.typescript));
-  // }
+  // TS:
+  if (enabled.typescript) {
+    logger.info("typescript - config enabled (typescript package found)");
+    configs.push(typescript());
+  }
 
   // Node:
   logger.info("node - config enabled");
@@ -61,13 +58,13 @@ export const eslintConfig = async (
     configs.push(nextjs());
   }
 
-  // Perfectionist: // TODO: v10
-  // logger.info("perfectionist - config enabled");
-  // configs.push(perfectionist({ tsconfigPath: options.typescript?.tsconfigPath }));
+  // Perfectionist:
+  logger.info("perfectionist - config enabled");
+  configs.push(perfectionist());
 
   // Compose:
   const composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>();
-  await composer.append(...configs, ...userConfigs as any);
+  await composer.append(...configs, ...userConfigs as any as []);
 
   return composer;
 };
