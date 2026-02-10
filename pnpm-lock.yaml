@@ -42,8 +42,8 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1(eslint@10.0.0)
       globals:
-        specifier: ^16.0.0
-        version: 16.0.0
+        specifier: ^17.3.0
+        version: 17.3.0
       local-pkg:
         specifier: ^1.1.2
         version: 1.1.2
@@ -1127,8 +1127,8 @@ packages:
     resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
     engines: {node: '>=18'}
 
-  globals@16.0.0:
-    resolution: {integrity: sha512-iInW14XItCXET01CQFqudPOWP2jYMl7T+QRQT+UNcR/iQncN/F0UNpgd76iFkBPgNQb4+X3LV9tLJYzwh+Gl3A==}
+  globals@17.3.0:
+    resolution: {integrity: sha512-yMqGUQVVCkD4tqjOJf3TnrvaaHDMYp4VlUSObbkIiuCPe/ofdMBFIAcBbCSRFWOnos6qRiTVStDwqPLUclaxIw==}
     engines: {node: '>=18'}
 
   globrex@0.1.2:
@@ -2826,7 +2826,7 @@ snapshots:
 
   globals@15.15.0: {}
 
-  globals@16.0.0: {}
+  globals@17.3.0: {}
 
   globrex@0.1.2: {}
 
