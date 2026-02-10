@@ -30,8 +30,8 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1
       eslint-plugin-antfu:
-        specifier: ^3.1.1
-        version: 3.1.1(eslint@9.22.0)
+        specifier: ^3.2.0
+        version: 3.2.0(eslint@9.22.0)
       eslint-plugin-n:
         specifier: ^17.23.2
         version: 17.23.2(eslint@9.22.0)(typescript@5.9.3)
@@ -905,8 +905,8 @@ packages:
   eslint-flat-config-utils@2.0.1:
     resolution: {integrity: sha512-brf0eAgQ6JlKj3bKfOTuuI7VcCZvi8ZCD1MMTVoEvS/d38j8cByZViLFALH/36+eqB17ukmfmKq3bWzGvizejA==}
 
-  eslint-plugin-antfu@3.1.1:
-    resolution: {integrity: sha512-7Q+NhwLfHJFvopI2HBZbSxWXngTwBLKxW1AGXLr2lEGxcEIK/AsDs8pn8fvIizl5aZjBbVbVK5ujmMpBe4Tvdg==}
+  eslint-plugin-antfu@3.2.0:
+    resolution: {integrity: sha512-JTvBcA+gc2hf1wz418dLYtt0GCE3ltrZuriA4KhP/nPbL8W6vZtcDlWUlUfghUTAAFpHh7gp+qN8BbK+jNifgg==}
     peerDependencies:
       eslint: '*'
 
@@ -2516,7 +2516,7 @@ snapshots:
     dependencies:
       pathe: 2.0.3
 
-  eslint-plugin-antfu@3.1.1(eslint@9.22.0):
+  eslint-plugin-antfu@3.2.0(eslint@9.22.0):
     dependencies:
       eslint: 9.22.0
 
