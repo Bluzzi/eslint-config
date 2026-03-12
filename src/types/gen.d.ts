@@ -99,7 +99,7 @@ export interface RuleOptions {
    */
   '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect'?: Linter.RuleEntry<[]>
   /**
-   * Prevents unnecessary '$' symbols before JSX expressions.
+   * Prevents unintentional '$' sign before expression.
    * @see https://eslint-react.xyz/docs/rules/jsx-dollar
    */
   '@eslint-react/jsx-dollar'?: Linter.RuleEntry<[]>
@@ -168,6 +168,11 @@ export interface RuleOptions {
    * @see https://eslint-react.xyz/docs/rules/naming-convention-filename-extension
    */
   '@eslint-react/naming-convention/filename-extension'?: Linter.RuleEntry<EslintReactNamingConventionFilenameExtension>
+  /**
+   * Enforces identifier names assigned from 'useId' calls to be either 'id' or end with 'Id'.
+   * @see https://eslint-react.xyz/docs/rules/naming-convention-id-name
+   */
+  '@eslint-react/naming-convention/id-name'?: Linter.RuleEntry<[]>
   /**
    * Enforces identifier names assigned from 'useRef' calls to be either 'ref' or end with 'Ref'.
    * @see https://eslint-react.xyz/docs/rules/naming-convention-ref-name
@@ -2351,6 +2356,11 @@ export interface RuleOptions {
    */
   'n/prefer-global/console'?: Linter.RuleEntry<NPreferGlobalConsole>
   /**
+   * enforce either `crypto` or `require("crypto").webcrypto`
+   * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-global/crypto.md
+   */
+  'n/prefer-global/crypto'?: Linter.RuleEntry<NPreferGlobalCrypto>
+  /**
    * enforce either `process` or `require("process")`
    * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-global/process.md
    */
@@ -2365,6 +2375,11 @@ export interface RuleOptions {
    * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-global/text-encoder.md
    */
   'n/prefer-global/text-encoder'?: Linter.RuleEntry<NPreferGlobalTextEncoder>
+  /**
+   * enforce either global timer functions or `require("timers")`
+   * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-global/timers.md
+   */
+  'n/prefer-global/timers'?: Linter.RuleEntry<NPreferGlobalTimers>
   /**
    * enforce either `URL` or `require("url").URL`
    * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-global/url.md
@@ -4040,33 +4055,33 @@ type StylisticExpListStyle = []|[{
   singleLine?: _StylisticExpListStyle_SingleLineConfig
   multiLine?: _StylisticExpListStyle_MultiLineConfig
   overrides?: {
-    "()"?: _StylisticExpListStyle_BaseConfig
-    "[]"?: _StylisticExpListStyle_BaseConfig
-    "{}"?: _StylisticExpListStyle_BaseConfig
-    "<>"?: _StylisticExpListStyle_BaseConfig
-    ArrayExpression?: _StylisticExpListStyle_BaseConfig
-    ArrayPattern?: _StylisticExpListStyle_BaseConfig
-    ArrowFunctionExpression?: _StylisticExpListStyle_BaseConfig
-    CallExpression?: _StylisticExpListStyle_BaseConfig
-    ExportNamedDeclaration?: _StylisticExpListStyle_BaseConfig
-    FunctionDeclaration?: _StylisticExpListStyle_BaseConfig
-    FunctionExpression?: _StylisticExpListStyle_BaseConfig
-    IfStatement?: _StylisticExpListStyle_BaseConfig
-    ImportAttributes?: _StylisticExpListStyle_BaseConfig
-    ImportDeclaration?: _StylisticExpListStyle_BaseConfig
-    JSONArrayExpression?: _StylisticExpListStyle_BaseConfig
-    JSONObjectExpression?: _StylisticExpListStyle_BaseConfig
-    NewExpression?: _StylisticExpListStyle_BaseConfig
-    ObjectExpression?: _StylisticExpListStyle_BaseConfig
-    ObjectPattern?: _StylisticExpListStyle_BaseConfig
-    TSDeclareFunction?: _StylisticExpListStyle_BaseConfig
-    TSEnumBody?: _StylisticExpListStyle_BaseConfig
-    TSFunctionType?: _StylisticExpListStyle_BaseConfig
-    TSInterfaceBody?: _StylisticExpListStyle_BaseConfig
-    TSTupleType?: _StylisticExpListStyle_BaseConfig
-    TSTypeLiteral?: _StylisticExpListStyle_BaseConfig
-    TSTypeParameterDeclaration?: _StylisticExpListStyle_BaseConfig
-    TSTypeParameterInstantiation?: _StylisticExpListStyle_BaseConfig
+    "()"?: (_StylisticExpListStyle_BaseConfig | "off")
+    "[]"?: (_StylisticExpListStyle_BaseConfig | "off")
+    "{}"?: (_StylisticExpListStyle_BaseConfig | "off")
+    "<>"?: (_StylisticExpListStyle_BaseConfig | "off")
+    ArrayExpression?: (_StylisticExpListStyle_BaseConfig | "off")
+    ArrayPattern?: (_StylisticExpListStyle_BaseConfig | "off")
+    ArrowFunctionExpression?: (_StylisticExpListStyle_BaseConfig | "off")
+    CallExpression?: (_StylisticExpListStyle_BaseConfig | "off")
+    ExportNamedDeclaration?: (_StylisticExpListStyle_BaseConfig | "off")
+    FunctionDeclaration?: (_StylisticExpListStyle_BaseConfig | "off")
+    FunctionExpression?: (_StylisticExpListStyle_BaseConfig | "off")
+    IfStatement?: (_StylisticExpListStyle_BaseConfig | "off")
+    ImportAttributes?: (_StylisticExpListStyle_BaseConfig | "off")
+    ImportDeclaration?: (_StylisticExpListStyle_BaseConfig | "off")
+    JSONArrayExpression?: (_StylisticExpListStyle_BaseConfig | "off")
+    JSONObjectExpression?: (_StylisticExpListStyle_BaseConfig | "off")
+    NewExpression?: (_StylisticExpListStyle_BaseConfig | "off")
+    ObjectExpression?: (_StylisticExpListStyle_BaseConfig | "off")
+    ObjectPattern?: (_StylisticExpListStyle_BaseConfig | "off")
+    TSDeclareFunction?: (_StylisticExpListStyle_BaseConfig | "off")
+    TSEnumBody?: (_StylisticExpListStyle_BaseConfig | "off")
+    TSFunctionType?: (_StylisticExpListStyle_BaseConfig | "off")
+    TSInterfaceBody?: (_StylisticExpListStyle_BaseConfig | "off")
+    TSTupleType?: (_StylisticExpListStyle_BaseConfig | "off")
+    TSTypeLiteral?: (_StylisticExpListStyle_BaseConfig | "off")
+    TSTypeParameterDeclaration?: (_StylisticExpListStyle_BaseConfig | "off")
+    TSTypeParameterInstantiation?: (_StylisticExpListStyle_BaseConfig | "off")
   }
 }]
 interface _StylisticExpListStyle_SingleLineConfig {
@@ -4984,13 +4999,18 @@ type StylisticPaddedBlocks = []|[(("always" | "never" | "start" | "end") | {
 }]
 // ----- @stylistic/padding-line-between-statements -----
 type _StylisticPaddingLineBetweenStatementsPaddingType = ("any" | "never" | "always")
-type _StylisticPaddingLineBetweenStatementsStatementOption = (_StylisticPaddingLineBetweenStatementsStatementType | [_StylisticPaddingLineBetweenStatementsStatementType, ...(_StylisticPaddingLineBetweenStatementsStatementType)[]])
+type _StylisticPaddingLineBetweenStatementsStatementOption = (_StylisticPaddingLineBetweenStatementsStatementMatcher | [_StylisticPaddingLineBetweenStatementsStatementMatcher, ...(_StylisticPaddingLineBetweenStatementsStatementMatcher)[]])
+type _StylisticPaddingLineBetweenStatementsStatementMatcher = (_StylisticPaddingLineBetweenStatementsStatementType | _StylisticPaddingLineBetweenStatements_SelectorOption)
 type _StylisticPaddingLineBetweenStatementsStatementType = ("*" | "exports" | "require" | "directive" | "iife" | "block" | "empty" | "function" | "ts-method" | "break" | "case" | "class" | "continue" | "debugger" | "default" | "do" | "for" | "if" | "import" | "switch" | "throw" | "try" | "while" | "with" | "cjs-export" | "cjs-import" | "enum" | "interface" | "function-overload" | "block-like" | "singleline-block-like" | "multiline-block-like" | "expression" | "singleline-expression" | "multiline-expression" | "return" | "singleline-return" | "multiline-return" | "export" | "singleline-export" | "multiline-export" | "var" | "singleline-var" | "multiline-var" | "let" | "singleline-let" | "multiline-let" | "const" | "singleline-const" | "multiline-const" | "using" | "singleline-using" | "multiline-using" | "type" | "singleline-type" | "multiline-type")
 type StylisticPaddingLineBetweenStatements = {
   blankLine: _StylisticPaddingLineBetweenStatementsPaddingType
   prev: _StylisticPaddingLineBetweenStatementsStatementOption
   next: _StylisticPaddingLineBetweenStatementsStatementOption
 }[]
+interface _StylisticPaddingLineBetweenStatements_SelectorOption {
+  selector: string
+  lineMode?: ("any" | "singleline" | "multiline")
+}
 // ----- @stylistic/quote-props -----
 type StylisticQuoteProps = ([]|[("always" | "as-needed" | "consistent" | "consistent-as-needed")] | []|[("always" | "as-needed" | "consistent" | "consistent-as-needed")]|[("always" | "as-needed" | "consistent" | "consistent-as-needed"), {
   keywords?: boolean
@@ -6115,6 +6135,19 @@ type TypescriptEslintPreferOptionalChain = []|[{
 }]
 // ----- @typescript-eslint/prefer-promise-reject-errors -----
 type TypescriptEslintPreferPromiseRejectErrors = []|[{
+  
+  allow?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
   
   allowEmptyReject?: boolean
   
@@ -7412,12 +7445,16 @@ type NNoUnsupportedFeaturesNodeBuiltins = []|[{
 type NPreferGlobalBuffer = []|[("always" | "never")]
 // ----- n/prefer-global/console -----
 type NPreferGlobalConsole = []|[("always" | "never")]
+// ----- n/prefer-global/crypto -----
+type NPreferGlobalCrypto = []|[("always" | "never")]
 // ----- n/prefer-global/process -----
 type NPreferGlobalProcess = []|[("always" | "never")]
 // ----- n/prefer-global/text-decoder -----
 type NPreferGlobalTextDecoder = []|[("always" | "never")]
 // ----- n/prefer-global/text-encoder -----
 type NPreferGlobalTextEncoder = []|[("always" | "never")]
+// ----- n/prefer-global/timers -----
+type NPreferGlobalTimers = []|[("always" | "never")]
 // ----- n/prefer-global/url -----
 type NPreferGlobalUrl = []|[("always" | "never")]
 // ----- n/prefer-global/url-search-params -----
