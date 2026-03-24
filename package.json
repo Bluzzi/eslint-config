@@ -1,7 +1,7 @@
 {
   "name": "@bluzzi/eslint-config",
   "description": "ESLint configuration preset for linting and formatting all your files",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "license": "MIT",
   "author": "Bluzzi",
   "type": "module",
@@ -34,14 +34,14 @@
   "dependencies": {
     "@eslint-react/eslint-plugin": "^2.13.0",
     "@eslint/js": "^10.0.1",
-    "@next/eslint-plugin-next": "^16.1.6",
+    "@next/eslint-plugin-next": "^16.2.1",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "@typescript-eslint/eslint-plugin": "^8.57.0",
-    "@typescript-eslint/parser": "^8.57.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
     "eslint-flat-config-utils": "^3.0.2",
     "eslint-plugin-antfu": "^3.2.2",
     "eslint-plugin-n": "^17.24.0",
-    "eslint-plugin-perfectionist": "^5.6.0",
+    "eslint-plugin-perfectionist": "^5.7.0",
     "eslint-plugin-react-hooks": "^7.0.1",
     "globals": "^17.4.0",
     "local-pkg": "^1.1.2"
@@ -49,13 +49,13 @@
   "devDependencies": {
     "@eslint/config-inspector": "^1.5.0",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^25.4.0",
-    "eslint": "^10.0.3",
+    "@types/node": "^25.5.0",
+    "eslint": "^10.1.0",
     "eslint-typegen": "^2.3.1",
     "serve": "^14.2.6",
     "tsup": "^8.5.1",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

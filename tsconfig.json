@@ -25,9 +25,14 @@
     "lib": ["es2022"],
 
     /* Custom paths: */
-    "baseUrl": ".",
     "paths": {
       "#/*": ["./src/*"]
     },
+
+    /* Types: */
+    "types": ["node"],
+
+    // TODO: remove that when used packages add the support
+    "ignoreDeprecations": "6.0"
   }
 }
