@@ -43,7 +43,7 @@
     "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-perfectionist": "^5.8.0",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "globals": "^17.4.0",
+    "globals": "^17.5.0",
     "local-pkg": "^1.1.2"
   },
   "devDependencies": {
