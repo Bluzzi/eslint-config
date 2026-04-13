@@ -1,5 +1,5 @@
 # BUILDER:
-FROM node:20-alpine AS builder
+FROM node:24-alpine AS builder
 WORKDIR /app
   
 # Enable PNPM:
@@ -12,7 +12,7 @@ COPY . .
 RUN pnpm run inspector:build
 
 # RUNNER:
-FROM node:20-alpine AS runner
+FROM node:24-alpine AS runner
 WORKDIR /app
 
 # Copy only necessary files from the build stage:
