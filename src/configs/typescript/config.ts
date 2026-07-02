@@ -48,6 +48,7 @@ export const typescript = (): TypedFlatConfigItem => {
       "@typescript-eslint/no-non-null-assertion": "off", // TODO: Check if this rule is relevant
       "@typescript-eslint/no-confusing-void-expression": "off", // TODO: Check if this rule is relevant
       "@typescript-eslint/prefer-nullish-coalescing": "off", // TODO: Check if this rule is relevant
+      "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
 
       /**
        * These rules raise the error:
