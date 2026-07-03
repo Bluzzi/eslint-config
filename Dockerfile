@@ -6,7 +6,7 @@ WORKDIR /app
 RUN corepack enable
 
 # Install dependencies and build:
-COPY package.json ./
+COPY package.json pnpm-workspace.yaml ./
 RUN pnpm install
 COPY . .
 RUN pnpm run inspector:build
