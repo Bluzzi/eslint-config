@@ -87,11 +87,25 @@ export const javascript = (): TypedFlatConfigItem => {
       "yoda": "error",
       "no-duplicate-imports": "off", // TODO: Check if this rule is relevant
       "no-redeclare": "off", // Not relevant, since TypeScript already takes care of checking for this kind of error
-      "no-restricted-syntax": ["error", {
-        selector: "CallExpression[callee.property.name='forEach']",
-        message: "`forEach` is more limited than a for loop as it doesn't support `break` for early exits or return values for chaining operations.",
-      }],
-      // TODO: add "no-restricted-syntax" for `.then()` and `.catch()` ?
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "CallExpression[callee.property.name='forEach']",
+          message: "`forEach` is more limited than a for loop as it doesn't support `break` for early exits or return values for chaining operations.",
+        },
+        {
+          selector: "SwitchStatement",
+          message: "`switch` statements are error-prone and harder to maintain, prefer using early returns or a map/object lookup instead.",
+        },
+        {
+          selector: "CallExpression[callee.property.name='then']",
+          message: "`.then()` chains are harder to read and maintain, prefer using `async`/`await` instead.",
+        },
+        {
+          selector: "CallExpression[callee.property.name='catch']",
+          message: "`.catch()` handlers are harder to read and maintain, prefer using `async`/`await` with `try`/`catch` instead.",
+        },
+      ],
     },
   };
 };
