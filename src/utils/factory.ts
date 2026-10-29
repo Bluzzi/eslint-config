@@ -1,13 +1,13 @@
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from "#/types/type";
 import type { Linter } from "eslint";
 import { ignore } from "#/configs/ignore";
-import { javascript } from "#/configs/javascript/config";
+import { javascript } from "#/configs/javascript";
 import { nextjs } from "#/configs/nextjs";
 import { node } from "#/configs/node";
 import { perfectionist } from "#/configs/perfectionist";
 import { react } from "#/configs/react";
-import { stylistic } from "#/configs/stylistic/config";
-import { typescript } from "#/configs/typescript/config";
+import { stylistic } from "#/configs/stylistic";
+import { typescript } from "#/configs/typescript";
 import { logger } from "#/utils/logger";
 import { FlatConfigComposer } from "eslint-flat-config-utils";
 import { isPackageExists } from "local-pkg";
