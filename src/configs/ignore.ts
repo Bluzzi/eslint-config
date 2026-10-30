@@ -21,6 +21,7 @@ export const ignore = (): TypedFlatConfigItem => {
       "**/.vitepress/cache",
       "**/.nuxt",
       "**/.next",
+      "**/.react-router",
       "**/.vercel",
       "**/.changeset",
       "**/.idea",
