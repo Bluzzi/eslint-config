@@ -1,7 +1,7 @@
 import type { TypedFlatConfigItem } from "#/types/type";
 import { queryPlugin } from "#/utils/extension";
 
-export const query = (): TypedFlatConfigItem => {
+export const tanstackQuery = (): TypedFlatConfigItem => {
   const [recommended] = queryPlugin.configs["flat/recommended"];
 
   return {

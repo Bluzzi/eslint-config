@@ -5,9 +5,9 @@ import { javascript } from "#/configs/javascript";
 import { nextjs } from "#/configs/nextjs";
 import { node } from "#/configs/node";
 import { perfectionist } from "#/configs/perfectionist";
-import { query } from "#/configs/query";
 import { react } from "#/configs/react";
 import { stylistic } from "#/configs/stylistic";
+import { tanstackQuery } from "#/configs/tanstack-query";
 import { typescript } from "#/configs/typescript";
 import { logger } from "#/utils/logger";
 import { FlatConfigComposer } from "eslint-flat-config-utils";
@@ -63,14 +63,15 @@ export const eslintConfig = async (
 
   // Query:
   if (enabled.query) {
-    logger.info("query - config enabled (@tanstack/*-query package found)");
-    configs.push(query());
+    enabledConfigs.push("tanstack-query");
+    configs.push(tanstackQuery());
   }
 
   // Perfectionist:
   enabledConfigs.push("perfectionist");
   configs.push(perfectionist());
 
+  // Log enabled configs:
   logger.info(`configs enabled: ${enabledConfigs.join(", ")}`);
 
   // Compose:

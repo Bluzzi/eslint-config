@@ -3,9 +3,9 @@ import { javascript } from "#/configs/javascript";
 import { nextjs } from "#/configs/nextjs";
 import { node } from "#/configs/node";
 import { perfectionist } from "#/configs/perfectionist";
-import { query } from "#/configs/query";
 import { react } from "#/configs/react";
 import { stylistic } from "#/configs/stylistic";
+import { tanstackQuery } from "#/configs/tanstack-query";
 import { typescript } from "#/configs/typescript";
 import { flatConfigsToRulesDTS } from "eslint-typegen/core";
 import { builtinRules } from "eslint/use-at-your-own-risk";
@@ -29,7 +29,7 @@ const configs = await combine(
   typescript(),
   react(),
   nextjs(),
-  query(),
+  tanstackQuery(),
   perfectionist(),
 );
 
