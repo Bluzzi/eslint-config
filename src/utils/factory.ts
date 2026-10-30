@@ -2,6 +2,7 @@ import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from 
 import type { Linter } from "eslint";
 import { ignore } from "#/configs/ignore";
 import { javascript } from "#/configs/javascript";
+import { jsxA11y } from "#/configs/jsx-a11y";
 import { nextjs } from "#/configs/nextjs";
 import { node } from "#/configs/node";
 import { perfectionist } from "#/configs/perfectionist";
@@ -24,6 +25,7 @@ export const eslintConfig = async (
     typescript: isPackageExists("typescript"),
     react: isPackageExists("react"),
     nextjs: isPackageExists("next"),
+    jsxA11y: isPackageExists("react"),
     query: ["@tanstack/react-query", "@tanstack/vue-query", "@tanstack/solid-query", "@tanstack/svelte-query"].some((p) => isPackageExists(p)),
   };
 
@@ -59,6 +61,12 @@ export const eslintConfig = async (
   if (enabled.nextjs) {
     enabledConfigs.push("nextjs");
     configs.push(nextjs());
+  }
+
+  // JSX a11y:
+  if (enabled.jsxA11y) {
+    enabledConfigs.push("jsx-a11y");
+    configs.push(jsxA11y());
   }
 
   // Query:
