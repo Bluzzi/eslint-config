@@ -2,11 +2,13 @@ import type { TypedFlatConfigItem } from "#/types/type";
 import { reactHooksPlugin, reactPlugin } from "#/utils/extension";
 
 export const react = (): TypedFlatConfigItem => {
+  const recommended = reactPlugin.configs.recommended;
+
   return {
     name: "bluzzi/react",
     files: ["**/*.ts", "**/*.tsx"],
     plugins: {
-      ...(reactPlugin.configs.recommended as { plugins: object }).plugins, // TODO: improve it
+      ...recommended.plugins,
       "react-hooks": reactHooksPlugin,
     },
     languageOptions: {
@@ -17,8 +19,9 @@ export const react = (): TypedFlatConfigItem => {
       },
       sourceType: "module",
     },
+    settings: recommended.settings,
     rules: {
-      ...reactPlugin.configs.recommended.rules,
+      ...recommended.rules,
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",
     },
