@@ -1,9 +1,9 @@
 # @bluzzi/eslint-config
-A ready-to-use ESLint config preset that's highly opinionated and strict on best practices, allowing you to both lint and [format](https://eslint.style/guide/why) any file that can be used in the JavaScript ecosystem.
+A ready-to-use ESLint config preset that's highly opinionated and strict on best practices, allowing you to both lint and [format](https://eslint.style/guide/why) your JavaScript and TypeScript files.
 
 - 📖 formatting (Prettier alternative) with only basic configurations (semi, quotes, indent)
 - ⚒️ very strict rules for JS and TS, which encourages best practices
-- 🌏 designed to work with TS, JSX, React, JSON, YAML, TOML, GraphQL, CSS, HTML and Markdown
+- 🌏 designed to work with TS, JSX and React
 - ✅ automatically enables specific rules based on your dependencies
 - 🧲 uses the recommended shared configs (ESLint, TSLint, Stylistic...)
 
@@ -77,15 +77,7 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "yaml",
-    "toml",
-    "gql",
-    "graphql"
+    "typescriptreact"
   ]
 }
 ```
