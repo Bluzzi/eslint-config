@@ -2,8 +2,8 @@
 FROM node:25-alpine AS builder
 WORKDIR /app
   
-# Enable PNPM:
-RUN corepack enable
+# Install PNPM:
+RUN npm install -g pnpm
 
 # Install dependencies and build:
 COPY package.json pnpm-workspace.yaml ./
