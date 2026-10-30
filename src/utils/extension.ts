@@ -1,6 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
 export { default as antfuPlugin } from "eslint-plugin-antfu";
 export { default as nodePlugin } from "eslint-plugin-n";
 export { default as stylisticPlugin } from "@stylistic/eslint-plugin";
