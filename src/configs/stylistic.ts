@@ -58,7 +58,7 @@ export const stylistic = ({ indent = 2, quotes = "double", semi = true, jsx = fa
       "@stylistic/jsx-self-closing-comp": ["error", { component: true, html: true }],
       "@stylistic/jsx-curly-brace-presence": ["error", { props: "never", children: "never" }],
 
-      "@stylistic/multiline-ternary": "off", // TODO: try the "never" option?
+      "@stylistic/multiline-ternary": ["error", "never"],
 
       "antfu/consistent-list-newline": "error",
     },

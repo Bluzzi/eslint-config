@@ -17,11 +17,8 @@ export const typescript = (): TypedFlatConfigItem => {
     files: ["**/*.?([cm])[jt]s?(x)"],
     rules: {
       ...recommendedRules as Record<string, string>,
-      "@typescript-eslint/no-deprecated": "off", // TODO: enable it (from `recommandedRules`), currently not working (`jsDocParsingMode` issue with `projectService`)
 
       ...stylisticRules,
-      "@typescript-eslint/consistent-generic-constructors": "off", // TODO: enable it, currently it throw "TypeError: Cannot read properties of undefined (reading 'isolatedDeclarations')"
-
       "@typescript-eslint/ban-ts-comment": ["error", { "ts-expect-error": "allow-with-description" }],
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
       "@typescript-eslint/consistent-type-imports": ["error", { disallowTypeAnnotations: false, prefer: "type-imports", fixStyle: "separate-type-imports" }],
@@ -33,8 +30,6 @@ export const typescript = (): TypedFlatConfigItem => {
       "no-use-before-define": "off",
       "@typescript-eslint/no-use-before-define": ["error", { classes: false, functions: false, variables: true }],
       "@typescript-eslint/explicit-member-accessibility": "error",
-      "@typescript-eslint/explicit-module-boundary-types": "off", // TODO: Check if this rule is relevant
-      "@typescript-eslint/no-invalid-void-type": "off", // TODO: for undefined generics types (temporary?)
       "@typescript-eslint/prefer-enum-initializers": "error",
       "@typescript-eslint/prefer-find": "error",
       "@typescript-eslint/prefer-readonly": "error",
@@ -43,11 +38,11 @@ export const typescript = (): TypedFlatConfigItem => {
       "@typescript-eslint/require-array-sort-compare": "error",
       "no-return-await": "off",
       "@typescript-eslint/return-await": "error",
-      "@typescript-eslint/strict-boolean-expressions": "off", // TODO: Check if this rule is relevant
+      "@typescript-eslint/strict-boolean-expressions": "error",
       "@typescript-eslint/no-misused-promises": ["error", { checksVoidReturn: { attributes: false } }], // https://github.com/orgs/react-hook-form/discussions/8622
-      "@typescript-eslint/no-non-null-assertion": "off", // TODO: Check if this rule is relevant
-      "@typescript-eslint/no-confusing-void-expression": "off", // TODO: Check if this rule is relevant
-      "@typescript-eslint/prefer-nullish-coalescing": "off", // TODO: Check if this rule is relevant
+      "@typescript-eslint/no-non-null-assertion": "off", // Not relevant: non-null assertions are often necessary with `noUncheckedIndexedAccess`, redundant ones are already caught by `no-unnecessary-type-assertion`
+      "@typescript-eslint/no-confusing-void-expression": "off", // Not relevant: arrow shorthand returning `void` calls is ubiquitous in React event handlers (e.g. `onClick={() => setState(x)}`)
+      "@typescript-eslint/prefer-nullish-coalescing": ["error", { ignorePrimitives: { boolean: true, number: true, string: true } }],
       "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
 
       /**

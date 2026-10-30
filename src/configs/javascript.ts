@@ -41,7 +41,7 @@ export const javascript = (): TypedFlatConfigItem => {
       "max-classes-per-file": "error",
       "max-depth": "error",
       "max-nested-callbacks": ["error", { max: 5 }],
-      "new-cap": "off", // TODO: Check if this rule is relevant (this can be anoying with React)
+      "new-cap": ["error", { newIsCap: true, capIsNew: false, properties: true }],
       "no-array-constructor": "error",
       "no-caller": "error",
       "no-else-return": "error",
@@ -61,13 +61,13 @@ export const javascript = (): TypedFlatConfigItem => {
       "no-multi-str": "error",
       "no-new-func": "error",
       "no-new-wrappers": "error",
-      "no-param-reassign": "off", // TODO: Check if this rule is relevant
+      "no-param-reassign": "error",
       "no-plusplus": "error",
       "no-return-assign": "error",
       "no-script-url": "error",
       "no-sequences": "error",
       "no-undef-init": "error",
-      "no-undefined": "off", // TODO: Check if this rule is relevant
+      "no-undefined": "off", // Not relevant: `undefined` is read-only since ES5 and already protected by `no-global-assign`, forcing `void 0` would be counterproductive
       "no-unneeded-ternary": "error",
       "no-unused-expressions": "error",
       "no-useless-call": "error",
@@ -85,7 +85,7 @@ export const javascript = (): TypedFlatConfigItem => {
       "prefer-template": "error",
       "require-unicode-regexp": "error",
       "yoda": "error",
-      "no-duplicate-imports": "off", // TODO: Check if this rule is relevant
+      "no-duplicate-imports": "off", // Not relevant, conflicts with `@typescript-eslint/consistent-type-imports` (separate type imports require two imports from the same module)
       "no-redeclare": "off", // Not relevant, since TypeScript already takes care of checking for this kind of error
       "no-restricted-syntax": [
         "error",
