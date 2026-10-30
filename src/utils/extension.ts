@@ -5,6 +5,7 @@ export { default as typescriptPlugin } from "@typescript-eslint/eslint-plugin";
 export { default as nextjsPlugin } from "@next/eslint-plugin-next";
 export { default as reactPlugin } from "@eslint-react/eslint-plugin";
 export { default as reactHooksPlugin } from "eslint-plugin-react-hooks";
+export { default as jsxA11yPlugin } from "eslint-plugin-jsx-a11y";
 export { default as queryPlugin } from "@tanstack/eslint-plugin-query";
 export { default as perfectionistPlugin } from "eslint-plugin-perfectionist";
 

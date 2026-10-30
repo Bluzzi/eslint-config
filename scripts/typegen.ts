@@ -1,5 +1,6 @@
 import type { Awaitable, TypedFlatConfigItem } from "#/types/type";
 import { javascript } from "#/configs/javascript";
+import { jsxA11y } from "#/configs/jsx-a11y";
 import { nextjs } from "#/configs/nextjs";
 import { node } from "#/configs/node";
 import { perfectionist } from "#/configs/perfectionist";
@@ -30,6 +31,7 @@ const configs = await combine(
   typescript(),
   react(),
   nextjs(),
+  jsxA11y(),
   tanstackQuery(),
   perfectionist(),
 );
