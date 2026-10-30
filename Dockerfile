@@ -16,7 +16,7 @@ FROM node:25-alpine AS runner
 WORKDIR /app
 
 # Copy only necessary files from the build stage:
-COPY --from=builder /app/.eslint-config-inspector ./
+COPY --from=builder /app/dist/__eslint-config-inspector ./
 
 # Install a static site runner:
 RUN npm install -g serve
