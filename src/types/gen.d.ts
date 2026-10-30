@@ -1301,6 +1301,46 @@ export interface RuleOptions {
    */
   '@stylistic/yield-star-spacing'?: Linter.RuleEntry<StylisticYieldStarSpacing>
   /**
+   * Exhaustive deps rule for useQuery
+   * @see https://tanstack.com/query/latest/docs/eslint/exhaustive-deps
+   */
+  '@tanstack/query/exhaustive-deps'?: Linter.RuleEntry<TanstackQueryExhaustiveDeps>
+  /**
+   * Ensure correct order of inference sensitive properties for infinite queries
+   * @see https://tanstack.com/query/latest/docs/eslint/infinite-query-property-order
+   */
+  '@tanstack/query/infinite-query-property-order'?: Linter.RuleEntry<[]>
+  /**
+   * Ensure correct order of inference-sensitive properties in useMutation()
+   * @see https://tanstack.com/query/latest/docs/eslint/mutation-property-order
+   */
+  '@tanstack/query/mutation-property-order'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows rest destructuring in queries
+   * @see https://tanstack.com/query/latest/docs/eslint/no-rest-destructuring
+   */
+  '@tanstack/query/no-rest-destructuring'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow putting the result of query hooks directly in a React hook dependency array
+   * @see https://tanstack.com/query/latest/docs/eslint/no-unstable-deps
+   */
+  '@tanstack/query/no-unstable-deps'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures queryFn returns a non-undefined value
+   * @see https://tanstack.com/query/latest/docs/eslint/no-void-query-fn
+   */
+  '@tanstack/query/no-void-query-fn'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer using queryOptions() to co-locate queryKey and queryFn
+   * @see https://tanstack.com/query/latest/docs/eslint/prefer-query-options
+   */
+  '@tanstack/query/prefer-query-options'?: Linter.RuleEntry<[]>
+  /**
+   * Makes sure that QueryClient is stable
+   * @see https://tanstack.com/query/latest/docs/eslint/stable-query-client
+   */
+  '@tanstack/query/stable-query-client'?: Linter.RuleEntry<[]>
+  /**
    * Require that function overload signatures be consecutive
    * @see https://typescript-eslint.io/rules/adjacent-overload-signatures
    */
@@ -5420,6 +5460,13 @@ type StylisticYieldStarSpacing = []|[(("before" | "after" | "both" | "neither") 
   before?: boolean
   after?: boolean
 })]
+// ----- @tanstack/query/exhaustive-deps -----
+type TanstackQueryExhaustiveDeps = []|[{
+  allowlist?: {
+    variables?: string[]
+    types?: string[]
+  }
+}]
 // ----- @typescript-eslint/array-type -----
 type TypescriptEslintArrayType = []|[{
   
@@ -13643,4 +13690,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
   onlyEquality?: boolean
 }]
 // Names of all the configs
-export type ConfigNames = 'bluzzi/eslint' | 'bluzzi/javascript' | 'bluzzi/node' | 'bluzzi/stylistic' | 'bluzzi/typescript' | 'bluzzi/react' | 'bluzzi/nextjs' | 'bluzzi/perfectionist'
+export type ConfigNames = 'bluzzi/eslint' | 'bluzzi/javascript' | 'bluzzi/node' | 'bluzzi/stylistic' | 'bluzzi/typescript' | 'bluzzi/react' | 'bluzzi/nextjs' | 'bluzzi/query' | 'bluzzi/perfectionist'
