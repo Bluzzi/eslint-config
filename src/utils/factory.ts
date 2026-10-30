@@ -18,6 +18,7 @@ export const eslintConfig = async (
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): Promise<FlatConfigComposer<TypedFlatConfigItem, ConfigNames>> => {
   const configs: TypedFlatConfigItem[] = [];
+  const enabledConfigs: string[] = [];
 
   const enabled = {
     typescript: isPackageExists("typescript"),
@@ -27,36 +28,36 @@ export const eslintConfig = async (
   };
 
   // Ignore:
-  logger.info("ignore - config enabled");
+  enabledConfigs.push("ignore");
   configs.push(ignore());
 
   // JS:
-  logger.info("javascript - config enabled");
+  enabledConfigs.push("javascript");
   configs.push(javascript());
 
   // TS:
   if (enabled.typescript) {
-    logger.info("typescript - config enabled (typescript package found)");
+    enabledConfigs.push("typescript");
     configs.push(typescript());
   }
 
   // Node:
-  logger.info("node - config enabled");
+  enabledConfigs.push("node");
   configs.push(node());
 
   // Stylistic:
-  logger.info("stylistic - config enabled");
+  enabledConfigs.push("stylistic");
   configs.push(stylistic({ ...options.stylistic, jsx: enabled.react }));
 
   // React:
   if (enabled.react) {
-    logger.info("react - config enabled");
+    enabledConfigs.push("react");
     configs.push(react());
   }
 
   // NextJS:
   if (enabled.nextjs) {
-    logger.info("nextjs - config enabled");
+    enabledConfigs.push("nextjs");
     configs.push(nextjs());
   }
 
@@ -67,8 +68,10 @@ export const eslintConfig = async (
   }
 
   // Perfectionist:
-  logger.info("perfectionist - config enabled");
+  enabledConfigs.push("perfectionist");
   configs.push(perfectionist());
+
+  logger.info(`configs enabled: ${enabledConfigs.join(", ")}`);
 
   // Compose:
   const composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>();
