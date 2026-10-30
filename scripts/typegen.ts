@@ -3,6 +3,7 @@ import { javascript } from "#/configs/javascript";
 import { nextjs } from "#/configs/nextjs";
 import { node } from "#/configs/node";
 import { perfectionist } from "#/configs/perfectionist";
+import { query } from "#/configs/query";
 import { react } from "#/configs/react";
 import { stylistic } from "#/configs/stylistic";
 import { typescript } from "#/configs/typescript";
@@ -28,6 +29,7 @@ const configs = await combine(
   typescript(),
   react(),
   nextjs(),
+  query(),
   perfectionist(),
 );
 

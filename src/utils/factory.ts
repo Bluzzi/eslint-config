@@ -5,6 +5,7 @@ import { javascript } from "#/configs/javascript";
 import { nextjs } from "#/configs/nextjs";
 import { node } from "#/configs/node";
 import { perfectionist } from "#/configs/perfectionist";
+import { query } from "#/configs/query";
 import { react } from "#/configs/react";
 import { stylistic } from "#/configs/stylistic";
 import { typescript } from "#/configs/typescript";
@@ -22,6 +23,7 @@ export const eslintConfig = async (
     typescript: isPackageExists("typescript"),
     react: isPackageExists("react"),
     nextjs: isPackageExists("next"),
+    query: ["@tanstack/react-query", "@tanstack/vue-query", "@tanstack/solid-query", "@tanstack/svelte-query"].some((p) => isPackageExists(p)),
   };
 
   // Ignore:
@@ -56,6 +58,12 @@ export const eslintConfig = async (
   if (enabled.nextjs) {
     logger.info("nextjs - config enabled");
     configs.push(nextjs());
+  }
+
+  // Query:
+  if (enabled.query) {
+    logger.info("query - config enabled (@tanstack/*-query package found)");
+    configs.push(query());
   }
 
   // Perfectionist:
