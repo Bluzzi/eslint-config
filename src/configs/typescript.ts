@@ -42,6 +42,7 @@ export const typescript = (): TypedFlatConfigItem => {
       "@typescript-eslint/no-misused-promises": ["error", { checksVoidReturn: { attributes: false } }], // https://github.com/orgs/react-hook-form/discussions/8622
       "@typescript-eslint/no-non-null-assertion": "off", // Not relevant: non-null assertions are often necessary with `noUncheckedIndexedAccess`, redundant ones are already caught by `no-unnecessary-type-assertion`
       "@typescript-eslint/no-confusing-void-expression": "off", // Not relevant: arrow shorthand returning `void` calls is ubiquitous in React event handlers (e.g. `onClick={() => setState(x)}`)
+      "@typescript-eslint/no-inferrable-types": "off", // Not relevant: explicit type annotations on initialized declarations improve readability and guard against type drift on refactoring
       "@typescript-eslint/prefer-nullish-coalescing": ["error", { ignorePrimitives: { boolean: true, number: true, string: true } }],
       "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
 
