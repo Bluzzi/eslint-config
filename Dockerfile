@@ -16,7 +16,7 @@ COPY . .
 # Their exact versions don't matter, the rule sets come from the plugins bundled in the config itself.
 # --ignore-scripts skips next's optional "sharp" build script, which is not approved by
 # the repository supply-chain policy and would otherwise fail the build.
-RUN pnpm add -D --ignore-scripts react@^19.0.0 next@^16.4.3 @tanstack/react-query@^5.0.0
+RUN pnpm install -D --ignore-scripts react next @tanstack/react-query
 
 RUN pnpm run inspector:build
 
